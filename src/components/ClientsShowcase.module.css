@@ -1,0 +1,427 @@
+/* ================================================================
+   CLIENTS SHOWCASE — stacked editorial sections
+   Order: Hero / Industries / Featured Work / Client Stories /
+          Partnerships / Final CTA
+   ================================================================ */
+.showcase {
+  background: #f8f4f0;
+}
+
+.section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.sectionInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  margin-bottom: 1rem;
+}
+
+/* ── 1. Hero ── */
+.hero {
+  position: relative;
+  min-height: clamp(420px, 60vw, 640px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+.heroInner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);
+}
+
+.heroTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem;
+}
+
+.heroDesc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a4540;
+  max-width: 420px;
+  margin: 0;
+}
+
+/* ── 2. Industries ── */
+.industriesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.industryTile {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+.industryTile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 55%);
+}
+
+.industryLabel {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 1rem;
+}
+
+/* ── 3. Featured Work ── */
+.featuredHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.featuredNav {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.navCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #4a4540;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.featuredBody {
+  display: flex;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.featuredImage {
+  flex: 0 0 46%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.featuredContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.featuredTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+.featuredDesc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #555;
+  max-width: 480px;
+  margin: 0 0 1.5rem;
+}
+
+.featuredLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  width: fit-content;
+  transition: gap 0.25s ease;
+}
+
+.featuredLink:hover {
+  gap: 0.85rem;
+}
+
+/* ── 4. Client Stories ── */
+.storiesSection {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #f2ece4;
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  min-height: clamp(460px, 36vw, 620px);
+  display: grid;
+  align-items: center;
+}
+
+.storiesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  margin-top: 1.5rem;
+  max-width: 78%;
+}
+
+.storyCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.storyLogo {
+  height: 32px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  object-position: left;
+  filter: grayscale(1) opacity(0.8);
+}
+
+.storyText {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+
+/* ── 6. Partnerships ── */
+.statsSection {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #efe9e1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  aspect-ratio: 21 / 6;
+  display: grid;
+  align-items: center;
+}
+
+.statsGrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.statBlock {
+  min-width: 140px;
+}
+
+.statValue {
+  font-family: var(--font-primary);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #6a6258;
+}
+
+/* ── 6. Final CTA ── */
+.ctaSection {
+  position: relative;
+  background-color: #3d1414;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  min-height: clamp(440px, 34vw, 580px);
+  display: grid;
+  align-items: center;
+}
+
+.ctaSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 8, 8, 0.3);
+}
+
+.ctaSection .sectionInner {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.ctaTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 0 0 1.25rem;
+  max-width: 460px;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 3px;
+  width: fit-content;
+  transition: border-color 0.25s ease, gap 0.25s ease;
+}
+
+.ctaLink:hover {
+  gap: 0.85rem;
+  border-color: #ffffff;
+}
+
+.ctaLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1rem;
+}
+
+.ctaLogos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.85rem;
+}
+
+.ctaLogoChip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  background: var(--color-bg-primary);
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+  opacity: 0.9;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.ctaLogoChip:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.ctaLogo {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .industriesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .storiesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100%;
+  }
+
+  .ctaGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 380px;
+    align-items: flex-end;
+  }
+
+  .industriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featuredBody {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .featuredImage {
+    flex: none;
+    width: 100%;
+  }
+
+  .storiesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .statsSection {
+    aspect-ratio: auto;
+    min-height: 340px;
+  }
+
+  .statsGrid {
+    gap: 2rem 1.5rem;
+  }
+
+  .statBlock {
+    flex: 1 1 40%;
+  }
+
+  .ctaLogos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

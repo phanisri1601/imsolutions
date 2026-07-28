@@ -1,0 +1,200 @@
+/* ================================================================
+   THE IM SYSTEM™  header + an animated slider that cycles through
+   each stage (Discover → Legacy), with dot navigation below.
+   Theme: warm ivory background, red accent, classic serif headings
+   (same Georgia treatment as the cube hero).
+   ================================================================ */
+.section {
+    padding: var(--section-padding-y) 0;
+    background: #F8F4F0;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* ── Header  system overview ── */
+.header {
+    max-width: 680px;
+    margin: 0 auto 3.25rem;
+    text-align: center;
+}
+
+.heading {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    font-weight: 400;
+    line-height: 1.22;
+    color: var(--color-text-primary);
+    margin: 0 0 1.25rem;
+}
+
+.headingLine {
+    display: block;
+}
+
+.paragraph {
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto 0.9rem;
+}
+
+.header .quote {
+    font-family: var(--font-primary);
+    font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin: 1.5rem auto 0;
+}
+
+/* ── Slider ── */
+.slider {
+    display: flex;
+    flex-direction: column;
+}
+
+.stageRow {
+    display: flex;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    padding: 1rem 0 2.5rem;
+}
+
+.stageRowReverse {
+    flex-direction: row-reverse;
+}
+
+.stageVisual {
+    position: relative;
+    flex: 0 0 340px;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+}
+
+.stageImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ghostNumber {
+    font-family: var(--font-primary);
+    font-size: clamp(3rem, 5vw, 4.25rem);
+    font-weight: 700;
+    line-height: 1;
+    user-select: none;
+    letter-spacing: -0.02em;
+}
+
+.stageContent {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.stageHeading {
+    font-family: var(--font-primary);
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 400;
+    line-height: 1.28;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.stageParagraph {
+    font-size: clamp(0.9rem, 1.05vw, 1rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 560px;
+}
+
+.stageQuote {
+    font-family: var(--font-primary);
+    font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    border-left: 2px solid var(--color-accent-primary);
+    padding-left: 1rem;
+    max-width: 500px;
+}
+
+/* ── Dots ── */
+.dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+    background: var(--color-border);
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.dot:hover {
+    background: var(--color-accent-primary);
+    opacity: 0.6;
+}
+
+.dotActive {
+    background: var(--color-accent-primary);
+    transform: scale(1.3);
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .header {
+        margin-bottom: 3.5rem;
+    }
+
+    .stageVisual {
+        flex-basis: 260px;
+    }
+}
+
+@media (max-width: 700px) {
+    .stageRow,
+    .stageRowReverse {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding: 0.5rem 0 1.75rem;
+    }
+
+    .stageVisual {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 360px;
+        aspect-ratio: 16 / 10;
+    }
+
+    .stageHeading {
+        font-size: clamp(1.3rem, 5vw, 1.6rem);
+    }
+}

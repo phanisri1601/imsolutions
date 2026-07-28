@@ -1,0 +1,165 @@
+.showcaseSection {
+    background: #f8f9fa;
+    /* Optional: Use variable if desired */
+    position: relative;
+    width: 100%;
+}
+
+.showcaseHeader {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    /* Reduced gap */
+}
+
+.showcaseTitle {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.showcaseDesc {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* 
+  The pinning container that holds both the title and the cards
+*/
+.pinContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--header-height, 80px) + 2rem) 2rem 2rem;
+    overflow: hidden;
+}
+
+/* 
+  We set up a central "drop zone" for the cards
+*/
+.showcaseGrid {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+.showcaseCard {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: 4/5;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    background: var(--color-bg-primary);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    /* Initial state: pushed offscreen by GSAP later */
+    will-change: transform, opacity;
+    display: flex;
+    flex-direction: column;
+}
+
+.showcaseCard+.showcaseCard {
+    margin-left: -5%;
+    /* The overlap */
+}
+
+/* Typography and Layout inside the card */
+.cardTop {
+    padding: 1.5rem 1rem 1rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardTitle {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    font-weight: 900;
+    color: #333;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+}
+
+.cardNumber {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    color: var(--color-accent-primary, #BA3232);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.cardDesc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    font-weight: 500;
+    max-width: 95%;
+}
+
+.cardImageWrapper {
+    width: 100%;
+    padding: 0.5rem 1rem 1rem;
+    /* give space all around so it isn't completely flush with bottom */
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Pin to the bottom of the padded area */
+    flex: 1.5;
+    min-height: 0;
+    /* allows flex children to shrink below content size if needed */
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    /* restrict by both width and height to fit securely in wrapper */
+    object-fit: contain;
+    object-position: bottom center;
+    /* keep it grounded securely at the bottom */
+    margin-bottom: 0;
+    transition: transform 0.4s ease;
+}
+
+/* Hover effects */
+.showcaseCard:hover .cardImage {
+    transform: scale(1.05) translateY(-5px);
+}
+
+
+@media (max-width: 768px) {
+    .showcaseSection {
+        padding: 3rem 0;
+    }
+
+    .showcaseGrid {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .showcaseCard {
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 16/9;
+    }
+
+    .pinContainer {
+        height: 100vh;
+        /* Keeps it full screen on mobile as well */
+        padding-top: calc(var(--header-height, 64px) + 1rem);
+    }
+}

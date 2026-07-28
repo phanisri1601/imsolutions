@@ -1,0 +1,202 @@
+/* ================================================================
+   Sticky editorial reveal  the section pins for ~150vh of scroll
+   while the heading, image and statements build up in stages, then
+   releases naturally over the final 100vh as the user keeps scrolling.
+   ================================================================ */
+.pinWrapper {
+    position: relative;
+    height: 250vh;
+    background: #F8F4F0;
+}
+
+.stickyInner {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: var(--header-height, 80px);
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(186, 50, 50, 0.04), transparent 70%),
+        #F8F4F0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 0.7rem;
+}
+
+.heading {
+    font-family: var(--font-primary);
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.22;
+    color: var(--color-text-primary);
+    margin-bottom: 0.7rem;
+}
+
+.word {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.imageWrap {
+    margin: 0 auto 0.65rem;
+    max-width: 920px;
+}
+
+.imageScaler {
+    position: relative;
+    width: 100%;
+    height: clamp(110px, 16vh, 200px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    will-change: transform;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.statements {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin-bottom: 0.65rem;
+}
+
+.statement {
+    font-family: var(--font-primary);
+    font-size: clamp(1.3rem, 2.1vw, 1.75rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--color-text-secondary);
+    will-change: transform, opacity;
+}
+
+.paragraph {
+    font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ── Static fallback for prefers-reduced-motion  no pin, no scroll-scrub ── */
+.staticSection {
+    padding: var(--section-padding-y) 0;
+    background: #F8F4F0;
+}
+
+.staticSection .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.staticSection .imageWrap {
+    width: 100%;
+}
+
+.staticSection .imageScaler,
+.staticSection .image {
+    border-radius: 14px;
+}
+
+.staticSection .imageWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 7.2;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 1.5rem;
+}
+
+.staticSection .statements {
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+    .pinWrapper {
+        height: 230vh;
+    }
+
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .heading {
+        font-size: clamp(1.5rem, 4.6vw, 2rem);
+    }
+
+    .imageWrap {
+        max-width: 100%;
+    }
+
+    .imageScaler {
+        height: clamp(160px, 30vh, 260px);
+    }
+
+    .statement {
+        font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+    }
+
+    .paragraph {
+        font-size: clamp(0.88rem, 2.6vw, 1rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .pinWrapper {
+        height: 210vh;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .stickyInner {
+        padding: 1.5rem 0;
+    }
+
+    .heading {
+        margin-bottom: 0.8rem;
+    }
+
+    .imageWrap {
+        margin-bottom: 0.8rem;
+    }
+
+    .imageScaler {
+        height: clamp(130px, 24vh, 200px);
+        border-radius: 12px;
+    }
+
+    .statements {
+        gap: 0.1rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .paragraph {
+        font-size: 0.85rem;
+        line-height: 1.55;
+    }
+}

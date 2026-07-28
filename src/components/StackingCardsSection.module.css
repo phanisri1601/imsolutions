@@ -1,0 +1,324 @@
+.section {
+  padding: 2rem 0 0;
+  margin-bottom: 0;
+  background: var(--color-bg-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  color: var(--color-accent-primary);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.stackArea {
+  position: relative;
+  height: calc(100vh + 240px);
+}
+
+.sticky {
+  position: sticky;
+  top: calc(var(--header-height, 80px) + 6px);
+  height: calc(100vh - (var(--header-height, 80px) + 16px));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0;
+  overflow: visible;
+}
+
+.stackViewport {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  height: min(520px, calc(100vh - 140px));
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  background: var(--color-bg-primary);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+}
+
+.cardInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem; /* Re-add padding to header only */
+}
+
+/* Outlined animated index (01, 02, 03, 04) */
+.animatedIndex {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(3.25rem, 7vw, 5.25rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.animatedIndexStroke {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 2px #C49A6C;
+  paint-order: stroke fill;
+}
+
+.animatedIndexFill {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: #C49A6C;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .animatedIndexFill,
+.card:focus-within .animatedIndexFill {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Animated CTA  outline to filled indigo */
+.animatedCta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 1.35rem;
+  padding: 0.85rem 2rem;
+  border: 2px solid #C49A6C;
+  background: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.animatedCta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #C49A6C;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .animatedCta::before,
+.animatedCta:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.animatedCtaText {
+  position: relative;
+  z-index: 1;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #C49A6C;
+  transition: color 0.35s ease;
+}
+
+.card:hover .animatedCtaText,
+.animatedCta:focus-visible .animatedCtaText {
+  color: #ffffff;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0; /* Remove gap for seamless 50/50 look */
+  align-items: stretch; /* Allow content to fill vertically */
+  flex: 1;
+  width: 100%;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.45s ease;
+  display: block;
+}
+
+/* explicit class for images added in JSX to keep styles consistent */
+.mediaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* Remove padding here, move it to sub-elements */
+  height: 100%;
+  background: var(--color-bg-primary);
+}
+
+.textContentInner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2.5rem;
+  justify-content: center; /* Centers items vertically in the remaining space */
+  position: relative;
+}
+
+.cardTitle {
+  font-size: 2.2rem !important;
+  font-weight: 900 !important;
+  color: var(--color-text-primary) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0.75rem !important; /* Fixed smaller gap */
+  padding-bottom: 0;
+}
+
+.cardDesc {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0 !important; /* Compact alignment */
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+}
+
+.card:hover .media img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .media {
+    display: none;
+  }
+
+  .cardInner {
+    grid-template-columns: 1fr;
+  }
+
+  .cardContent {
+    grid-template-columns: 1fr;
+  }
+
+  .textContentInner {
+    padding: 2rem;
+  }
+
+  .stackViewport {
+    height: min(640px, calc(100vh - 160px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animatedIndexFill {
+    clip-path: inset(0 0 0 0);
+    transition: none;
+  }
+
+  .animatedCta::before {
+    transform: scaleX(1);
+    transition: none;
+  }
+
+  .animatedCtaText {
+    color: #ffffff;
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 2rem 0 0;
+  }
+
+  .stackArea {
+    height: calc(100vh + 360px);
+  }
+
+  .sticky {
+    top: calc(var(--header-height, 72px) + 10px);
+    height: calc(100vh - (var(--header-height, 72px) + 20px));
+  }
+
+  .cardInner {
+    padding: 0;
+  }
+
+  .textContentInner {
+    padding: 1.5rem 1.25rem;
+  }
+}

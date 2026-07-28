@@ -1,0 +1,628 @@
+.pageContainer {
+  font-family: var(--font-primary, sans-serif);
+  color: #333;
+  background-color: #f7f5f0;
+  overflow-x: hidden;
+}
+
+/* 1. Hero Section */
+.heroSection {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.heroBannerBg {
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+
+.heroContent {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 600px;
+}
+
+.heroTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem;
+  line-height: 1.1;
+  font-weight: 400;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #9c1d22;
+  font-weight: 600;
+  margin-bottom: 2rem;
+
+}
+
+.heroDivider {
+  width: 60px;
+  height: 2px;
+  background-color: #9c1d22;
+  border: none;
+  margin: 0;
+}
+
+/* 2. Intro & Collage Section */
+.introSection {
+  padding: 3rem 5%;
+  background-color: #f7f5f0;
+}
+
+.introLayout {
+  display: flex;
+  align-items: flex-end;
+  gap: 3rem;
+}
+
+.introText {
+  flex: 0 0 220px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.introCollage {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.collageImgWrap {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.collageShort {
+  height: 200px;
+}
+
+.collageTall {
+  height: 260px;
+}
+
+.collageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.collageImgWrap:hover .collageImg {
+  transform: scale(1.05);
+}
+
+/* 3. Services Grid */
+.servicesGridSection {
+  padding: 4rem 5%;
+  background-color: #f7f5f0;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.serviceCard {
+  background: #fdfaf5;
+  /* Light warm beige */
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.serviceCardContent {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+}
+
+.serviceNum {
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: 1px solid;
+  /* color applied inline */
+  padding-bottom: 0.4rem;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.serviceCardTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.serviceCardImageWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  z-index: 1;
+}
+
+.serviceCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  /* Slight scale to ensure no edge gaps from clip-path */
+}
+
+.serviceCardOverlay {
+  display: none;
+  /* No dark overlay needed per reference */
+}
+
+/* 4. Process Timeline */
+.processSection {
+  background-color: #5d1013;
+  /* Dark Red */
+  padding: 5rem 5%;
+  color: #fff;
+  position: relative;
+}
+
+.processContainer {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.processLine {
+  position: absolute;
+  top: 25px;
+  /* Aligned with circles */
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background-color: #8f6c37;
+  /* Bronze/Gold */
+  z-index: 1;
+}
+
+.processSteps {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.processStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.processStep:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15px;
+  height: 120px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15) 20%, rgba(255, 255, 255, 0.15) 80%, transparent);
+}
+
+.stepCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #c9a567;
+  /* Gold */
+  background-color: #5d1013;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 3;
+}
+
+.stepIcon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #e6dfd1;
+  /* Cream/white */
+  opacity: 0.9;
+}
+
+.stepText {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #e6dfd1;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 5. Impact Section */
+.impactSection {
+  padding: 5rem 5% 3rem;
+  background-color: #f7f5f0;
+  text-align: center;
+}
+
+.impactTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.impactTitleUnderline {
+  width: 60px;
+  height: 2px;
+  background-color: #cda85a;
+  /* gold-ish */
+  margin: 0 auto 3rem;
+}
+
+.impactCollage {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.impactImg {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.impactImgWide {
+  flex: 2.2;
+  /* Make the middle billboard image wider */
+}
+
+.impactImg:hover {
+  opacity: 0.8;
+}
+
+/* 6. Industries Section */
+.industriesSection {
+  background-color: #f7f5f0;
+  padding: 3rem 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.industryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.industryIcon {
+  font-size: 2.5rem;
+  color: #a49176;
+  /* earthy beige/gold */
+  margin-bottom: 1rem;
+}
+
+.industryItem p {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+/* 7. Why Choose Us Section */
+.whyChooseSection {
+  background-color: #f7f5f0;
+  padding: 6rem 5% 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.whyChooseContent {
+  flex: 1;
+  position: relative;
+  padding-bottom: 6rem;
+  z-index: 2;
+}
+
+.whyChooseTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #222;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.whyChooseUnderline {
+  width: 50px;
+  height: 3px;
+  background-color: #c9a567;
+  /* Gold */
+  margin-bottom: 2.5rem;
+}
+
+.whyChooseLogoBackground {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  font-size: 20rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.02);
+  line-height: 1;
+  z-index: -1;
+  user-select: none;
+}
+
+.whyChooseList {
+  flex: 1.5;
+  padding-left: 2rem;
+  padding-bottom: 6rem;
+  z-index: 2;
+}
+
+.whyChooseList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.whyChooseList li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 1.2rem;
+}
+
+.checkIcon {
+  color: #5d1013;
+  /* Dark Red */
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.whyChooseImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.whyChooseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+/* 8. Footer CTA Section */
+.footerCtaSection {
+  background-color: #111;
+  padding: 6rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footerCtaBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.footerCtaOverlay {
+  display: none;
+}
+
+.footerCtaContent,
+.footerCtaAction {
+  position: relative;
+  z-index: 2;
+}
+
+.footerCtaContent {
+  flex: 1;
+}
+
+.footerCtaTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.highlightRed {
+  color: #9c1d22;
+}
+
+.footerCtaUnderline {
+  width: 60px;
+  height: 2px;
+  background-color: #9c1d22;
+}
+
+.footerCtaAction {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.footerCtaSubtitle {
+  font-size: 1.2rem;
+  color: #a49176;
+  margin-bottom: 1rem;
+}
+
+.footerCtaButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  border: 1px solid #444;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.footerCtaButton:hover {
+  background-color: #222;
+  border-color: #666;
+}
+
+.arrow {
+  margin-left: 0.5rem;
+  color: #9c1d22;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .heroTitle {
+    font-size: 3.5rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .introLayout {
+    flex-direction: column;
+  }
+
+  .introText {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    flex-direction: column;
+    padding-top: 6rem;
+    text-align: center;
+  }
+
+  .heroContent,
+  .heroImageContainer {
+    max-width: 100%;
+  }
+
+  .heroDivider {
+    margin: 0 auto;
+  }
+
+  .heroImageContainer {
+    margin-top: 3rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .processSteps {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .processLine {
+    display: none;
+    /* Hide line on mobile to stack */
+  }
+
+  .impactCollage {
+    flex-direction: column;
+  }
+
+  .impactImg {
+    height: 200px;
+  }
+
+  .industriesSection {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .industryItem {
+    min-width: 30%;
+  }
+
+  .whyChooseSection {
+    flex-direction: column;
+    padding-bottom: 3rem;
+  }
+
+  .whyChooseList {
+    padding-left: 0;
+  }
+
+  .whyChooseImageWrapper {
+    display: none;
+    /* Hide background stairs on mobile to save space */
+  }
+
+  .footerCtaSection {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .footerCtaAction {
+    align-items: center;
+  }
+}

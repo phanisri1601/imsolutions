@@ -1,0 +1,216 @@
+.videoSection {
+    padding: var(--section-padding-y) 0;
+    background: linear-gradient(180deg,
+            #ffffff 0%,
+            #f5f5f5 50%,
+            #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+}
+
+/* Subtle Red Glow Effect */
+.videoSection::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle,
+            rgba(186, 50, 50, 0.08) 0%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.videoWrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    /* Removed max-width to allow full screen expansion */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container for Framer Motion */
+.videoContainer {
+    position: relative;
+    /* Framer Motion will animate border-radius from 40px to 0px */
+    border-radius: 40px;
+    overflow: hidden;
+    /* Red Accent Shadow */
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 0, 0, 0.08),
+        0 0 40px rgba(186, 50, 50, 0.1);
+    /* Dynamic width controlled by Framer Motion, but base is responsive */
+    width: 100%;
+    height: 100vh;
+    /* Base height for full screen feel */
+    background: #f9f9f9;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Framer Motion will handle transforms */
+}
+
+.videoOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0.15) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.videoTitle {
+    font-size: clamp(1.6rem, 3.2vw, 3rem);
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    /* White with Red Accent */
+    color: var(--color-text-primary);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.textHighlight {
+    color: #ba3232;
+    /* Vibrant Red */
+}
+
+.videoDescription {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0;
+    line-height: 1.6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1440px) {
+    .videoContainer {
+        height: 85vh;
+    }
+
+    .videoTitle {
+        font-size: clamp(1.4rem, 3vw, 2.4rem);
+    }
+}
+
+@media (max-width: 1024px) {
+    .videoSection {
+        padding: var(--section-padding-y) 0;
+    }
+
+    .videoContainer {
+        height: 75vh;
+        border-radius: 32px;
+    }
+
+    .videoOverlay {
+        padding: 35px;
+    }
+
+    .videoTitle {
+        font-size: clamp(1.25rem, 2.8vw, 2rem);
+        margin-bottom: 1rem;
+    }
+
+    .videoDescription {
+        font-size: 1.05rem;
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 768px) {
+    .videoSection {
+        padding: var(--section-padding-y) 1rem;
+        min-height: auto;
+    }
+
+    .videoContainer {
+        height: 60vh;
+        border-radius: 20px;
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.1),
+            0 0 0 1px rgba(255, 255, 255, 0.08),
+            0 0 25px rgba(186, 50, 50, 0.08);
+    }
+
+    .videoOverlay {
+        padding: 28px;
+    }
+
+    .videoTitle {
+        font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+        margin-bottom: 0.75rem;
+    }
+
+    .videoDescription {
+        font-size: 0.95rem;
+        max-width: 90%;
+    }
+
+    .ctaButton {
+        padding: 0.8rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .videoSection {
+        padding: 2rem 0.75rem;
+    }
+
+    .videoContainer {
+        height: 50vh;
+        min-height: 300px;
+        border-radius: 12px;
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.1),
+            0 0 0 1px rgba(255, 255, 255, 0.05),
+            0 0 15px rgba(186, 50, 50, 0.05);
+    }
+
+    .videoOverlay {
+        padding: 20px;
+    }
+
+    .videoTitle {
+        font-size: clamp(1rem, 2.2vw, 1.2rem);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .videoDescription {
+        font-size: 0.9rem;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .ctaButton {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,221 @@
+.missionVisionSection {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-bg-secondary);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section {
+    margin-bottom: 4rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.textContent {
+    color: var(--color-text-primary);
+    min-width: 0;
+}
+
+.title {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.description {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    line-height: 1.15;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.additionalText {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    line-height: 1.15;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.imageWrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(186, 50, 50, 0.15);
+    width: min(340px, 100%);
+    aspect-ratio: 4/3;
+}
+
+.contentWrapper > .imageWrapper:last-child {
+    margin-left: auto;
+}
+
+.contentWrapper > .imageWrapper:first-child {
+    margin-right: auto;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 968px) {
+    .missionVisionSection {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .section {
+        margin-bottom: 3rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .contentWrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .imageWrapper,
+    .contentWrapper > .imageWrapper:last-child,
+    .contentWrapper > .imageWrapper:first-child {
+        width: min(300px, 100%);
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .missionVisionSection {
+        padding: 2rem 1rem;
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .section {
+        margin-bottom: 2.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .contentWrapper {
+        gap: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .title {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        margin-bottom: 1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .description,
+    .additionalText {
+        font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+        line-height: 1.15;
+        margin-bottom: 0.6rem;
+        text-align: left;
+        text-justify: auto;
+    }
+
+    .imageWrapper,
+    .contentWrapper > .imageWrapper:last-child,
+    .contentWrapper > .imageWrapper:first-child {
+        border-radius: 16px;
+        aspect-ratio: 4/3;
+        width: min(260px, 100%);
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .missionVisionSection {
+        padding: 1.5rem 0.75rem;
+        overflow-x: hidden;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container {
+        padding: 0 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .section {
+        margin-bottom: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .contentWrapper {
+        gap: 1.25rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .textContent {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .title {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        margin-bottom: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    .description,
+    .additionalText {
+        font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+        line-height: 1.15;
+        margin-bottom: 0.5rem;
+    }
+
+    .imageWrapper,
+    .contentWrapper > .imageWrapper:last-child,
+    .contentWrapper > .imageWrapper:first-child {
+        border-radius: 12px;
+        aspect-ratio: 4/3;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(186, 50, 50, 0.1);
+        width: min(220px, 100%);
+        margin: 0 auto;
+    }
+}

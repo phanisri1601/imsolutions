@@ -1,0 +1,222 @@
+.faq {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-bg-secondary);
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+}
+
+.faqContainer {
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+.faqItem {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out backwards;
+}
+
+.faqItem:hover {
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.15);
+}
+
+.faqItem.open {
+    border-color: var(--color-accent-primary);
+}
+
+.faqQuestion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: none;
+    border: none;
+    font-family: inherit;
+    color: var(--color-text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faqQuestion:hover {
+    color: var(--color-accent-primary);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+    border-radius: 50%;
+    color: white;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.faqItem.open .icon {
+    transform: rotate(180deg);
+}
+
+.faqAnswer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.22s ease-out;
+}
+
+.faqItem.open .faqAnswer {
+    grid-template-rows: 1fr;
+}
+
+.faqAnswerInner {
+    overflow: hidden;
+}
+
+.faqItem.open .faqAnswerInner {
+    padding: 0 2.5rem 1.5rem;
+}
+
+.faqAnswer p {
+    font-family: inherit;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Blog / inline: no grey section background */
+.faqPlain {
+    padding: 0;
+    background: transparent;
+}
+
+.faqPlain .faqContainer {
+    margin-top: 1.5rem;
+}
+
+.faqPlain .faqItem {
+    background: transparent;
+    border-color: #e8e8e8;
+}
+
+.faqPlain .faqItem:hover {
+    box-shadow: none;
+    border-color: var(--color-accent-primary);
+}
+
+.faqPlain .faqItem.open .faqAnswerInner {
+    padding: 0 2rem 1.25rem;
+}
+
+@media (max-width: 1024px) {
+    .faqContainer {
+        max-width: 800px;
+        margin: 2.5rem auto 0;
+    }
+
+    .faqItem {
+        margin-bottom: 1.25rem;
+    }
+
+    .faqQuestion {
+        padding: 1.35rem 1.75rem;
+        font-size: 1.05rem;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .faqItem.open .faqAnswerInner {
+        padding: 0 2rem 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq {
+        padding: 2rem 0;
+    }
+
+    .faqContainer {
+        width: calc(100% - 2rem);
+        margin: 2rem auto 0;
+        padding: 0;
+    }
+
+    .faqItem {
+        margin-bottom: 1rem;
+        border-radius: 0;
+    }
+
+    .faqQuestion {
+        padding: 1.25rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .icon {
+        width: 28px;
+        height: 28px;
+        margin-left: 0.75rem;
+    }
+
+    .faqItem.open .faqAnswerInner {
+        padding: 0 1.75rem 1.25rem;
+    }
+
+    .faqAnswer p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq {
+        padding: 1.5rem 0;
+    }
+
+    .faqContainer {
+        width: calc(100% - 1.5rem);
+        margin: 1.5rem auto 0;
+    }
+
+    .faqItem {
+        margin-bottom: 0.75rem;
+        border-radius: 0;
+    }
+
+    .faqQuestion {
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+        margin-left: 0.5rem;
+    }
+
+    .faqItem.open .faqAnswerInner {
+        padding: 0 1.5rem 1rem;
+    }
+
+    .faqAnswer p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+}
+
+.faqPlain .faqItem {
+    animation: none;
+}

@@ -1,0 +1,368 @@
+.aboutSection {
+    padding: calc(var(--spacing-xl) + 1rem) 0; /* slightly taller */
+    min-height: 520px; /* increased height */
+    background: #f5f5f5;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background image for the banner (single image used for the whole section) */
+.aboutSection::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #f5f5f5;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Service name shown at the left bottom corner of the banner */
+.serviceName {
+    position: absolute;
+    left: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    z-index: 3; /* above content */
+    background: rgba(255,255,255,0.9);
+    color: var(--color-text-primary);
+    padding: 0.6rem 1rem;
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .aboutSection { min-height: 420px; padding: calc(var(--spacing-lg) + 0.5rem) 0; }
+    .serviceName { left: 1rem; bottom: 1rem; font-size: 0.95rem; padding: 0.5rem 0.85rem; }
+}
+
+@media (max-width: 480px) {
+    .aboutSection { min-height: 360px; padding: 1.25rem 0; }
+    .serviceName { left: 0.75rem; bottom: 0.75rem; font-size: 0.9rem; padding: 0.45rem 0.75rem; }
+}
+
+.contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Text Styling */
+.textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.eyebrow {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3rem); /* Reduced font size */
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+}
+
+.subtitle {
+    font-size: clamp(0.8rem, 1.2vw, 1rem); /* Reduced font size */
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.description {
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.description p {
+    margin-bottom: 1rem;
+}
+
+.description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Image Side with 3D Perspective */
+.imageWrapper {
+    position: relative;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    border-radius: 0;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 10px 30px rgba(186, 50, 50, 0.2);
+    transform-style: preserve-3d;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+}
+
+.aboutBannerImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0;
+}
+
+/* Floating Elements for extra depth */
+.floatingBadge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: rgba(15, 5, 5, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateZ(50px);
+    /* Lifts it 'above' the image in 3D */
+}
+
+@media (max-width: 1024px) {
+    .aboutSection {
+        padding: 2.5rem 0;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .contentWrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .title {
+        font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+        margin-bottom: 1rem;
+    }
+
+    .subtitle {
+        font-size: clamp(0.9rem, 1.4vw, 1rem);
+        margin-bottom: 1.25rem;
+    }
+
+    .description {
+        font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    }
+
+    .imageContainer {
+        max-width: 500px;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 968px) {
+    .contentWrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .aboutSection {
+        padding: 2.5rem 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .imageContainer {
+        border-radius: 18px;
+    }
+
+    .floatingBadge {
+        bottom: -15px;
+        left: -15px;
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .aboutSection {
+        padding: 2rem 0;
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .contentWrapper {
+        gap: 1.5rem;
+    }
+
+    .eyebrow {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .title {
+        font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+        margin-bottom: 0.8rem;
+        line-height: 1.3;
+    }
+
+    .subtitle {
+        font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        font-size: clamp(0.8rem, 1vw, 0.9rem);
+        line-height: 1.6;
+        text-align: left;
+        text-justify: auto;
+    }
+
+    .description p {
+        margin-bottom: 0.75rem;
+    }
+
+    .imageContainer {
+        max-width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(186, 50, 50, 0.15);
+    }
+
+    .image {
+        border-radius: 16px;
+    }
+
+    .floatingBadge {
+        bottom: -12px;
+        left: -12px;
+        padding: 1rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .aboutSection {
+        padding: 1.5rem 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .contentWrapper {
+        gap: 1.25rem;
+    }
+
+    .floatingBadge {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutSection {
+        padding: 1.25rem 0;
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .contentWrapper {
+        gap: 1rem;
+    }
+
+    .textContent {
+        justify-content: flex-start;
+    }
+
+    .eyebrow {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.08em;
+    }
+
+    .title {
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        margin-bottom: 0.6rem;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+
+    .subtitle {
+        font-size: clamp(0.8rem, 1vw, 0.9rem);
+        margin-bottom: 0.75rem;
+    }
+
+    .description {
+        font-size: clamp(0.775rem, 0.95vw, 0.85rem);
+        line-height: 1.5;
+    }
+
+    .description p {
+        margin-bottom: 0.6rem;
+    }
+
+    .description p:last-child {
+        margin-bottom: 0;
+    }
+
+    .imageWrapper {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imageContainer {
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 6px 15px rgba(186, 50, 50, 0.1);
+    }
+
+    .image {
+        border-radius: 0;
+    }
+
+    .floatingBadge {
+        display: none;
+    }
+}

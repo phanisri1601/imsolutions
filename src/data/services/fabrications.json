@@ -1,0 +1,32 @@
+{
+  "title": "Custom Metal Fabrication Services | Precision Engineering & Manufacturing",
+  "description": "Expert custom fabrication services for industrial, commercial, and architectural needs. We deliver high-quality, precision-engineered metal components on time.",
+  "longDescription": "<h2>Precision Custom Fabrication Solutions</h2><p>We specialize in providing end-to-end custom fabrication services, transforming raw materials into precision-engineered components and assemblies. Our state-of-the-art facility and experienced technicians handle projects of all scales, from intricate prototypes to large-scale structural elements, ensuring unparalleled quality and adherence to your exact specifications.</p><p>Leveraging advanced technology, we work with a wide range of materials, including stainless steel, aluminum, and carbon steel, to serve diverse industries such as aerospace, construction, and manufacturing.</p><h3>Our Core Fabrication Capabilities</h3><ul><li>High-Precision CNC Machining & Milling</li><li>Advanced Sheet Metal Forming & Bending</li><li>Certified Welding & Assembly (MIG, TIG, Spot)</li><li>Automated Laser, Plasma, and Waterjet Cutting</li><li>Structural Steel Fabrication</li><li>Professional Finishing & Powder Coating</li></ul>",
+  "features": [
+    "High-Precision CNC Machining",
+    "Advanced Welding Technologies (MIG, TIG)",
+    "Automated Laser & Plasma Cutting",
+    "Comprehensive Material Expertise (Steel, Aluminum, etc.)",
+    "Full-Service Assembly & Finishing",
+    "ISO 9001:2015 Certified Quality Control"
+  ],
+  "benefits": [
+    "Reduced Production Time & Costs",
+    "Guaranteed Component Accuracy & Consistency",
+    "Enhanced Durability & Product Lifespan",
+    "Scalable Solutions from Prototype to Full Production",
+    "Streamlined Supply Chain with a Single Partner",
+    "Compliance with Strict Industry Standards"
+  ],
+  "category": "offline",
+  "faqs": [
+    {
+      "q": "What types of materials can you fabricate?",
+      "a": "We work with a diverse range of materials including stainless steel, carbon steel, aluminum, brass, copper, and various alloys. Our team can advise on the best material for your specific application and performance requirements."
+    },
+    {
+      "q": "What is your typical lead time for a fabrication project?",
+      "a": "Lead times vary based on project complexity, material availability, and current production schedules. We provide a detailed project timeline with our initial quote and are committed to meeting agreed-upon deadlines."
+    }
+  ]
+}

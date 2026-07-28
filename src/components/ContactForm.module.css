@@ -1,0 +1,281 @@
+.splitSection {
+    display: grid;
+    grid-template-columns: 1.25fr 2fr; /* Slightly increased left panel width */
+    background: #F8F7F3;
+    font-family: inherit;
+    min-height: 750px; /* Increased height */
+}
+
+.leftPanel {
+    position: relative;
+    color: #FFFFFF;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('/H3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Dark overlay for readability */
+.leftPanel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 38, 20, 0.72);
+    z-index: 0;
+}
+
+.leftContent {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #A4B29E;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-primary);
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #E2E8DF;
+    margin-bottom: 1.5rem;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background-color: rgba(164, 178, 158, 0.4);
+    z-index: 0;
+}
+
+.timelineItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.timelineIcon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #2D3A2F;
+    border: 1px solid #C49A45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #C49A45;
+    font-size: 0.65rem;
+    margin-top: 2px;
+}
+
+.timelineContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.timelineLabel {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #E2E8DF;
+    text-transform: uppercase;
+}
+
+.timelineValue {
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.scheduleBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scheduleBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #FFFFFF;
+}
+
+.rightPanel {
+    background-color: #F8F7F3;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formWrapper {
+    max-width: 600px;
+    margin: 0 auto; /* Horizontally center the form */
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.formRow > :nth-child(1) {
+    padding-right: 3rem;
+}
+
+.formRow > :nth-child(2) {
+    border-left: 1px solid rgba(0,0,0,0.08);
+    padding-left: 3rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formGroup label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.formGroup input,
+.formGroup textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #D0D0C8;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #111;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    border-radius: 0;
+    width: 100%;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-bottom-color: #0A1C3E;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.formGroup textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.submitBtn {
+    margin-top: 1rem;
+    background-color: #0A1C3E;
+    color: #FFFFFF;
+    border: none;
+    padding: 1.25rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.submitBtn:hover {
+    background-color: #162B54;
+}
+
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btnIcon {
+    font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+    .splitSection {
+        grid-template-columns: 1fr;
+    }
+
+    .leftContent,
+    .formWrapper {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .formRow {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}

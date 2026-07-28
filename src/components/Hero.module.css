@@ -1,0 +1,265 @@
+/* ================================================================
+   Hero  Full-bleed banner image with overlaid text
+   Cream background, large serif heading, red accent dots
+   ================================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #F8F4F0;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-top: var(--header-height, 80px);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      #F8F4F0 0%,
+      rgba(248, 244, 240, 0.85) 30%,
+      rgba(248, 244, 240, 0.35) 55%,
+      rgba(248, 244, 240, 0) 75%);
+  z-index: 0;
+}
+
+/* ================================================================
+   LEFT  Text panel
+   ================================================================ */
+.heroLeft {
+  width: 100%;
+  max-width: 620px;
+  padding: 0 4rem 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Tagline */
+.heroTagline {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+/* Red rule under tagline */
+.heroTaglineRule {
+  width: 80px;
+  height: 2px;
+  background-color: #BA3232;
+  margin-bottom: 2.5rem;
+  transform-origin: left;
+}
+
+/* Main heading */
+.heroHeading {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: #0d0d0d;
+  margin-bottom: 1.8rem;
+}
+
+.heroLine {
+  display: block;
+}
+
+/* Red period after each heading line */
+.heroDot {
+  color: #BA3232;
+}
+
+/* Subtext */
+.heroSubtext {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #5a5550;
+  margin-bottom: 2.8rem;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* CTA */
+.heroCta {
+  display: flex;
+  align-items: center;
+}
+
+.heroCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: #BA3232;
+  transition: gap 0.3s ease;
+}
+
+.heroCtaBtn:hover {
+  gap: 1.35rem;
+}
+
+.heroCtaCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid #BA3232;
+  color: #BA3232;
+  flex-shrink: 0;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.heroCtaBtn:hover .heroCtaCircle {
+  background-color: #BA3232;
+  color: #ffffff;
+}
+
+.heroCtaLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #BA3232;
+  border-bottom: 1px solid #BA3232;
+  padding-bottom: 2px;
+  transition: opacity 0.25s;
+}
+
+.heroCtaBtn:hover .heroCtaLabel {
+  opacity: 0.8;
+}
+
+/* ================================================================
+   SCROLL INDICATOR  pinned to bottom center
+   ================================================================ */
+.heroScroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.heroScrollLabel {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8078;
+}
+
+.heroScrollArrow {
+  color: #BA3232;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1280px) {
+  .heroLeft {
+    padding: 0 3rem 5rem 4rem;
+  }
+
+  .heroHeading {
+    font-size: clamp(2.6rem, 4.5vw, 4.5rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 90vh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    background-position: center top;
+  }
+
+  .hero::before {
+    background: linear-gradient(to bottom,
+        rgba(248, 244, 240, 0) 0%,
+        rgba(248, 244, 240, 0.4) 55%,
+        #F8F4F0 78%);
+  }
+
+  .heroLeft {
+    position: relative;
+    max-width: 100%;
+    padding: 2.5rem 2rem 3rem;
+    align-items: center;
+    text-align: center;
+    background: rgba(248, 244, 240, 0.97);
+    border-radius: 24px 24px 0 0;
+  }
+
+  .heroTaglineRule {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroHeading {
+    align-items: center;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+  }
+
+  .heroCta {
+    justify-content: center;
+  }
+
+  .heroScroll {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 85vh;
+  }
+
+  .heroLeft {
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .heroHeading {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .heroSubtext {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroHeading {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .heroLeft {
+    padding: 1.5rem 1rem 0;
+  }
+}

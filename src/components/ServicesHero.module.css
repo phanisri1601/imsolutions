@@ -1,0 +1,328 @@
+/* ================================================================
+   ServicesHero  matches the editorial reference design
+   Warm beige background | Left text | Right Cube image
+   ================================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  background-color: #EDE8E1;
+  padding-top: var(--header-height, 80px);
+  overflow: hidden;
+}
+
+/* ================================================================
+   LEFT  Text panel
+   ================================================================ */
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3.5rem 5rem 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #BA3232;
+  margin-bottom: 0.55rem;
+}
+
+.eyebrowRule {
+  width: 36px;
+  height: 2px;
+  background-color: #BA3232;
+  margin-bottom: 2.8rem;
+  transform-origin: left center;
+}
+
+/* Heading */
+.heading {
+  font-family: var(--font-primary);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: #111111;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.8rem;
+}
+
+.headingRed {
+  color: #BA3232;
+  font-style: italic;
+}
+
+/* Description */
+.description {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #5a5550;
+  max-width: 360px;
+  margin-bottom: 2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* IM watermark */
+.watermark {
+  font-family: var(--font-primary);
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(17, 17, 17, 0.05);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  user-select: none;
+  margin-bottom: 2rem;
+}
+
+/* CTA link */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: #111111;
+  transition: gap 0.3s ease;
+}
+
+.cta:hover {
+  gap: 1.3rem;
+}
+
+.ctaLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.ctaArrow {
+  color: #BA3232;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(5px);
+}
+
+/* Services label + list  shown in the left panel while a cube's video plays */
+.servicesLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #BA3232;
+  margin-bottom: 0.9rem;
+}
+
+.servicesList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 0.55rem;
+  max-width: 480px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #3a3733;
+}
+
+.serviceItem::before {
+  content: '';
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #BA3232;
+  transform: translateY(-2px);
+}
+
+/* ================================================================
+   RIGHT  Cube image + video holder
+   ================================================================ */
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Outer wrapper  16:9 to match the actual image dimensions */
+.cubeWrapper {
+  position: relative;
+  width: min(820px, 100%);
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  -webkit-mask-image: radial-gradient(ellipse 85% 88% at 50% 50%,
+      black 35%,
+      rgba(0, 0, 0, 0.88) 55%,
+      rgba(0, 0, 0, 0.4) 75%,
+      transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 88% at 50% 50%,
+      black 35%,
+      rgba(0, 0, 0, 0.88) 55%,
+      rgba(0, 0, 0, 0.4) 75%,
+      transparent 100%);
+}
+
+/* ── Image holder  fills the wrapper ── */
+.imageHolder {
+  position: absolute;
+  inset: 0;
+}
+
+/* Shared positioning for both the base image and the video  same holder,
+   same box, so switching between them is a pure crossfade with no layout shift */
+.mediaLayer {
+  position: absolute;
+  inset: 0;
+}
+
+/* The cube image itself */
+.cubeImg {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Full-size video  occupies the exact same holder as the image, not clipped to any face */
+.cubeVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================================================
+   HOTSPOTS  invisible SVG paths, pixel-perfect to each visible cube
+   face (traced from the source image, not estimated). Pure hit areas:
+   no fill, no stroke, no hover feedback of any kind. With
+   object-fit: contain on a 16:9 image in a 16:9 container the image
+   fills the container exactly  no letterboxing  so the 0-100
+   viewBox maps 1:1 onto the image.
+   ================================================================ */
+.hotspotSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow: visible;
+}
+
+.hotspotPath {
+  fill: none;
+  stroke: none;
+  cursor: pointer;
+  outline: none;
+  pointer-events: all;
+}
+
+/* Soft gold glow shown behind the hovered face  gradient + blur, no hard edge */
+.hotspotGlow {
+  fill: url(#cubeGlowGradient);
+  filter: url(#cubeGlowBlur);
+  pointer-events: none;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 1280px) {
+  .left {
+    padding: 3.5rem 3rem 4rem 4rem;
+  }
+
+  .heading {
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    min-height: unset;
+  }
+
+  .left {
+    padding: 3rem 2.5rem 2rem;
+    order: 2;
+    align-items: center;
+    text-align: center;
+  }
+
+  .eyebrowRule {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .description {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .servicesList {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .right {
+    order: 1;
+    min-height: 420px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .servicesList {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .left {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .heading {
+    font-size: clamp(1.9rem, 7vw, 2.8rem);
+  }
+
+  .right {
+    min-height: 300px;
+  }
+
+  .watermark {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+}

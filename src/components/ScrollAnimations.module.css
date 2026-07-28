@@ -1,0 +1,43 @@
+.textWrapper {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.textWrapperBlock {
+    overflow: hidden;
+    display: block;
+}
+
+.textWrapperFullWidth {
+    overflow: hidden;
+    width: 100%;
+    display: block;
+}
+
+.revealText {
+    display: block;
+    will-change: transform, opacity;
+}
+
+.imageWrapper {
+    overflow: hidden;
+    will-change: transform;
+}
+
+.imageContent {
+    width: 100%;
+    height: 100%;
+    will-change: transform, opacity;
+}
+
+.sectionContainer {
+    will-change: transform;
+}
+
+@supports (overflow: hidden) {
+    .textWrapper,
+    .textWrapperBlock,
+    .textWrapperFullWidth {
+        contain: layout style;
+    }
+}
