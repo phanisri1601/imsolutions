@@ -179,7 +179,7 @@ export default function PrivacyPage() {
               <p>214, South West Block, Near Ram Mandir, Alwar, Rajasthan</p>
             </div>
             <div className={styles.address}>
-              <p>219, Nilkanth Plaza, Near Kiran Chowk, Varachha Road, Surat, Gujarat 395010</p>
+              <p></p>
             </div>
           </div>
         </div>

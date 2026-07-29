@@ -86,7 +86,7 @@ export default function Footer() {
                             214, South West Block, Near Ram Mandir, Alwar, Rajasthan
                         </p>
                         <p className={styles.addressText}>
-                            219, Nilkanth Plaza, Near Kiran Chowk, Varachha Road, Surat, Gujarat 395010
+                            
                         </p>
                     </div>
 
@@ -164,10 +164,10 @@ export default function Footer() {
                 </button>
                 <div className={`${styles.moreFooterContent} ${isExpanded ? styles.expanded : ''}`}>
                     <div className={styles.moreFooterLinks}>
-                        {moreFooterLinks.map((link, index) => (
+                        {moreFooterLinks.slice(0, 20).map((link, index) => (
                             <span key={index}>
-                                <Link href={link.url}>{link.title}</Link>
-                                {index < moreFooterLinks.length - 1 && <span className={styles.separator}>|</span>}
+                                <Link href={link.url} style={{ textTransform: 'capitalize' }}>{link.title.toLowerCase()}</Link>
+                                {index < 19 && <span className={styles.separator}>|</span>}
                             </span>
                         ))}
                     </div>
@@ -180,7 +180,6 @@ export default function Footer() {
                 <div className={styles.bottomLinks}>
                     <Link href="/privacy">Privacy policy</Link>
                     <Link href="/terms">Terms and conditions</Link>
-                    <Link href="/copyright">Copyright</Link>
                 </div>
             </div>
         </footer>

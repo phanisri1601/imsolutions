@@ -382,6 +382,11 @@ export default function CareersPage() {
               </div>
 
               <div className={styles.applyFormGroup}>
+                <label htmlFor="apply-file">Upload Résumé (Optional)</label>
+                <input id="apply-file" name="file" type="file" />
+              </div>
+
+              <div className={styles.applyFormGroup}>
                 <label htmlFor="apply-message">Message</label>
                 <textarea id="apply-message" name="message" rows={4} />
               </div>

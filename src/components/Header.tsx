@@ -554,26 +554,22 @@ export default function Header() {
                   <div 
                     className={`${styles.dropdownMenu} ${styles.mobileDropdown}`}
                   >
-                    <Link
-                      href="/services/online"
-                      className={styles.categoryButton}
-                      onClick={() => {
-                        setIsMobileServicesOpen(false);
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      Online Services
-                    </Link>
-                    <Link
-                      href="/services/offline"
-                      className={styles.categoryButton}
-                      onClick={() => {
-                        setIsMobileServicesOpen(false);
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      Offline Services
-                    </Link>
+                    <div className={styles.dropdownSection}>
+                      <div className={styles.dropdownSectionTitle}>Online Services</div>
+                      <div className={styles.servicesList}>
+                        {onlineServices.map(service => (
+                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => { setIsMobileServicesOpen(false); setIsMenuOpen(false); }}>{service.toLowerCase()}</Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className={styles.dropdownSection}>
+                      <div className={styles.dropdownSectionTitle}>Offline Services</div>
+                      <div className={styles.servicesList}>
+                        {offlineServices.map(service => (
+                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => { setIsMobileServicesOpen(false); setIsMenuOpen(false); }}>{service.toLowerCase()}</Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )
               ) : (
@@ -588,21 +584,24 @@ export default function Header() {
                       const timer = setTimeout(() => setIsServicesOpen(false), 150);
                       setCloseDropdownTimer(timer);
                     }}
+                    style={{ width: "800px", maxWidth: "90vw", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}
                   >
-                    <Link
-                      href="/services/online"
-                      className={styles.categoryButton}
-                      onClick={() => setIsServicesOpen(false)}
-                    >
-                      Online Services
-                    </Link>
-                    <Link
-                      href="/services/offline"
-                      className={styles.categoryButton}
-                      onClick={() => setIsServicesOpen(false)}
-                    >
-                      Offline Services
-                    </Link>
+                    <div className={styles.dropdownSection}>
+                      <div className={styles.dropdownSectionTitle}>Online Services</div>
+                      <div className={styles.servicesList}>
+                        {onlineServices.map(service => (
+                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => setIsServicesOpen(false)}>{service.toLowerCase()}</Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className={styles.dropdownSection}>
+                      <div className={styles.dropdownSectionTitle}>Offline Services</div>
+                      <div className={styles.servicesList}>
+                        {offlineServices.map(service => (
+                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => setIsServicesOpen(false)}>{service.toLowerCase()}</Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )
               )}

@@ -9,6 +9,8 @@ import PartnersSection from "@/components/PartnersSection";
 
 import Clients from "@/components/Clients";
 import FAQ from "@/components/FAQ";
+import FeatureServices from "@/components/FeatureServices";
+import Services from "@/components/Services";
 import { blogPosts } from "@/data/blogPosts";
 
 const gridLeadSlug = "top-seo-trends-2026-what-businesses-need-to-prepare-for";
@@ -18,12 +20,13 @@ const featuredPosts = blogPosts
 
 export default function Home() {
   return (
-    <main style={{ backgroundColor: "#F8F4F0" }}>
+    <main style={{ backgroundColor: "#F8F4F0", paddingBottom: "3rem" }}>
       <Hero />
       <VideoSection />
       <PhilosophySection />
       <IMSystemSection />
       <WhyIMSolutions />
+      <FeatureServices />
       <EditorialBlogGallery posts={featuredPosts} contained />
       <CareerSection />
       <PartnersSection />

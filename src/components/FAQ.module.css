@@ -98,15 +98,19 @@
 .faqPlain {
     padding: 0;
     background: transparent;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .faqPlain .faqContainer {
-    margin-top: 1.5rem;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
 }
 
 .faqPlain .faqItem {
     background: transparent;
-    border-color: #e8e8e8;
+    border-color: transparent;
 }
 
 .faqPlain .faqItem:hover {

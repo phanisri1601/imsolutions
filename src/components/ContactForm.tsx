@@ -157,6 +157,14 @@ export default function ContactForm() {
                             />
                         </div>
 
+                        <div className={styles.formGroup}>
+                            <label>ATTACH FILE (OPTIONAL)</label>
+                            <input
+                                type="file"
+                                name="file"
+                            />
+                        </div>
+
                         <button
                             type="submit"
                             className={styles.submitBtn}

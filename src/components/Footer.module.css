@@ -57,7 +57,7 @@
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #000080;
+    color: #ba3232;
     margin-bottom: 0.25rem;
 }
 
@@ -89,7 +89,7 @@
 
 .contactItem .icon {
     font-size: 1.1rem;
-    color: #000080;
+    color: #ba3232;
 }
 
 .contactItem a {
@@ -100,7 +100,7 @@
 }
 
 .contactItem a:hover {
-    color: #000080;
+    color: #ba3232;
 }
 
 .socialLinks {
@@ -126,8 +126,8 @@
 }
 
 .socialLinks a:hover {
-    background: #000080;
-    border-color: #000080;
+    background: #ba3232;
+    border-color: #ba3232;
     color: var(--color-text-primary);
 }
 
@@ -208,7 +208,7 @@
 }
 
 .linkList a:hover {
-    color: #000080;
+    color: #ba3232;
 }
 
 /* Contact Form */
@@ -272,7 +272,7 @@
 
 .submitBtn {
     padding: 0.55rem 1.1rem;
-    background: #000080;
+    background: #ba3232;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -325,7 +325,7 @@
 }
 
 .bottomLinks a:hover {
-    color: #000080;
+    color: #ba3232;
 }
 
 /* Responsive */
@@ -452,7 +452,7 @@
 }
 
 .moreFooterToggle {
-    background: #000080;
+    background: #ba3232;
     color: white;
     border: none;
     padding: 0.6rem 2.5rem;
@@ -476,7 +476,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s ease;
-    border-top: 2px solid #000080;
+    border-top: 2px solid #ba3232;
 }
 
 .moreFooterContent.expanded {
@@ -501,7 +501,7 @@
 }
 
 .moreFooterLinks a:hover {
-    color: #000080;
+    color: #ba3232;
 }
 
 .moreFooterLinks span {
