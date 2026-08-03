@@ -10,7 +10,7 @@ export type BlogContentSection = {
   blocks: BlogContentBlock[];
 };
 
-const blogImage = (filename: string) => encodeURI(`/blogs/${filename}`);
+const blogImage = (filename: string, folder = "/blogs") => encodeURI(`${folder}/${filename}`);
 
 export type BlogPost = {
   id: number;
@@ -36,7 +36,7 @@ export const blogPosts: BlogPost[] = [
     title: "Top SEO Trends 2026: What Businesses Need to Prepare For",
     excerpt:
       "Search behavior is evolving faster than ever. AI-driven experiences, voice search, visual discovery, and smarter algorithms are changing how users interact with search engines. For businesses aiming to stay visible online, understanding the Top SEO Trends 2026 is no longer optional  it's essential. Whether you're a startup, local business, or enterprise brand, adapting your SEO strategy early can help you maintain rankings, traffic, and conversions in an increasingly competitive digital landscape.",
-    image: blogImage("Top SEO Trends for 2026.png"),
+    image: blogImage("Top SEO Trends for 2026.png", "/bloggg"),
     date: "May 2026",
     author: "IM Solutions",
     slug: "top-seo-trends-2026-what-businesses-need-to-prepare-for",
@@ -419,7 +419,7 @@ export const blogPosts: BlogPost[] = [
     id: 4,
     title: "WordPress vs Webflow vs Custom Code: What's Right for Startups?",
     excerpt: "Choosing the right platform to build your website isn't just a technical decisionit's a strategic one. Whether you're a startup or an established business, we break down the pros and cons.",
-    image: blogImage("WordPress vs Webflow vs Custom Code.png"),
+    image: blogImage("WordPress vs Webflow vs Custom Code.png", "/bloggg"),
     date: "August 2025",
     author: "IM Solutions",
     slug: "wordpress-vs-webflow-vs-custom-code",
@@ -454,7 +454,7 @@ export const blogPosts: BlogPost[] = [
     id: 5,
     title: "Top 7 ORM Strategies That Actually Work in 2025 (For Global Brands)",
     excerpt: "Online reputation is filtered through search engines, AI assistants, reviews, and Reddit threads. What shows upand how it shows upmatters. Here are the strategies that drive real results.",
-    image: blogImage("Top 7 ORM Strategies That Actually Work in 2025.png"),
+    image: blogImage("Top 7 ORM Strategies That Actually Work in 2025.png", "/bloggg"),
     date: "July 2025",
     author: "IM Solutions",
     slug: "top-7-orm-strategies-that-actually-work-in-2025",
@@ -559,7 +559,7 @@ export const blogPosts: BlogPost[] = [
     id: 8,
     title: "Top 10 Website Design Trends Dominating in 2025",
     excerpt: "Design isn't just about how it looks. It's about how it feelshow seamlessly it guides, informs, and inspires. In 2025, these trends are reshaping digital experiences.",
-    image: blogImage("Top 10 Website Design Trends Dominating in 2025.png"),
+    image: blogImage("Top 10 Website Design Trends Dominating in 2025.png", "/bloggg"),
     date: "April 2025",
     author: "IM Solutions",
     slug: "top-10-website-design-trends-dominating-in-2025",
@@ -734,7 +734,7 @@ export const blogPosts: BlogPost[] = [
     id: 13,
     title: "Building Bridges, Not Just Links: The Emotional Blueprint of Digital Success",
     excerpt: "Digital success isn't just about technical SEO and backlinksit's about building genuine connections that resonate with your audience and create lasting brand relationships.",
-    image: blogImage("Building Bridges, Not Just Links The Emotional Blueprint of Digital Success.png"),
+    image: blogImage("Building Bridges, Not Just Links The Emotional Blueprint of Digital Success.png", "/bloggg"),
     date: "November 2024",
     author: "IM Solutions",
     slug: "building-bridges-not-just-links-the-emotional-blueprint-of-digital-success",
@@ -769,7 +769,7 @@ export const blogPosts: BlogPost[] = [
     id: 14,
     title: "The Heartfelt Journey of Brands in the Digital Sphere",
     excerpt: "Brands today navigate a complex digital landscape where authenticity and emotional connection drive customer loyalty and business growth.",
-    image: blogImage("The Heartfelt Journey of Brands in the Digital Sphere.png"),
+    image: blogImage("The Heartfelt Journey of Brands in the Digital Sphere.png", "/bloggg"),
     date: "October 2024",
     author: "IM Solutions",
     slug: "the-heartfelt-journey-of-brands-in-the-digital-sphere",
@@ -909,7 +909,7 @@ export const blogPosts: BlogPost[] = [
     id: 18,
     title: "List of Google Algorithm updates in 2021",
     excerpt: "Understanding Google's algorithm updates is crucial for maintaining search visibility. Here's a comprehensive list of the major updates that shaped SEO in 2021.",
-    image: blogImage("List of Google Algorithm updates in 2021.png"),
+    image: blogImage("List of Google Algorithm updates in 2021.png", "/bloggg"),
     date: "June 2024",
     author: "IM Solutions",
     slug: "list-google-algorithm-updates-2021",
@@ -944,7 +944,7 @@ export const blogPosts: BlogPost[] = [
     id: 19,
     title: "Do's and don't of creative design in business",
     excerpt: "Creative design can make or break your brand perception. Learn the essential do's and don'ts that separate effective design from visual noise.",
-    image: blogImage("Do's and don't of creative design in business.png"),
+    image: blogImage("Do's and don't of creative design in business.png", "/bloggg"),
     date: "May 2024",
     author: "IM Solutions",
     slug: "dos-and-dont-of-creative-design-in-business",

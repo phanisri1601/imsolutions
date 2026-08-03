@@ -100,9 +100,12 @@ function getRelatedServices(currentSlug: string, category: 'online' | 'offline',
     const s = url.replace('/services/', '');
     slugToName[s] = name;
   });
+  // Use deterministic ordering to avoid SSR/CSR hydration mismatches caused
+  // by non-deterministic shuffling (Math.random()). Sort by slug so both
+  // server and client render the same sequence.
   return Object.entries(pool)
     .filter(([s]) => s !== currentSlug)
-    .sort(() => 0.5 - Math.random())
+    .sort(([sA], [sB]) => sA.localeCompare(sB))
     .slice(0, count)
     .map(([s, img]) => ({ slug: s, name: slugToName[s] || s, image: img }));
 }
@@ -1214,12 +1217,10 @@ export default function ServiceDetailPage() {
   const params = useParams();
   const slug = params?.slug as string;
 
-  let service: any = null;
-  try {
-    service = require(`../../../data/services/${slug}.json`);
-  } catch (e) {
-    service = serviceData[slug];
-  }
+  // Use the in-repo `serviceData` as the single source of truth so server and
+  // client render identical content. Dynamic `require(...)` can succeed on
+  // the server but fail on the client, which causes hydration mismatches.
+  const service: any = serviceData[slug];
 
   if (!service) {
     notFound();
