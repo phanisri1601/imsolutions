@@ -788,3 +788,442 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =============================================
+   Service Content Section
+   ============================================= */
+.serviceContentSection {
+  width: 100%;
+  background: #fff;
+  padding: 5rem 8%;
+  box-sizing: border-box;
+}
+
+.serviceContentInner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Top two-column: intro text left, capabilities right */
+.serviceContentTop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3.5rem;
+  align-items: start;
+}
+
+.serviceContentIntro {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.8;
+  color: #333;
+}
+
+.serviceContentCapabilities {
+  background: #f7f5f2;
+  border-left: 3px solid #9c1d22;
+  padding: 2rem 2rem 2rem 2.2rem;
+  border-radius: 2px;
+}
+
+.serviceCapabilitiesTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  font-weight: 600;
+  color: #12223c;
+  margin: 0 0 1.2rem 0;
+}
+
+.serviceCapabilitiesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.serviceCapabilitiesList li {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  color: #444;
+  line-height: 1.5;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.serviceCapabilitiesList li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #9c1d22;
+  font-weight: 700;
+}
+
+/* Body paragraphs */
+.serviceContentBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.serviceBodyBlock h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  font-weight: 600;
+  color: #12223c;
+  margin: 0 0 0.8rem 0;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.serviceBodyBlock h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background: #9c1d22;
+}
+
+.serviceBodyBlock p {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.88rem, 1vw, 1rem);
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+}
+
+/* Why IM Solutions bar */
+.serviceWhyBar {
+  background: #12223c;
+  border-radius: 4px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.serviceWhyLabel {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9c1d22;
+}
+
+.serviceWhyText {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.9rem, 1.05vw, 1.05rem);
+  line-height: 1.7;
+  color: #e8e4df;
+  margin: 0;
+}
+
+.serviceCtaLine {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.88rem, 1vw, 0.98rem);
+  font-style: italic;
+  color: #b0a898;
+  margin: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .serviceContentTop,
+  .serviceContentBody {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .serviceContentSection {
+    padding: 3.5rem 1.5rem;
+  }
+}
+
+/* =============================================
+   Wide Brief Section (Full-width — service breif section.jpeg)
+   ============================================= */
+.wideBriefSection {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1535 / 510;
+  background-image: url('/clients/service breif section.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  box-sizing: border-box;
+}
+
+.wideBriefContent {
+  max-width: 42%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.wideBriefTagline {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.7rem, 0.85vw, 0.95rem);
+  font-weight: 700;
+  color: #12223c;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.wideBriefLine {
+  width: 32px;
+  height: 2px;
+  background-color: #9c1d22;
+  margin: 0.6rem 0 1.2rem 0;
+  border: none;
+}
+
+.wideBriefTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.8vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #12223c;
+  margin: 0 0 1.2rem 0;
+  letter-spacing: -0.01em;
+}
+
+.wideBriefTitleRed {
+  color: #9c1d22;
+  display: block;
+}
+
+.wideBriefDescription {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.8rem, 1.05vw, 1.1rem);
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
+  max-width: 100%;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .wideBriefSection {
+    aspect-ratio: auto;
+    min-height: auto;
+    padding: 4rem 1.5rem;
+    background-position: 70% center;
+  }
+  .wideBriefContent {
+    max-width: 100%;
+  }
+  .wideBriefTitle {
+    font-size: 2rem;
+  }
+  .wideBriefDescription {
+    font-size: 0.95rem;
+  }
+}
+
+/* =============================================
+   Dual Brief Row Wrapper
+   ============================================= */
+.briefDualRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: stretch;
+  overflow: hidden;
+
+}
+
+/* =============================================
+   Service Brief Section (Right — Cream/Plant)
+   ============================================= */
+.briefSection {
+  position: relative;
+  flex: 697 1 0;
+  aspect-ratio: 697 / 509;
+  background-image: url('/clients/service breif section_B.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 6% 8%;
+  box-sizing: border-box;
+}
+
+.briefContent {
+  max-width: 45%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.briefTagline {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.7rem, 0.85vw, 0.95rem);
+  font-weight: 700;
+  color: #12223c; /* Dark blue/grey */
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.briefLine {
+  width: 32px;
+  height: 2px;
+  background-color: #9c1d22; /* Red line */
+  margin: 0.6rem 0 1.2rem 0;
+  border: none;
+}
+
+.briefTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.8vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #12223c;
+  margin: 0 0 1.2rem 0;
+  letter-spacing: -0.01em;
+}
+
+.briefTitleRed {
+  color: #9c1d22;
+  display: block;
+}
+
+.briefDescription {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.8rem, 1.05vw, 1.1rem);
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
+  max-width: 100%;
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .briefDualRow {
+    flex-direction: column;
+  }
+  .briefSection {
+    width: 100%;
+    flex: 0 0 100%;
+    min-height: auto;
+    padding: 4rem 1.5rem;
+    background-position: 70% center;
+  }
+  .briefContent {
+    max-width: 100%;
+  }
+  .briefTitle {
+    font-size: 2rem;
+  }
+  .briefDescription {
+    font-size: 0.95rem;
+  }
+}
+
+/* =============================================
+   Second Service Brief Section (Left — Dark Blue Stairs)
+   ============================================= */
+.secondBriefSection {
+  position: relative;
+  flex: 831 1 0;
+  aspect-ratio: 831 / 507;
+  background-image: url('/clients/service breif_A.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 6% 8%;
+  box-sizing: border-box;
+}
+
+.secondBriefContent {
+  max-width: 45%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.secondBriefTagline {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.7rem, 0.85vw, 0.95rem);
+  font-weight: 700;
+  color: #ffffff; /* White text */
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.secondBriefLine {
+  width: 32px;
+  height: 2px;
+  background-color: #9c1d22; /* Red line */
+  margin: 0.6rem 0 1.2rem 0;
+  border: none;
+}
+
+.secondBriefTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.8vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #ffffff; /* White text */
+  margin: 0 0 1.2rem 0;
+  letter-spacing: -0.01em;
+}
+
+.secondBriefTitleRed {
+  color: #ba3232; /* Vibrant red */
+  display: block;
+}
+
+.secondBriefDescription {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.8rem, 1.05vw, 1.1rem);
+  line-height: 1.6;
+  color: #e6dfd1; /* Light cream text */
+  margin: 0;
+  max-width: 100%;
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .secondBriefSection {
+    width: 100%;
+    flex: 0 0 100%;
+    min-height: auto;
+    padding: 4rem 1.5rem;
+    background-position: 65% center;
+  }
+  .secondBriefContent {
+    max-width: 100%;
+  }
+  .secondBriefTitle {
+    font-size: 2rem;
+  }
+  .secondBriefDescription {
+    font-size: 0.95rem;
+  }
+}
