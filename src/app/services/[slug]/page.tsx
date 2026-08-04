@@ -93,22 +93,24 @@ function getRelevantBlogs(serviceTitle: string, count = 3) {
 }
 
 /* helper: get related services from the same category */
-function getRelatedServices(currentSlug: string, category: 'online' | 'offline', count = 8) {
+function getRelatedServices(currentSlug: string, category: 'online' | 'offline', count = 4) {
   const pool = category === 'online' ? onlineServiceImages : offlineServiceImages;
   const slugToName: Record<string, string> = {};
   Object.entries(serviceUrlMap).forEach(([name, url]) => {
     const s = url.replace('/services/', '');
     slugToName[s] = name;
   });
-  // Use deterministic ordering to avoid SSR/CSR hydration mismatches caused
-  // by non-deterministic shuffling (Math.random()). Sort by slug so both
-  // server and client render the same sequence.
+  // Use a deterministic hash from the currentSlug to avoid hydration mismatches
+  const hashCode = (str: string) =>
+    str.split('').reduce((acc, ch) => (acc * 31 + ch.charCodeAt(0)) & 0xffffffff, 0);
+  const seed = Math.abs(hashCode(currentSlug));
   return Object.entries(pool)
     .filter(([s]) => s !== currentSlug)
-    .sort(([sA], [sB]) => sA.localeCompare(sB))
+    .sort(([a], [b]) => (hashCode(a + seed) & 0xff) - (hashCode(b + seed) & 0xff))
     .slice(0, count)
     .map(([s, img]) => ({ slug: s, name: slugToName[s] || s, image: img }));
 }
+
 
 const briefDataMap: Record<string, { tagline: string; title1: string; title2: string; desc: string }> = {
   'seo': {
@@ -889,6 +891,627 @@ const serviceContentMap: Record<string, ServiceContent> = {
     why: 'Editorial, brand and digital perspectives are considered together, helping each announcement remain factual while supporting the organisation\'s wider communication objectives.',
     cta: 'Share your next announcement with greater precision. Speak with IM Solutions about press release writing and distribution support.',
   },
+  'bus-branding': {
+    intro: 'Bus branding converts everyday public transport into a moving media network, giving brands repeated visibility across commercial districts, residential corridors and high-traffic roads.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Full and partial bus wraps',
+      'Side, rear and interior panel branding',
+      'Airport bus and city-bus campaigns',
+      'Route planning and media selection',
+      'Creative adaptation, installation and upkeep',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We evaluate audience movement, route relevance, campaign duration and format before recommending the right mix of vehicles and placements.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team coordinates media availability, artwork production, permissions, installation, monitoring and campaign closure.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for bus branding.',
+  },
+  'rwa-activation': {
+    intro: 'Residential communities offer brands a valuable opportunity to meet consumers in a familiar, high-trust environment.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Apartment and gated-community activations',
+      'Product sampling and demonstrations',
+      'Festive and community engagement programmes',
+      'Kiosks, contests and interactive experiences',
+      'Permissions, staffing, logistics and reporting',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Each campaign begins with audience and location mapping.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'From approvals and set-up to trained promoters, creative collateral, product handling and post-campaign reporting, we manage the complete execution.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for rwa activation.',
+  },
+  'btl-advertising': {
+    intro: 'BTL advertising enables brands to move beyond passive visibility and create direct, memorable interactions with the people who matter most.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Brand activations and roadshows',
+      'Product demonstrations and sampling',
+      'Retail, mall and corporate promotions',
+      'Exhibitions and experiential installations',
+      'Strategy, permissions, manpower and reporting',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We shape every campaign around a defined business objective—awareness, trial, lead generation, footfall or conversion.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our integrated team manages concept development, fabrication, logistics, staffing, permissions, production and performance reporting.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for btl advertising.',
+  },
+  'mall-advertising': {
+    intro: 'Malls and multiplexes bring together high-footfall audiences in an environment shaped by discovery, leisure and purchase intent.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Kiosks, standees and atrium activations',
+      'Digital screens and cinema advertising',
+      'Escalator, floor and ambient branding',
+      'Sampling and product demonstrations',
+      'Venue selection, permissions and execution',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Our recommendations are guided by audience profile, venue category, dwell time, campaign objective and available media formats.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'The team manages media planning, space booking, creative adaptation, permissions, installation and on-site coordination.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for advertising in malls & multiplexes.',
+  },
+  'tech-park-ads': {
+    intro: 'Technology parks provide concentrated access to professionals, entrepreneurs and corporate decision-makers.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Lobby, lift and walkway branding',
+      'Digital displays and cafeteria media',
+      'Kiosks, sampling and corporate activations',
+      'Parking and entrance branding',
+      'Location planning, approvals and campaign management',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We assess workforce demographics, building traffic, dwell zones and campaign timing to identify the most effective media opportunities.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team handles location coordination, permissions, media planning, creative production, installation and campaign supervision.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for tech park advertising.',
+  },
+  'airport-advertising': {
+    intro: 'Airport advertising places brands within a premium, high-attention environment frequented by business travellers, affluent consumers and international audiences.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Digital and backlit display media',
+      'Baggage claim and boarding-gate branding',
+      'Security tray and terminal advertising',
+      'Premium standees and experiential formats',
+      'Media booking, production and campaign oversight',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Placements are selected according to terminal flow, dwell time, audience profile and communication objective.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'From media evaluation and booking to artwork adaptation, production, installation and campaign management, our team coordinates every stage.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for airport advertising.',
+  },
+  'paper-insertion': {
+    intro: 'Paper insertion remains a practical and cost-efficient channel for businesses that need direct household reach within specific localities.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Newspaper flyer and pamphlet insertion',
+      'Area-wise and publication-wise targeting',
+      'Brochure and promotional material distribution',
+      'Printing and newspaper coordination',
+      'Distribution monitoring and campaign reporting',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Campaigns are planned around locality, household profile, publication preference, circulation day and offer relevance.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'We support creative sizing, print production, newspaper coordination, distribution scheduling and monitoring.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for paper insertion.',
+  },
+  'cafe-gym-ads': {
+    intro: 'Advertising in cafes, gyms, and supermarkets places your brand in front of a highly engaged audience during their daily routines. By targeting these lifestyle spaces, we help businesses connect with consumers when they are most receptive to new products and services.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Table, counter and shelf branding',
+      'Posters, standees and digital displays',
+      'Sampling and promotional kiosks',
+      'Checkout and point-of-purchase media',
+      'Venue selection, installation and monitoring',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We match venues to customer profiles and select formats based on dwell time, visibility and the natural behaviour of visitors.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team manages venue partnerships, creative planning, production, placement and campaign monitoring.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for advertisement in cafes, gyms & supermarkets.',
+  },
+  'atm-ads': {
+    intro: 'ATM advertising offers a rare combination of focused attention, repeated utility and strong local reach.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'ATM screen and receipt advertising',
+      'Kiosk, glass and entrance branding',
+      'Wall graphics and promotional displays',
+      'Location selection by audience profile',
+      'Production, installation and campaign management',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Locations are evaluated by catchment, footfall, customer profile and campaign objective. Formats can be designed for immediate visibility outside the kiosk or for closer engagement during the transaction journey.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'We coordinate media planning, creative production, installation and campaign supervision across suitable ATM networks.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for atm advertising.',
+  },
+  'auto-rickshaw-ads': {
+    intro: 'Auto rickshaws travel through main roads, neighbourhoods, markets and narrow urban corridors, giving brands access to areas that larger media formats may not reach.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Auto hood, side and rear branding',
+      'Vinyl wraps and promotional stickers',
+      'Route and locality planning',
+      'Vehicle selection and installation',
+      'Monitoring, upkeep and campaign reporting',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We select routes and vehicle clusters according to target geography, audience movement and campaign duration.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team manages vehicle coordination, production, installation, maintenance and monitoring.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for auto rickshaw advertising.',
+  },
+  'magazine-ads': {
+    intro: 'Magazine advertising allows brands to communicate within a curated, credible and highly relevant editorial environment.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'National, regional and niche publications',
+      'Lifestyle, business and industry magazines',
+      'Publication and placement selection',
+      'Creative design and artwork adaptation',
+      'Booking, coordination and campaign management',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'IM Solutions identifies publications that align with the brand’s audience, category and positioning.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team manages creative development, artwork specifications, advertisement booking and publication coordination.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for advertisement in magazines.',
+  },
+  'parking-ads': {
+    intro: 'Parking environments create multiple moments of attention as visitors enter, navigate, park and exit.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Pillar and wall branding',
+      'Boom-barrier and entry-exit media',
+      'Directional and floor graphics',
+      'Banners and custom installations',
+      'Site permissions, production and maintenance',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Media locations are selected according to traffic volume, audience profile, visibility and dwell time.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'We handle site coordination, permissions, design adaptation, production, installation and campaign management.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for advertisement in public & private parking.',
+  },
+  'branding-rebranding': {
+    intro: 'A strong brand is more than just a logo; it is the complete experience and perception of your business. Our branding and rebranding services help companies define their identity, communicate their core values, and stand out in a competitive market.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Brand strategy and positioning',
+      'Naming, messaging and verbal identity',
+      'Logo and visual identity design',
+      'Brand guidelines and communication systems',
+      'Marketing collateral and digital brand assets',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'For new brands, we develop the foundations—from positioning and audience definition to identity, messaging and launch communication.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'The final system is designed for practical use across digital, print, sales and physical environments.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for branding & rebranding.',
+  },
+  'corporate-gifts': {
+    intro: 'Thoughtful corporate gifting can strengthen relationships, express appreciation and keep a brand meaningfully present beyond a formal business interaction.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Employee and client appreciation gifts',
+      'Festive hampers and executive gifting',
+      'Branded merchandise and office accessories',
+      'Tech, apparel and eco-conscious products',
+      'Sourcing, customisation, packaging and delivery',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We curate solutions according to recipient profile, occasion, budget, volume and brand personality.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team manages sourcing, branding, personalisation, packaging, quality checks and scheduled delivery.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for corporate gifts.',
+  },
+  'corporate-training': {
+    intro: 'Sustained organisational performance depends on people who can communicate clearly, lead confidently and adapt to changing business demands.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Leadership and managerial development',
+      'Communication and presentation skills',
+      'Sales, service and customer experience training',
+      'Team building and workplace effectiveness',
+      'Custom workshops, facilitation and assessment',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Programmes are customised to the organisation’s industry, workforce profile, competency gaps and business priorities.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our training portfolio includes leadership, communication, sales effectiveness, customer service, presentation skills, team building, time management and professional development.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for corporate training services.',
+  },
+  'event-management': {
+    intro: 'A successful event should do more than run smoothly; it should express the brand, engage the audience and create a lasting impression.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Corporate events and conferences',
+      'Product launches and award ceremonies',
+      'Exhibitions, roadshows and brand activations',
+      'Stage, production and entertainment management',
+      'Venue, logistics and on-site coordination',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Every project begins with the objective, audience and desired experience.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team coordinates venue selection, stage design, branding, fabrication, audio-visual production, entertainment, hospitality, logistics and on-site management.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for event management.',
+  },
+  'fm-campaigns': {
+    intro: 'FM radio remains a powerful local medium because it accompanies audiences through commutes, workdays and everyday routines.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Radio commercials and jingle production',
+      'RJ mentions and branded integrations',
+      'Contests, sponsorships and roadblocks',
+      'Station and time-slot planning',
+      'Scriptwriting, media buying and campaign management',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We identify stations, programmes and time bands according to audience profile, campaign geography, budget and communication objective.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team manages script development, audio production, media negotiation, scheduling and campaign coordination.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for fm campaigns.',
+  },
+  'fabrications': {
+    intro: 'Fabrication gives a physical form to brand ideas, transforming a concept into a structure people can see, enter and experience.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Exhibition stalls and event stages',
+      'Kiosks, display units and retail fixtures',
+      'Promotional and experiential installations',
+      'Custom branded structures',
+      'Design development, manufacturing and installation',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Each project is engineered around visual impact, functionality, safety, durability and brand consistency.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our team manages concept visualisation, technical development, manufacturing, transport, installation and dismantling.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for fabrication.',
+  },
+  'hoarding-services': {
+    intro: 'Hoarding advertising gives brands scale, stature and repeated visibility across high-traffic urban corridors.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Billboards, unipoles and premium hoardings',
+      'Highway, gantry and city-centre media',
+      'Digital out-of-home displays',
+      'Location planning and media booking',
+      'Creative production, installation and monitoring',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Sites are evaluated according to traffic flow, viewing distance, audience profile, direction of travel, illumination and surrounding visual clutter.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'We manage media planning, availability checks, booking, artwork adaptation, printing, installation and monitoring.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for hoarding services.',
+  },
+  'marketing-collaterals': {
+    intro: 'Marketing collaterals are essential tools that physically represent your brand and communicate your value proposition. We design professional brochures, presentations, and sales kits that leave a lasting impression on your clients and partners.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Brochures, catalogues and company profiles',
+      'Presentations, proposals and sales kits',
+      'Flyers, product sheets and business stationery',
+      'Packaging, banners and promotional materials',
+      'Content, design and production-ready artwork',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We begin by understanding the audience, communication objective and context of use.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our capabilities include brochures, company profiles, catalogues, presentations, proposals, product sheets, sales kits, stationery, packaging and campaign materials.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for marketing collaterals.',
+  },
+  'startup-marketing': {
+    intro: 'Startups need to build momentum quickly while managing resources effectively. We provide scalable marketing strategies designed specifically for early-stage companies, helping you acquire customers, build brand awareness, and secure your position in the market.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Brand strategy and launch planning',
+      'Website, content and social media',
+      'SEO, paid media and performance marketing',
+      'PR and audience-building campaigns',
+      'Scalable marketing systems and reporting',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Our approach is shaped by the company’s stage, category, customer journey, competitive context and budget.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'We integrate branding, websites, content, social media, SEO, paid advertising, PR and performance reporting into one coherent roadmap.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for marketing services for start-ups.',
+  },
+  'photographic-services': {
+    intro: 'In real estate, the first viewing often happens on a screen. Professional photography can shape perception, establish trust and encourage a buyer to explore the property further.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Interior and architectural photography',
+      'Residential, commercial and hospitality shoots',
+      'Drone and aerial photography',
+      '360-degree property views',
+      'Professional editing and image enhancement',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Every shoot is planned around the property’s strongest visual attributes—architecture, spatial flow, natural light, interiors, amenities and location context.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our services include interior and exterior photography, aerial imagery, 360-degree views and detailed post-production.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for photographic services (real estate photography).',
+  },
+  'pr-services': {
+    intro: 'Public relations shapes how a business is understood beyond paid advertising.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Press releases and media outreach',
+      'Corporate and leadership communication',
+      'Product and brand launch PR',
+      'Influencer and stakeholder engagement',
+      'Reputation and crisis communication',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We develop communication narratives around the brand’s objectives, expertise and relevance. Every campaign is guided by audience, timing, news value and the publications or platforms most likely to engage with the story.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our services include press releases, media outreach, corporate communication, launch announcements, influencer collaboration, reputation management and crisis support.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for pr services.',
+  },
+  'printing-services': {
+    intro: 'Printed communication remains essential wherever brands need a tangible, high-quality expression of their identity.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Brochures, flyers and catalogues',
+      'Business cards and corporate stationery',
+      'Posters, banners and standees',
+      'Packaging and promotional materials',
+      'Print consultation, finishing and delivery',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We guide clients through material selection, print process, colour, finishing and format to ensure the final output suits its intended use.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our capabilities cover brochures, catalogues, flyers, business stationery, posters, banners, standees, packaging and event materials.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for printing services.',
+  },
+  'retail-advertising': {
+    intro: 'Retail advertising places communication at the point where interest can become action.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Shelf and point-of-sale branding',
+      'Window, floor and in-store graphics',
+      'Kiosks, counters and product displays',
+      'Seasonal and launch campaign branding',
+      'Design, production, installation and upkeep',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'We consider store layout, shopper movement, category behaviour and visibility before recommending formats.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our services include shelf branding, point-of-sale displays, kiosks, floor graphics, window communication, promotional counters and seasonal campaign systems.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for retail advertising.',
+  },
+  'real-estate-videography': {
+    intro: 'Video allows prospective buyers to experience a property’s scale, movement and atmosphere before visiting it.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'Property walkthrough and lifestyle films',
+      'Drone and aerial cinematography',
+      'Virtual tours and project launch videos',
+      'Construction progress documentation',
+      'Creative direction, editing and motion graphics',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Each production is planned around the project’s positioning, architecture, amenities, surroundings and intended audience.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our services include walkthrough films, drone cinematography, virtual tours, launch videos and construction-progress documentation.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for real estate videography.',
+  },
+  'signage': {
+    intro: 'Effective signage should make a business easier to find, understand and navigate while reinforcing its visual identity.',
+    capabilitiesTitle: 'What We Offer',
+    capabilities: [
+      'LED, acrylic and illuminated signboards',
+      'Wayfinding and directional systems',
+      'Reception, office and retail signage',
+      'Digital displays and building branding',
+      'Design, fabrication, installation and maintenance',
+    ],
+    bodyBlocks: [
+      {
+        heading: 'Strategic Planning',
+        text: 'Every project is planned around viewing distance, environment, material durability, illumination, brand guidelines and user movement.',
+      },
+      {
+        heading: 'End-to-End Execution',
+        text: 'Our capabilities include LED and acrylic signboards, illuminated displays, wayfinding systems, directional signs, reception branding, retail signage and digital displays.',
+      },
+    ],
+    why: 'IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery. IM Solutions integrates strategy, creative, production and execution through one accountable team. This ensures consistency, speed and reliable campaign delivery.',
+    cta: 'Elevate your brand presence. Connect with IM Solutions for signage.',
+  },
 };
 
 const getServiceContent = (slug: string): ServiceContent | null => {
@@ -903,7 +1526,7 @@ const getBriefData = (slug: string, serviceTitle: string, serviceDesc: string) =
     title2: 'More Business.',
     desc: serviceDesc ? (serviceDesc.split('.')[0] + '.') : 'Strategic marketing that drives the right traffic, brings qualified leads and delivers real growth.'
   };
-  
+
   return {
     tagline: '', // Clear tagline for the first brief section to match the title-first design
     title1: baseData.title1,
@@ -1202,9 +1825,9 @@ const getSecondBriefData = (slug: string, serviceTitle: string) => {
   if (secondBriefDataMap[key]) {
     return secondBriefDataMap[key];
   }
-  
+
   const cleanTitle = (serviceTitle || '').split('|')[0].trim();
-  
+
   return {
     tagline: 'DATA. STRATEGY. RESULTS.',
     title1: 'Stand Out.',
@@ -1217,17 +1840,19 @@ export default function ServiceDetailPage() {
   const params = useParams();
   const slug = params?.slug as string;
 
-  // Use the in-repo `serviceData` as the single source of truth so server and
-  // client render identical content. Dynamic `require(...)` can succeed on
-  // the server but fail on the client, which causes hydration mismatches.
-  const service: any = serviceData[slug];
+  let service: any = null;
+  try {
+    service = require(`../../../data/services/${slug}.json`);
+  } catch (e) {
+    service = serviceData[slug];
+  }
 
   if (!service) {
     notFound();
   }
 
   const category = service.category || (onlineServiceImages[slug] ? 'online' : 'offline');
-  const relatedServices = getRelatedServices(slug, category);
+  const relatedServices = getRelatedServices(slug, category, 4);
   const relevantBlogs = getRelevantBlogs(service.title || '', 3);
 
   const briefData = getBriefData(slug, service.title, service.description);
@@ -1263,7 +1888,46 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* 1.5. Wide Full-Width Brief Section (service breif section.jpeg) */}
+      {/* 1.5. Service Content Section */}
+      {serviceContent && (
+        <section className={styles.serviceContentSection}>
+          <div className={styles.serviceContentInner}>
+            {/* Top: intro + capabilities */}
+            <div className={styles.serviceContentTop}>
+              <p className={styles.serviceContentIntro}>{serviceContent.intro}</p>
+              <div className={styles.serviceContentCapabilities}>
+                <h3 className={styles.serviceCapabilitiesTitle}>{serviceContent.capabilitiesTitle}</h3>
+                <ul className={styles.serviceCapabilitiesList}>
+                  {serviceContent.capabilities.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Body blocks */}
+            {serviceContent.bodyBlocks.length > 0 && (
+              <div className={styles.serviceContentBody}>
+                {serviceContent.bodyBlocks.map((block, i) => (
+                  <div key={i} className={styles.serviceBodyBlock}>
+                    <h3>{block.heading}</h3>
+                    <p>{block.text}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Why IM Solutions */}
+            <div className={styles.serviceWhyBar}>
+              <span className={styles.serviceWhyLabel}>Why IM Solutions</span>
+              <p className={styles.serviceWhyText}>{serviceContent.why}</p>
+              <p className={styles.serviceCtaLine}>{serviceContent.cta}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 1.6. Wide Full-Width Brief Section (service breif section.jpeg) */}
       <section className={styles.wideBriefSection}>
         <div className={styles.wideBriefContent}>
           {briefData.tagline && (
@@ -1316,69 +1980,7 @@ export default function ServiceDetailPage() {
         </section>
       </div>
 
-      {/* 1.8. Service Content Section */}
-      {serviceContent && (
-        <section className={styles.serviceContentSection}>
-          <div className={styles.serviceContentInner}>
-            {/* Top: intro + capabilities */}
-            <div className={styles.serviceContentTop}>
-              <p className={styles.serviceContentIntro}>{serviceContent.intro}</p>
-              <div className={styles.serviceContentCapabilities}>
-                <h3 className={styles.serviceCapabilitiesTitle}>{serviceContent.capabilitiesTitle}</h3>
-                <ul className={styles.serviceCapabilitiesList}>
-                  {serviceContent.capabilities.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Body blocks */}
-            {serviceContent.bodyBlocks.length > 0 && (
-              <div className={styles.serviceContentBody}>
-                {serviceContent.bodyBlocks.map((block, i) => (
-                  <div key={i} className={styles.serviceBodyBlock}>
-                    <h3>{block.heading}</h3>
-                    <p>{block.text}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Why IM Solutions */}
-            <div className={styles.serviceWhyBar}>
-              <span className={styles.serviceWhyLabel}>Why IM Solutions</span>
-              <p className={styles.serviceWhyText}>{serviceContent.why}</p>
-              <p className={styles.serviceCtaLine}>{serviceContent.cta}</p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 2. Intro & Collage Section */}
-      <section className={styles.introSection}>
-        <div className={styles.introLayout}>
-          <div className={styles.introText}>
-            We bring strategy, creativity, technology, media, outdoor and production together to build meaningful connections between brands and people. Integrated by design. Impact by destination.
-          </div>
-          <div className={styles.introCollage}>
-            <div className={`${styles.collageImgWrap} ${styles.collageShort}`}>
-              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.02 PM.jpeg" alt="Brand Strategy" className={styles.collageImg} />
-            </div>
-            <div className={`${styles.collageImgWrap} ${styles.collageTall}`}>
-              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.14 PM.jpeg" alt="Ideas" className={styles.collageImg} />
-            </div>
-            <div className={`${styles.collageImgWrap} ${styles.collageTall}`}>
-              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.35 PM.jpeg" alt="Move Forward" className={styles.collageImg} />
-            </div>
-            <div className={`${styles.collageImgWrap} ${styles.collageShort}`}>
-              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.41 PM.jpeg" alt="Production" className={styles.collageImg} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Services Grid */}
+      {/* 2. Services Grid */}
       <section className={styles.servicesGridSection}>
         <div className={styles.servicesGrid}>
           {servicesGridData.map((item, idx) => (
@@ -1424,13 +2026,84 @@ export default function ServiceDetailPage() {
             <div className={styles.processStep}>
               <div className={styles.stepCircle}>5</div>
               <div className={styles.stepIcon}><FaChartBar /></div>
-              <p className={styles.stepText}>Measure &<br/>Optimize</p>
+              <p className={styles.stepText}>Measure &<br />Optimize</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. Impact Section */}
+      {/* 5. Industries Section */}
+      <section className={styles.industriesSection}>
+        <div className={styles.industryItem}>
+          <FaCar className={styles.industryIcon} />
+          <p>AUTOMOTIVE</p>
+        </div>
+        <div className={styles.industryItem}>
+          <FaShoppingBag className={styles.industryIcon} />
+          <p>CONSUMER<br />GOODS</p>
+        </div>
+        <div className={styles.industryItem}>
+          <FaShoppingCart className={styles.industryIcon} />
+          <p>RETAIL &<br />E-COMMERCE</p>
+        </div>
+        <div className={styles.industryItem}>
+          <FaBuilding className={styles.industryIcon} />
+          <p>REAL ESTATE &<br />INFRASTRUCTURE</p>
+        </div>
+        <div className={styles.industryItem}>
+          <FaLandmark className={styles.industryIcon} />
+          <p>BANKING &<br />FINANCIAL SERVICES</p>
+        </div>
+        <div className={styles.industryItem}>
+          <FaHeartbeat className={styles.industryIcon} />
+          <p>HEALTHCARE &<br />WELLNESS</p>
+        </div>
+      </section>
+
+      {/* 7. Why Choose Us Section */}
+      <section className={styles.whyChooseSection}>
+        <div className={styles.whyChooseContent}>
+          <h2 className={styles.whyChooseTitle}>Why Brands Choose<br />IM Solutions</h2>
+          <div className={styles.whyChooseUnderline}></div>
+          <div className={styles.whyChooseLogoBackground}>IM</div>
+        </div>
+        <div className={styles.whyChooseList}>
+          <ul>
+            <li><FaCheckCircle className={styles.checkIcon} /> Integrated thinking across every touch point.</li>
+            <li><FaCheckCircle className={styles.checkIcon} /> One team. Seamless execution.</li>
+            <li><FaCheckCircle className={styles.checkIcon} /> Data-informed. Insight-led. Outcome-focused.</li>
+            <li><FaCheckCircle className={styles.checkIcon} /> Agile, transparent and accountable.</li>
+            <li><FaCheckCircle className={styles.checkIcon} /> Built for today. Ready for what&apos;s next.</li>
+          </ul>
+        </div>
+        <div className={styles.whyChooseImageWrapper}>
+          <img src="/aervice/abdefc39-7b76-4b3a-85f0-503540871f50.png" alt="Why Choose IM Solutions" className={styles.whyChooseImage} />
+        </div>
+      </section>
+
+      {/* 8. Intro & Collage + Impact Images — now above FAQs */}
+      <section className={styles.introSection}>
+        <div className={styles.introLayout}>
+          <div className={styles.introText}>
+            We bring strategy, creativity, technology, media, outdoor and production together to build meaningful connections between brands and people. Integrated by design. Impact by destination.
+          </div>
+          <div className={styles.introCollage}>
+            <div className={`${styles.collageImgWrap} ${styles.collageShort}`}>
+              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.02 PM.jpeg" alt="Brand Strategy" className={styles.collageImg} />
+            </div>
+            <div className={`${styles.collageImgWrap} ${styles.collageTall}`}>
+              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.14 PM.jpeg" alt="Ideas" className={styles.collageImg} />
+            </div>
+            <div className={`${styles.collageImgWrap} ${styles.collageTall}`}>
+              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.35 PM.jpeg" alt="Move Forward" className={styles.collageImg} />
+            </div>
+            <div className={`${styles.collageImgWrap} ${styles.collageShort}`}>
+              <img src="/aervice/WhatsApp Image 2026-07-17 at 2.50.41 PM.jpeg" alt="Production" className={styles.collageImg} />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.impactSection}>
         <h2 className={styles.impactTitle}>Ideas That Became Impact.</h2>
         <div className={styles.impactTitleUnderline}></div>
@@ -1443,63 +2116,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* 6. Industries Section */}
-      <section className={styles.industriesSection}>
-        <div className={styles.industryItem}>
-          <FaCar className={styles.industryIcon} />
-          <p>AUTOMOTIVE</p>
-        </div>
-        <div className={styles.industryItem}>
-          <FaShoppingBag className={styles.industryIcon} />
-          <p>CONSUMER<br/>GOODS</p>
-        </div>
-        <div className={styles.industryItem}>
-          <FaShoppingCart className={styles.industryIcon} />
-          <p>RETAIL &<br/>E-COMMERCE</p>
-        </div>
-        <div className={styles.industryItem}>
-          <FaBuilding className={styles.industryIcon} />
-          <p>REAL ESTATE &<br/>INFRASTRUCTURE</p>
-        </div>
-        <div className={styles.industryItem}>
-          <FaLandmark className={styles.industryIcon} />
-          <p>BANKING &<br/>FINANCIAL SERVICES</p>
-        </div>
-        <div className={styles.industryItem}>
-          <FaHeartbeat className={styles.industryIcon} />
-          <p>HEALTHCARE &<br/>WELLNESS</p>
-        </div>
-      </section>
-
-      {/* 7. Why Choose Us Section */}
-      <section className={styles.whyChooseSection}>
-        <div className={styles.whyChooseContent}>
-          <h2 className={styles.whyChooseTitle}>Why Brands Choose<br/>IM Solutions</h2>
-          <div className={styles.whyChooseUnderline}></div>
-          <div className={styles.whyChooseLogoBackground}>IM</div>
-        </div>
-        <div className={styles.whyChooseList}>
-          <ul>
-            <li><FaCheckCircle className={styles.checkIcon}/> Integrated thinking across every touch point.</li>
-            <li><FaCheckCircle className={styles.checkIcon}/> One team. Seamless execution.</li>
-            <li><FaCheckCircle className={styles.checkIcon}/> Data-informed. Insight-led. Outcome-focused.</li>
-            <li><FaCheckCircle className={styles.checkIcon}/> Agile, transparent and accountable.</li>
-            <li><FaCheckCircle className={styles.checkIcon}/> Built for today. Ready for what&apos;s next.</li>
-          </ul>
-        </div>
-        <div className={styles.whyChooseImageWrapper}>
-            <img src="/aervice/abdefc39-7b76-4b3a-85f0-503540871f50.png" alt="Why Choose IM Solutions" className={styles.whyChooseImage} />
-        </div>
-      </section>
-
-      {/* 8. FAQs */}
-      {service.faqs && service.faqs.length > 0 ? (
-          <FAQ title={`${service.title} FAQ's`} items={service.faqs.map((f: any) => ({ question: f.q, answer: f.a }))} />
-      ) : (
-          <FAQ />
-      )}
-
-      {/* 9. Relevant Services */}
+      {/* 10. Relevant Services — 1 row (4 tiles) */}
       <section className={styles.relatedServicesSection}>
         <div className={styles.relatedSectionHeader}>
           <span className={styles.relatedEyebrow}>EXPLORE MORE</span>
@@ -1519,7 +2136,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* 10. Relevant Blogs */}
+      {/* 11. Relevant Blogs */}
       <section className={styles.relatedBlogsSection}>
         <div className={styles.relatedSectionHeader}>
           <span className={styles.relatedEyebrow}>INSIGHTS</span>
@@ -1540,12 +2157,19 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* 11. Footer CTA Section */}
+      {/* 12. FAQs — above footer */}
+      {service.faqs && service.faqs.length > 0 ? (
+        <FAQ title={`${service.title} FAQ's`} items={service.faqs.map((f: any) => ({ question: f.q, answer: f.a }))} />
+      ) : (
+        <FAQ />
+      )}
+
+      {/* 13. Footer CTA Section */}
       <section className={styles.footerCtaSection}>
         <img src="/aervice/2c2db5ef-3f75-4b58-90b6-6c0d62a82d62.png" alt="Let's Build Background" className={styles.footerCtaBg} />
         <div className={styles.footerCtaOverlay}></div>
         <div className={styles.footerCtaContent}>
-          <h2 className={styles.footerCtaTitle}>Let&apos;s Build What<br/>Your <span className={styles.highlightRed}>Brand</span> Needs Next.</h2>
+          <h2 className={styles.footerCtaTitle}>Let&apos;s Build What<br />Your <span className={styles.highlightRed}>Brand</span> Needs Next.</h2>
           <div className={styles.footerCtaUnderline}></div>
         </div>
         <div className={styles.footerCtaAction}>

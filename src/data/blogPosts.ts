@@ -10,7 +10,43 @@ export type BlogContentSection = {
   blocks: BlogContentBlock[];
 };
 
-const blogImage = (filename: string, folder = "/blogs") => encodeURI(`${folder}/${filename}`);
+const blogggImageAliases: Record<string, string> = {
+  "Top SEO Trends for 2026.png": "Top SEO Trends 2026 What Businesses Need to Prepare For.png",
+  "WordPress vs Webflow vs Custom Code.png": "WordPress vs Webflow vs Custom Code What's Right for Startups.png",
+  "How advertising in tech parks changes business.png": "How advertising in tech parks is changing business.png",
+};
+
+const blogggImageFiles = new Set<string>([
+  "AN EFFORT TO DEBUNK COMMON WEB DESIGN MYTHS.png",
+  "Building Bridges, Not Just Links The Emotional Blueprint of Digital Success.png",
+  "Do's and don't of creative design in business.png",
+  "GOOGLE AMP STORIES ITS IMPORTANCE FOR YOUR BUSINESS.png",
+  "How advertising in tech parks is changing business.png",
+  "How to estimate the price of website design.png",
+  "How to market your brand to residential societies in Bangalore.png",
+  "Importance of Landing Page for Successful Campaign.png",
+  "List of Google Algorithm updates in 2021.png",
+  "TIPS ON HOW TO PICK THE RIGHT COLOR SCHEME FOR WEBSITE.png",
+  "The Heartfelt Journey of Brands in the Digital Sphere.png",
+  "Top 10 Website Design Trends Dominating in 2025.png",
+  "Top 7 ORM Strategies That Actually Work in 2025 (For Global Brands).png",
+  "Top SEO Trends 2026 What Businesses Need to Prepare For.png",
+  "WHAT ARE THE EFFECTS OF FLORIDA 2 BROAD CORE UPDATE BY GOOGLE.png",
+  "What is RWA Activation and why your business needs it.png",
+  "Why Good Creative Design Is Important for your business.png",
+  "Why Web Pages Got Deindexed from Google.png",
+  "Why should be your Website design and SEO agency same.png",
+  "WordPress vs Webflow vs Custom Code What's Right for Startups.png",
+]);
+
+const blogImage = (filename: string, folder = "/blogs") => {
+  const normalizedFilename = filename.trim();
+  const resolvedFilename = blogggImageAliases[normalizedFilename] || normalizedFilename;
+  const shouldUseBloggg = folder === "/bloggg" || blogggImageFiles.has(resolvedFilename);
+  const resolvedFolder = shouldUseBloggg ? "/bloggg" : folder;
+
+  return encodeURI(`${resolvedFolder}/${resolvedFilename}`);
+};
 
 export type BlogPost = {
   id: number;
