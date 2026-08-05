@@ -14,6 +14,11 @@ const blogggImageAliases: Record<string, string> = {
   "Top SEO Trends for 2026.png": "Top SEO Trends 2026 What Businesses Need to Prepare For.png",
   "WordPress vs Webflow vs Custom Code.png": "WordPress vs Webflow vs Custom Code What's Right for Startups.png",
   "How advertising in tech parks changes business.png": "How advertising in tech parks is changing business.png",
+  // Mappings for files with irregular spacing/characters in public/bloggg
+  "UTILIZING SEO AND PPC TOGETHER TO ACHIEVE MARKETING SUCCESS.png": "UTILIZING SEO AND PPC TOGETHER TO ACHIEVE MARKETING SUCCESS .png",
+  "HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR.png": " HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR? .png",
+  "3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL.png": " 3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL .png",
+  "Your Go-To Partner for PPC Services in Bangalore.png": "Your Go-To Partner for PPC Services in Bangalore.png",
 };
 
 const blogggImageFiles = new Set<string>([
@@ -45,7 +50,8 @@ const blogImage = (filename: string, folder = "/blogs") => {
   const shouldUseBloggg = folder === "/bloggg" || blogggImageFiles.has(resolvedFilename);
   const resolvedFolder = shouldUseBloggg ? "/bloggg" : folder;
 
-  return encodeURI(`${resolvedFolder}/${resolvedFilename}`);
+  // encode only the filename so reserved characters like '?' are percent-encoded
+  return `${resolvedFolder}/${encodeURIComponent(resolvedFilename)}`;
 };
 
 export type BlogPost = {
@@ -2018,5 +2024,20 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+// Replace each post's image to use the file from `/bloggg` named after the post title.
+// This makes the site load images from `public/bloggg/<Post Title>.png` for all posts.
+for (const p of blogPosts) {
+  // Sanitize title to avoid characters that produce query strings or invalid filenames
+  const sanitized = p.title
+    .replace(/[?/#%&\\:\*<>"'`\u0000-\u001F]/g, "") // remove problematic chars
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (sanitized.length === 0) continue;
+
+  const titleFilename = `${sanitized}.png`;
+  p.image = blogImage(titleFilename, "/bloggg");
+}
 
 export default blogPosts;
