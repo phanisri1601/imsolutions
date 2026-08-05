@@ -10,47 +10,88 @@ export type BlogContentSection = {
   blocks: BlogContentBlock[];
 };
 
+const normalizeBlogggKey = (value: string) =>
+  value
+    .replace(/\.[^.]+$/, "")
+    .replace(/[?/#%&\\:*<>"'`\u0000-\u001F]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+
 const blogggImageAliases: Record<string, string> = {
-  "Top SEO Trends for 2026.png": "Top SEO Trends 2026 What Businesses Need to Prepare For.png",
-  "WordPress vs Webflow vs Custom Code.png": "WordPress vs Webflow vs Custom Code What's Right for Startups.png",
-  "How advertising in tech parks changes business.png": "How advertising in tech parks is changing business.png",
-  // Mappings for files with irregular spacing/characters in public/bloggg
-  "UTILIZING SEO AND PPC TOGETHER TO ACHIEVE MARKETING SUCCESS.png": "UTILIZING SEO AND PPC TOGETHER TO ACHIEVE MARKETING SUCCESS .png",
-  "HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR.png": " HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR? .png",
-  "3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL.png": " 3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL .png",
-  "Your Go-To Partner for PPC Services in Bangalore.png": "Your Go-To Partner for PPC Services in Bangalore.png",
+  "video shoots that spark cravings the recipe for restaurant marketing success":
+    "Video Shoots That Spark Cravings The Recipe for Restaurant Marketing.png",
+  "how advertising in tech parks changes business":
+    "How advertising in tech parks is changing business.png",
+  "top image optimization hacks that increases conversions on ecommerce site":
+    "TOP IMAGE OPTIMIZATION HACKS THAT INCREASES.webp",
 };
 
-const blogggImageFiles = new Set<string>([
+const blogggImageFiles = [
+  " 3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL .png",
+  " HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR? .png",
+  "10 Social Media 2023 Trends for a Successful Social Media Strategy.png",
   "AN EFFORT TO DEBUNK COMMON WEB DESIGN MYTHS.png",
   "Building Bridges, Not Just Links The Emotional Blueprint of Digital Success.png",
+  "DIFFERENT SERP FEATURES THAT YOUR WEBSITE MUST UTILIZE PART 1.png",
+  "DIFFERENT SERP FEATURES THAT YOUR WEBSITE MUST UTILIZE PART 2.png",
   "Do's and don't of creative design in business.png",
+  "FACEBOOK TOOLS THAT MARKETERS UTILIZES TO IMPROVE ENGAGEMENT.png",
   "GOOGLE AMP STORIES ITS IMPORTANCE FOR YOUR BUSINESS.png",
+  "GOOGLE REBRANDING OF AD PRODUCTS AND ITS EFFECTS ON BUSINESS.png",
+  "Google Marketing Live 2026 The Definitive Guide to AI-Powered Search, Agentic Commerce, and Ask Advisor.png",
+  "HOW BUSINESSES WILL ADVERTISE AFTER BBMP BAN ON BANNERS.jpg",
+  "HOW TO GET THAT COVETED PLACE ON GOOGLE CAROUSEL.png",
+  "HOW TO RANK IN SEARCH ENGINES WITHOUT GENERATING BACKLINKS.png",
+  "How AI Is Transforming Website Design Future-Proofing Your Brand.png",
+  "How Performance Marketing Can Double Your ROI in 2025.png",
   "How advertising in tech parks is changing business.png",
+  "How to Choose the Best Website Designing Agency A 2025 Guide.png",
   "How to estimate the price of website design.png",
   "How to market your brand to residential societies in Bangalore.png",
   "Importance of Landing Page for Successful Campaign.png",
   "List of Google Algorithm updates in 2021.png",
+  "MISSED OPPORTUNITIES INTO BUSINESS LEADS USING FB ADS PART 2.png",
+  "Modern SEO strategies for AI-powered search.png",
+  "OLD SCHOOL IS THE NEW COOL for hyper-local marketing!.png",
+  "ONLINE MARKETING TRENDS OF 2016.png",
+  "Online Reputation Management in Bangalore Why Your Brand Needs It Now.png",
+  "Revolutionize Your Brand Unleashing the Power of Digital Marketing Magic.webp",
+  "Revolutionizing Content Creation How AI is Changing the Game.png",
+  "RESHAPING ADVERTISING.png",
   "TIPS ON HOW TO PICK THE RIGHT COLOR SCHEME FOR WEBSITE.png",
+  "TOP 5 WEB DESIGN TRENDS TO WATCH OUT FOR IN 2018.png",
+  "TOP IMAGE OPTIMIZATION HACKS THAT INCREASES.webp",
+  "TURNING MISSED OPPORTUNITIES INTO BUSINESS LEADS USING FB ADS.png",
   "The Heartfelt Journey of Brands in the Digital Sphere.png",
+  "The Power of Personalization How to Create Hyper-Targeted Marketing Campaigns.png",
   "Top 10 Website Design Trends Dominating in 2025.png",
   "Top 7 ORM Strategies That Actually Work in 2025 (For Global Brands).png",
   "Top SEO Trends 2026 What Businesses Need to Prepare For.png",
+  "UTILIZING SEO AND PPC TOGETHER TO ACHIEVE MARKETING SUCCESS .png",
+  "Video Shoots That Spark Cravings The Recipe for Restaurant Marketing.png",
   "WHAT ARE THE EFFECTS OF FLORIDA 2 BROAD CORE UPDATE BY GOOGLE.png",
+  "WHY ONLINE REPUTATION MANAGEMENT IS IMPORTANT FOR BUSINESS.png",
   "What is RWA Activation and why your business needs it.png",
   "Why Good Creative Design Is Important for your business.png",
   "Why Web Pages Got Deindexed from Google.png",
   "Why should be your Website design and SEO agency same.png",
   "WordPress vs Webflow vs Custom Code What's Right for Startups.png",
-]);
+  "Your Go-To Partner for PPC Services in Bangalore.png",
+];
+
+const blogggFilenameByKey = new Map<string, string>(
+  blogggImageFiles.map((fileName) => [normalizeBlogggKey(fileName), fileName])
+);
 
 const blogImage = (filename: string, folder = "/blogs") => {
   const normalizedFilename = filename.trim();
-  const resolvedFilename = blogggImageAliases[normalizedFilename] || normalizedFilename;
-  const shouldUseBloggg = folder === "/bloggg" || blogggImageFiles.has(resolvedFilename);
+  const lookupKey = normalizeBlogggKey(normalizedFilename);
+  const aliasFilename = blogggImageAliases[lookupKey];
+  const resolvedFilename = aliasFilename || blogggFilenameByKey.get(lookupKey) || normalizedFilename;
+  const shouldUseBloggg = folder === "/bloggg" || aliasFilename !== undefined || blogggFilenameByKey.has(lookupKey);
   const resolvedFolder = shouldUseBloggg ? "/bloggg" : folder;
 
-  // encode only the filename so reserved characters like '?' are percent-encoded
   return `${resolvedFolder}/${encodeURIComponent(resolvedFilename)}`;
 };
 
@@ -531,7 +572,7 @@ export const blogPosts: BlogPost[] = [
     id: 6,
     title: "How to Choose the Best Website Designing Agency: A 2025 Guide",
     excerpt: "In 2025, your website isn't just a digital spaceit's your brand's first handshake. The choice of a website design agency can make or break your digital presence.",
-    image: blogImage("best-website-designing-agency-2025.webp"),
+    image: blogImage("How to Choose the Best Website Designing Agency A 2025 Guide.png", "/bloggg"),
     date: "June 2025",
     author: "IM Solutions",
     slug: "how-to-choose-the-best-website-designing-agency",
@@ -566,7 +607,7 @@ export const blogPosts: BlogPost[] = [
     id: 7,
     title: "Online Reputation Management in Bangalore: Why Your Brand Needs It Now",
     excerpt: "In a world of open platforms and instant feedback, reputation isn't optionalit's your currency. At IM Solutions, we help brands build and protect their digital reputation.",
-    image: blogImage("online-reputation-management-bangalore.webp"),
+    image: blogImage("Online Reputation Management in Bangalore Why Your Brand Needs It Now.png", "/bloggg"),
     date: "May 2025",
     author: "IM Solutions",
     slug: "online-reputation-management-in-bangalore",
@@ -671,7 +712,7 @@ export const blogPosts: BlogPost[] = [
     id: 10,
     title: "Video Shoots That Spark Cravings: The Recipe for Restaurant Marketing Success!",
     excerpt: "In the digital-first world, food is no longer just about taste; it's about visual storytelling that ignites cravings. Learn the secrets of successful restaurant video marketing.",
-    image: blogImage("restaurant-video-marketing.webp"),
+    image: blogImage("Video Shoots That Spark Cravings The Recipe for Restaurant Marketing.png", "/bloggg"),
     date: "February 2025",
     author: "IM Solutions",
     slug: "video-shoots-that-spark-cravings",
@@ -706,7 +747,7 @@ export const blogPosts: BlogPost[] = [
     id: 11,
     title: "Revolutionizing Content Creation: How AI is Changing the Game",
     excerpt: "Content creation is entering a new era, and Artificial Intelligence is at the forefront of this transformation. Discover how AI is reshaping creative workflows and marketing strategies.",
-    image: blogImage("ai-content-creation.webp"),
+    image: blogImage("Revolutionizing Content Creation How AI is Changing the Game.png", "/bloggg"),
     date: "January 2025",
     author: "IM Solutions",
     slug: "revolutionizing-content-creation-how-ai-is-changing-the-game",
@@ -846,7 +887,7 @@ export const blogPosts: BlogPost[] = [
     id: 15,
     title: "Revolutionize Your Brand: Unleashing the Power of Digital Marketing Magic",
     excerpt: "Transform your brand with cutting-edge digital marketing strategies that captivate audiences, drive engagement, and deliver measurable business results.",
-    image: blogImage("digital-marketing-magic.webp"),
+    image: blogImage("Revolutionize Your Brand Unleashing the Power of Digital Marketing Magic.webp", "/bloggg"),
     date: "September 2024",
     author: "IM Solutions",
     slug: "unleashing-the-power-of-digital-marketing-magic",
@@ -881,7 +922,7 @@ export const blogPosts: BlogPost[] = [
     id: 16,
     title: "10 Social Media 2023 Trends for a Successful Social Media Strategy",
     excerpt: "Stay ahead of the curve with these essential social media trends that defined 2023 and continue to influence successful digital marketing strategies.",
-    image: blogImage("social-media-trends-2023.webp"),
+    image: blogImage("10 Social Media 2023 Trends for a Successful Social Media Strategy.png", "/bloggg"),
     date: "August 2024",
     author: "IM Solutions",
     slug: "10-social-media-trends-2023",
@@ -1262,7 +1303,7 @@ export const blogPosts: BlogPost[] = [
     id: 27,
     title: "OLD SCHOOL IS THE NEW COOL for hyper-local marketing!",
     excerpt: "A beam of light on how RWA is still an effective platform to advertise and reach your target audience.",
-    image: blogImage("hyper-local-marketing.webp"),
+    image: blogImage("OLD SCHOOL IS THE NEW COOL for hyper-local marketing!.png", "/bloggg"),
     date: "",
     author: "IM Solutions",
     slug: "old-school-is-the-new-cool-for-hyper-local-marketing",
@@ -1364,7 +1405,7 @@ export const blogPosts: BlogPost[] = [
     id: 30,
     title: "FACEBOOK TOOLS THAT MARKETERS UTILIZES TO IMPROVE ENGAGEMENT",
     excerpt: "There are many hidden tools in Facebook which we are not aware of and when utilized properly can help improve your marketing efforts and provide your business greater..",
-    image: blogImage("facebook-marketing-tools.webp"),
+    image: blogImage("FACEBOOK TOOLS THAT MARKETERS UTILIZES TO IMPROVE ENGAGEMENT.png", "/bloggg"),
     date: "",
     author: "IM Solutions",
     slug: "5-hidden-facebook-tools-that-marketers-can-utilize-to-increase-engagement-on-their-facebook-page",
@@ -1398,7 +1439,7 @@ export const blogPosts: BlogPost[] = [
     id: 31,
     title: "TOP IMAGE OPTIMIZATION HACKS THAT INCREASES CONVERSIONS ON E-COMMERCE SITE",
     excerpt: "If you want to make your e-commerce portal successful then first thing you will have to do is optimize the images. On e-commerce sites, images are the main reason behind higher loading time..",
-    image: blogImage("image-optimization-hacks.webp"),
+    image: blogImage("TOP IMAGE OPTIMIZATION HACKS THAT INCREASES.webp", "/bloggg"),
     date: "",
     author: "IM Solutions",
     slug: "top-3-image-optimization-hacks-that-improve-conversions-on-ecommerce-portals",
@@ -1529,7 +1570,7 @@ export const blogPosts: BlogPost[] = [
     title: "HOW TO GET THAT COVETED PLACE ON GOOGLE CAROUSEL",
     excerpt:
       "If someone is searching for best colleges then Google shows a carousel of scrollable photos right below the search box. When a person clicks on any of the images, it shows a search result page similar to what we get when we search directly in Google. If you are wondering how websites appear in this list then the details we will provide here will help you get an insight into the source from which Google fetches this data.",
-    image: blogImage("google-carousel-ranking.webp"),
+    image: blogImage("HOW TO GET THAT COVETED PLACE ON GOOGLE CAROUSEL.png", "/bloggg"),
     date: "",
     author: "IM Solutions",
     slug: "how-to-get-that-coveted-place-on-google-carousel",
@@ -1787,7 +1828,7 @@ export const blogPosts: BlogPost[] = [
     title: "HOW BUSINESSES WILL ADVERTISE AFTER BBMP BAN ON BANNERS?",
     excerpt:
       "Recently BBMP banned all hoarding, banners, and flex from its 198 wards. Why this step was taken? What are the penalties for non-compliance? What are the alternate advertisement solutions for businesses after this ban? Let us find all the answers.",
-    image: blogImage("bbmp-banner-ban-advertising.webp"),
+    image: blogImage("HOW BUSINESSES WILL ADVERTISE AFTER BBMP BAN ON BANNERS.jpg", "/bloggg"),
     date: "",
     author: "IM Solutions",
     slug: "how-businesses-will-advertise-after-bbmp-ban-on-flexes-and-banners",
