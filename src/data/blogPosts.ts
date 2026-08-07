@@ -13,7 +13,7 @@ export type BlogContentSection = {
 const normalizeBlogggKey = (value: string) =>
   value
     .replace(/\.[^.]+$/, "")
-    .replace(/[?/#%&\\:*<>"'`\u0000-\u001F]/g, "")
+    .replace(/[!\-?/#%&\\:*<>"'`\u0000-\u001F]/g, "")
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();

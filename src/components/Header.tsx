@@ -551,30 +551,19 @@ export default function Header() {
               </button>
               {isMobile ? (
                 isMobileServicesOpen && (
-                  <div 
-                    className={`${styles.dropdownMenu} ${styles.mobileDropdown}`}
-                  >
+                  <div className={`${styles.dropdownMenu} ${styles.mobileDropdown}`}>
                     <div className={styles.dropdownSection}>
-                      <div className={styles.dropdownSectionTitle}>Online Services</div>
+                      <div className={styles.dropdownSectionTitle}>Services</div>
                       <div className={styles.servicesList}>
-                        {onlineServices.map(service => (
-                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => { setIsMobileServicesOpen(false); setIsMenuOpen(false); }}>{service.toLowerCase()}</Link>
-                        ))}
-                      </div>
-                    </div>
-                    <div className={styles.dropdownSection}>
-                      <div className={styles.dropdownSectionTitle}>Offline Services</div>
-                      <div className={styles.servicesList}>
-                        {offlineServices.map(service => (
-                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => { setIsMobileServicesOpen(false); setIsMenuOpen(false); }}>{service.toLowerCase()}</Link>
-                        ))}
+                        <Link href="/services/online" className={styles.dropdownItem} onClick={() => { setIsMobileServicesOpen(false); setIsMenuOpen(false); }}>Online</Link>
+                        <Link href="/services/offline" className={styles.dropdownItem} onClick={() => { setIsMobileServicesOpen(false); setIsMenuOpen(false); }}>Offline</Link>
                       </div>
                     </div>
                   </div>
                 )
               ) : (
                 isServicesOpen && (
-                  <div 
+                  <div
                     className={`${styles.dropdownMenu}`}
                     onMouseEnter={() => {
                       setIsServicesOpen(true);
@@ -584,22 +573,12 @@ export default function Header() {
                       const timer = setTimeout(() => setIsServicesOpen(false), 150);
                       setCloseDropdownTimer(timer);
                     }}
-                    style={{ width: "800px", maxWidth: "90vw", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}
+                    style={{ minWidth: "200px", maxWidth: "90vw", display: "block", padding: "0.5rem 1rem" }}
                   >
                     <div className={styles.dropdownSection}>
-                      <div className={styles.dropdownSectionTitle}>Online Services</div>
                       <div className={styles.servicesList}>
-                        {onlineServices.map(service => (
-                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => setIsServicesOpen(false)}>{service.toLowerCase()}</Link>
-                        ))}
-                      </div>
-                    </div>
-                    <div className={styles.dropdownSection}>
-                      <div className={styles.dropdownSectionTitle}>Offline Services</div>
-                      <div className={styles.servicesList}>
-                        {offlineServices.map(service => (
-                          <Link key={service} href={getServiceUrl(service)} className={styles.dropdownItem} style={{ textTransform: 'capitalize' }} onClick={() => setIsServicesOpen(false)}>{service.toLowerCase()}</Link>
-                        ))}
+                        <Link href="/services/online" className={styles.dropdownItem} onClick={() => setIsServicesOpen(false)}>Online</Link>
+                        <Link href="/services/offline" className={styles.dropdownItem} onClick={() => setIsServicesOpen(false)}>Offline</Link>
                       </div>
                     </div>
                   </div>
