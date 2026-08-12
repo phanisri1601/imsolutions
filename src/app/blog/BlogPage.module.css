@@ -269,8 +269,11 @@
 .editorialMasthead {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
+  gap: 0.25rem;
   margin: 0 clamp(0.75rem, 1.4vw, 1.25rem) 1.5rem;
   color: rgba(26, 26, 26, 0.65);
   font-size: 0.82rem;

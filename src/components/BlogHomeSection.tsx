@@ -23,7 +23,10 @@ export default function BlogHomeSection() {
 
     return (
         <section className={styles.section}>
-            <img src="/Blog-Home.png" alt="IM Solutions blog  data and insights" className={styles.image} />
+            <picture className={styles.imageWrap}>
+                <source media="(max-width: 768px)" srcSet="/Blog%20home%20banner%20mobile.png" />
+                <img src="/Blog-Home.png" alt="IM Solutions blog data and insights" className={styles.image} />
+            </picture>
 
             <motion.div
                 className={styles.content}
@@ -53,6 +56,7 @@ export default function BlogHomeSection() {
 
                 <motion.div variants={fadeUp}>
                     <Link href="/blog" className={styles.ctaButton} aria-label="Read the IM Solutions blog">
+                        <span>Read Blog</span>
                         <FiArrowRight aria-hidden="true" />
                     </Link>
                 </motion.div>

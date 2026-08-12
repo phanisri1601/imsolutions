@@ -11,7 +11,12 @@ function getClientLogoPaths() {
     return fs
         .readdirSync(clientsDir)
         .filter((file) => allowedExt.has(path.extname(file).toLowerCase()))
-        .map((file) => `/clients/${file}`);
+        .map((file) => `/clients/${file}`)
+        .sort((a, b) => {
+            const nameA = formatClientName(a, 0).toLowerCase();
+            const nameB = formatClientName(b, 0).toLowerCase();
+            return nameA.localeCompare(nameB, undefined, { numeric: true });
+        });
 }
 
 function formatClientName(clientPath: string, fallbackIndex: number) {
@@ -36,7 +41,7 @@ function formatClientName(clientPath: string, fallbackIndex: number) {
 
 export default function Clients() {
     const clients = getClientLogoPaths();
-    const visibleClients = clients;
+    const visibleClients = clients.slice(0, 10);
     const fallbackClients =
         visibleClients.length > 0
             ? visibleClients

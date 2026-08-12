@@ -121,16 +121,16 @@ const onlineStackingCards = [
       'Build full-funnel digital campaigns that drive awareness, engagement, and measurable growth across Bangalore and beyond.',
     tag: 'Digital',
     number: 1,
-    image: popularImage('digital services.png'),
+    image: '/new-online-services/Digital Marketing Service.png',
   },
   {
     title: 'Search Engine Optimization',
     slug: 'seo',
     description:
-      'Improve organic visibility with data-led SEOtechnical fixes, content strategy, and rankings that bring qualified traffic.',
+      'Improve organic visibility with data-led SEO technical fixes, content strategy, and rankings that bring qualified traffic.',
     tag: 'SEO',
     number: 2,
-    image: popularImage('Search Engine Optimization.png'),
+    image: '/new-online-services/Search Engine Optimization.jpeg',
   },
   {
     title: 'Search Engine Marketing',
@@ -139,7 +139,7 @@ const onlineStackingCards = [
       'Capture high-intent demand with targeted paid search campaigns optimized for leads, sales, and strong ROI.',
     tag: 'Paid Search',
     number: 3,
-    image: popularImage('Search Engine Marketing.png'),
+    image: '/new-online-services/Search Engine Marketing.png',
   },
   {
     title: 'Online Reputation Management',
@@ -148,7 +148,7 @@ const onlineStackingCards = [
       'Protect and strengthen your brand online with proactive monitoring, reviews management, and trust-building content.',
     tag: 'ORM',
     number: 4,
-    image: popularImage('Online Reputation Management.png'),
+    image: '/new-online-services/Online Reputation Management.png',
   },
 ];
 

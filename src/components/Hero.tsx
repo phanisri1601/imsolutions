@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import styles from './Hero.module.css';
 
 const heroBanner = encodeURI('/Home Page Banner.png');
+const heroMobileBanner = encodeURI('/HOMEBanner mobile.png');
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 32 },
@@ -51,9 +52,16 @@ export default function Hero() {
   ];
 
   return (
-    <section className={styles.hero} style={{ backgroundImage: `url(${heroBanner})` }}>
+    <section 
+      className={styles.hero} 
+      style={{ 
+        '--hero-bg': `url("${heroBanner}")`,
+        '--hero-bg-mobile': `url("${heroMobileBanner}")`
+      } as React.CSSProperties}
+    >
       {/* ── Background SVG Hotspots ── */}
       <svg 
+        className={styles.heroHotspots}
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 1 }} 
         viewBox="0 0 1600 974" 
         preserveAspectRatio="xMaxYMid slice" 

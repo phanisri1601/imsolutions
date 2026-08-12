@@ -4,11 +4,12 @@
 }
 
 .subtitle {
-    text-align: left;
+    text-align: center;
     max-width: 700px;
-    margin: -2rem auto 3rem;
+    margin: 0.5rem auto 3rem;
     font-size: 1.1rem;
     color: var(--color-text-secondary);
+    line-height: 1.6;
 }
 
 .sectionHeading {
@@ -178,7 +179,7 @@
 
 @media (max-width: 768px) {
     .services {
-        padding: 2rem 0;
+        padding: 3rem 0;
     }
 
     .sectionHeading {
@@ -188,7 +189,8 @@
 
     .subtitle {
         font-size: 0.95rem;
-        margin-bottom: 2rem;
+        text-align: center;
+        margin: 0.5rem auto 2rem;
     }
 
     .servicesWrapper {
@@ -231,7 +233,7 @@
 
 @media (max-width: 480px) {
     .services {
-        padding: 1.5rem 0;
+        padding: 2.5rem 0;
     }
 
     .sectionHeading {

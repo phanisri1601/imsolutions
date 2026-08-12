@@ -42,16 +42,16 @@ const stats = [
 ];
 
 const partnerLogos = [
-  "prestigegroup.png",
-  "kotak.png",
-  "tatahousing.png",
+  "adithya.png",
   "brigade.png",
-  "sjr.png",
-  "houseofhiranandani.png",
-  "lakmesalon.png",
   "caratlane.png",
+  "DTDS.png",
+  "evershine.png",
+  "gcorp.png",
   "homelane.png",
-  "RMZcorp.png",
+  "indinmony.png",
+  "gap.png",
+  "kotak.png"
 ];
 
 export default function ClientsShowcase() {

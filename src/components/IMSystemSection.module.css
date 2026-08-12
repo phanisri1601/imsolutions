@@ -5,7 +5,7 @@
    (same Georgia treatment as the cube hero).
    ================================================================ */
 .section {
-    padding: var(--section-padding-y) 0;
+    padding: 1.5rem 0;
     background: #F8F4F0;
 }
 
@@ -18,7 +18,7 @@
 /* ── Header  system overview ── */
 .header {
     max-width: 680px;
-    margin: 0 auto 3.25rem;
+    margin: 0 auto 2.25rem;
     text-align: center;
 }
 

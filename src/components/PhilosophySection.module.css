@@ -5,7 +5,7 @@
    ================================================================ */
 .pinWrapper {
     position: relative;
-    height: 250vh;
+    height: 230vh;
     background: #F8F4F0;
 }
 
@@ -136,7 +136,7 @@
 
 @media (max-width: 900px) {
     .pinWrapper {
-        height: 230vh;
+        height: 210vh;
     }
 
     .container {
@@ -162,11 +162,16 @@
     .paragraph {
         font-size: clamp(0.88rem, 2.6vw, 1rem);
     }
+
+    .stickyInner {
+        padding-top: 1rem;
+        justify-content: flex-start;
+    }
 }
 
 @media (max-width: 640px) {
     .pinWrapper {
-        height: 210vh;
+        height: 180vh;
     }
 
     .container {
@@ -174,7 +179,8 @@
     }
 
     .stickyInner {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
+        justify-content: flex-start;
     }
 
     .heading {

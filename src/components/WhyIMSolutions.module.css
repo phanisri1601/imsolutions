@@ -5,6 +5,7 @@
    ================================================================ */
 .section {
     padding: var(--section-padding-y) 0;
+    padding-bottom: clamp(3.5rem, 6vw, 5rem);
     background: #F8F4F0;
 }
 
