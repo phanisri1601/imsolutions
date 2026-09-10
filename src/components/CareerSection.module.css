@@ -148,14 +148,33 @@
 
 @media (max-width: 768px) {
     .section {
-        min-height: 100vh;
-        min-height: 100svh;
-        align-items: center;
+        display: block;
+        min-height: 0;
+        padding: 0 0 3rem;
+        background: #F8F4F0;
+    }
+
+    .imageWrap {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+    }
+
+    .image {
+        /* Show only the right portion of the frame (arch + navy panel + plant);
+           the left side of the source photo is mostly empty wall. */
+        object-fit: cover;
+        object-position: 82% center;
     }
 
     .content {
-        max-width: clamp(230px, 42vw, 300px);
-        margin: calc(var(--header-height, 72px) + 1.2rem) 0 2rem clamp(2.5rem, 13vw, 4rem);
+        position: static;
+        max-width: 100%;
+        margin: 0;
+        padding: 2rem 1.5rem 0;
+        align-items: flex-start;
     }
 
     .brand {
@@ -209,8 +228,9 @@
 
 @media (max-width: 480px) {
     .content {
-        max-width: clamp(210px, 44vw, 270px);
-        margin: calc(var(--header-height, 72px) + 0.8rem) 0 2rem clamp(2.2rem, 12vw, 3.4rem);
+        max-width: 100%;
+        margin: 0;
+        padding: 1.75rem 1.25rem 0;
     }
 
     .title {

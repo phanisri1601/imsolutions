@@ -113,11 +113,12 @@
         min-height: 100vh;
         min-height: 100svh;
         align-items: center;
+        padding-top: var(--header-height, 68px);
     }
 
     .content {
-        max-width: clamp(230px, 42vw, 300px);
-        margin: calc(var(--header-height, 72px) + 1.2rem) 0 2rem clamp(2.5rem, 13vw, 4rem);
+        max-width: min(60vw, 300px);
+        margin: 0 0 0 clamp(1.5rem, 8vw, 3rem);
     }
 
     .eyebrow {
@@ -152,8 +153,8 @@
 
 @media (max-width: 480px) {
     .content {
-        max-width: clamp(210px, 44vw, 270px);
-        margin: calc(var(--header-height, 72px) + 0.8rem) 0 2rem clamp(2.2rem, 12vw, 3.4rem);
+        max-width: min(62vw, 270px);
+        margin: 0 0 0 clamp(1.25rem, 7vw, 2.4rem);
     }
 
     .title {

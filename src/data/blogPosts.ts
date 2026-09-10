@@ -25,11 +25,21 @@ const blogggImageAliases: Record<string, string> = {
     "How advertising in tech parks is changing business.png",
   "top image optimization hacks that increases conversions on ecommerce site":
     "TOP IMAGE OPTIMIZATION HACKS THAT INCREASES.webp",
+  "top seo trends for 2026":
+    "Top SEO Trends 2026 What Businesses Need to Prepare For.png",
+  "wordpress vs webflow vs custom code":
+    "WordPress vs Webflow vs Custom Code What's Right for Startups.png",
+  "top 7 orm strategies that actually work in 2025":
+    "Top 7 ORM Strategies That Actually Work in 2025 (For Global Brands).png",
+  "google marketing live 2026":
+    "Google Marketing Live 2026 The Definitive Guide to AI-Powered Search, Agentic Commerce, and Ask Advisor.png",
+  "landing page successful campaign":
+    "Importance of Landing Page for Successful Campaign.png",
 };
 
 const blogggImageFiles = [
-  " 3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL .png",
-  " HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR? .png",
+  "3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL .png",
+  "HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR.png",
   "10 Social Media 2023 Trends for a Successful Social Media Strategy.png",
   "AN EFFORT TO DEBUNK COMMON WEB DESIGN MYTHS.png",
   "Building Bridges, Not Just Links The Emotional Blueprint of Digital Success.png",
@@ -117,291 +127,26 @@ export const blogPosts: BlogPost[] = [
   {
     id: 52,
     title: "Top SEO Trends 2026: What Businesses Need to Prepare For",
-    excerpt:
-      "Search behavior is evolving faster than ever. AI-driven experiences, voice search, visual discovery, and smarter algorithms are changing how users interact with search engines. For businesses aiming to stay visible online, understanding the Top SEO Trends 2026 is no longer optional  it's essential. Whether you're a startup, local business, or enterprise brand, adapting your SEO strategy early can help you maintain rankings, traffic, and conversions in an increasingly competitive digital landscape.",
+    excerpt: "Explore the top SEO trends for 2026 and learn how a leading SEO agency in Bangalore helps brands grow with smart, results-focused strategies.",
     image: blogImage("Top SEO Trends for 2026.png", "/bloggg"),
     date: "May 2026",
     author: "IM Solutions",
     slug: "top-seo-trends-2026-what-businesses-need-to-prepare-for",
+    externalUrl: "https://www.imsolutions.co/top-seo-trends-for-2026",
     page: 1,
     readingTime: "12 min read",
     tags: ["SEO", "AI Search", "2026", "Google"],
-    sections: [
-      {
-        heading: "1. AI-Powered Search Will Dominate Search Results",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Search engines are becoming more conversational and predictive. Google's AI-driven search experiences are now capable of summarizing answers directly on the results page, reducing traditional clicks.",
-          },
-          {
-            type: "paragraph",
-            text: "To remain competitive in 2026:",
-          },
-          {
-            type: "list",
-            items: [
-              "Create experience-driven content",
-              "Focus on topical authority instead of keyword stuffing",
-              "Optimize for conversational queries",
-              "Structure content clearly with headings and FAQs",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "Businesses working with an experienced SEO agency in Bangalore can better adapt their content strategies for these AI-first search experiences.",
-          },
-        ],
-      },
-      {
-        heading: "2. Search Generative Experience (SGE) Will Reshape SEO",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Google's Search Generative Experience is transforming how users consume information. Instead of browsing multiple websites, users are often shown AI-generated summaries instantly.",
-          },
-          {
-            type: "paragraph",
-            text: "To improve visibility inside AI summaries:",
-          },
-          {
-            type: "list",
-            items: [
-              "Use schema markup",
-              "Add concise answers near the top of content",
-              "Build trustworthy, expert-backed articles",
-              "Include statistics and credible references",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "Brands that publish genuinely useful content are more likely to appear in these AI-generated responses.",
-          },
-        ],
-      },
-      {
-        heading: "3. Zero-Click Searches Will Continue Growing",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Featured snippets, AI summaries, maps, knowledge panels, and quick answers are reducing the need for users to click websites directly. That means SEO success is no longer measured only by clicks  visibility matters too.",
-          },
-          {
-            type: "paragraph",
-            text: "To adapt:",
-          },
-          {
-            type: "list",
-            items: [
-              "Target long-tail keywords",
-              "Use FAQ sections",
-              "Optimize for featured snippets",
-              "Add tables and structured formatting",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "A reliable SEO Service in Bangalore can help businesses optimize content specifically for modern SERP layouts.",
-          },
-        ],
-      },
-      {
-        heading: "4. Voice Search Optimization Will Become Essential",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Voice search continues to rise with mobile assistants, smart speakers, and in-car systems. People now search using natural language such as \"What are the latest SEO trends in 2026?\" or \"Which SEO company is best for local businesses?\"",
-          },
-          {
-            type: "paragraph",
-            text: "To optimize for voice search:",
-          },
-          {
-            type: "list",
-            items: [
-              "Use conversational content",
-              "Answer questions directly",
-              "Improve mobile page speed",
-              "Focus on local SEO queries",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "Voice-friendly content tends to perform better in AI-generated search environments as well.",
-          },
-        ],
-      },
-      {
-        heading: "5. E-E-A-T Signals Will Matter More Than Ever",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Google continues prioritizing content that demonstrates Experience, Expertise, Authoritativeness, and Trustworthiness. Thin AI-generated articles without originality will struggle to rank.",
-          },
-          {
-            type: "paragraph",
-            text: "To strengthen E-E-A-T:",
-          },
-          {
-            type: "list",
-            items: [
-              "Add author bios",
-              "Publish original insights",
-              "Include case studies and examples",
-              "Keep content updated regularly",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "Partnering with the best SEO company in Bangalore can help businesses build long-term authority through strategic content planning.",
-          },
-        ],
-      },
-      {
-        heading: "6. Mobile Experience and Core Web Vitals Still Matter",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Even with AI changing search, technical SEO remains critical. Google still prioritizes websites that are fast-loading, mobile-friendly, stable during loading, and easy to navigate.",
-          },
-          {
-            type: "paragraph",
-            text: "Important performance areas include:",
-          },
-          {
-            type: "list",
-            items: [
-              "Largest Contentful Paint (LCP)",
-              "Interaction to Next Paint (INP)",
-              "Cumulative Layout Shift (CLS)",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "A poor mobile experience can significantly affect rankings and conversions.",
-          },
-        ],
-      },
-      {
-        heading: "7. Visual Search and Video SEO Will Expand",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Users increasingly search using images and videos instead of text alone. Platforms like Google Lens, YouTube, Pinterest, and Instagram Search are influencing SEO strategies in 2026.",
-          },
-          {
-            type: "paragraph",
-            text: "Businesses should:",
-          },
-          {
-            type: "list",
-            items: [
-              "Optimize image alt text",
-              "Use descriptive filenames",
-              "Add video transcripts",
-              "Create short-form educational videos",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "Multimedia content improves engagement and supports stronger search visibility.",
-          },
-        ],
-      },
-      {
-        heading: "8. Local SEO Will Become Hyper-Personalized",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Search engines now prioritize highly personalized local results based on user location, search history, device behavior, and real-time intent.",
-          },
-          {
-            type: "paragraph",
-            text: "For local businesses:",
-          },
-          {
-            type: "list",
-            items: [
-              "Keep Google Business Profile updated",
-              "Collect customer reviews",
-              "Use localized landing pages",
-              "Add accurate business schema",
-            ],
-          },
-          {
-            type: "paragraph",
-            text: "An experienced SEO agency in Bangalore understands how to improve local visibility for businesses targeting regional audiences.",
-          },
-        ],
-      },
-      {
-        heading: "Conclusion",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "The Top SEO Trends 2026 clearly show that SEO is becoming more intelligent, user-focused, and AI-driven. Businesses that invest early in quality content, technical performance, and search experience optimization will have a major competitive advantage.",
-          },
-          {
-            type: "paragraph",
-            text: "The future of SEO is no longer just about rankings  it's about visibility, authority, and delivering value across multiple search experiences. Working with a trusted SEO Service in Bangalore can help brands adapt faster, improve organic growth, and stay aligned with evolving search engine expectations.",
-          },
-        ],
-      },
-    ],
-    faqs: [
-      {
-        q: "What are the top SEO trends in 2026?",
-        a: "AI-powered search, voice search optimization, SGE, zero-click searches, and E-E-A-T are among the biggest SEO trends in 2026.",
-      },
-      {
-        q: "Why is AI changing SEO strategies?",
-        a: "AI changes how search engines understand user intent and display answers directly on search result pages.",
-      },
-      {
-        q: "What is Search Generative Experience (SGE)?",
-        a: "SGE is Google's AI-powered search feature that generates summarized answers directly within search results.",
-      },
-      {
-        q: "How important is voice search optimization?",
-        a: "Voice search is becoming increasingly important because users now search using conversational phrases on smart devices.",
-      },
-      {
-        q: "Does technical SEO still matter in 2026?",
-        a: "Yes. Website speed, mobile usability, and Core Web Vitals remain critical ranking factors.",
-      },
-      {
-        q: "What is E-E-A-T in SEO?",
-        a: "E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness.",
-      },
-      {
-        q: "How can local businesses improve SEO rankings?",
-        a: "Local businesses can improve rankings through optimized Google Business Profiles, reviews, local content, and schema markup.",
-      },
-      {
-        q: "Why are zero-click searches increasing?",
-        a: "Google increasingly provides direct answers through featured snippets, AI summaries, and knowledge panels.",
-      },
-      {
-        q: "How does video content help SEO?",
-        a: "Video improves engagement, increases visibility in search results, and supports multimedia search optimization.",
-      },
-      {
-        q: "Why hire an SEO agency in Bangalore?",
-        a: "A professional SEO agency helps businesses adapt to evolving search algorithms, improve rankings, and build sustainable organic growth.",
-      },
-    ],
   },
   {
     id: 1,
     title:
       "Google Marketing Live 2026: The Definitive Guide to AI-Powered Search, Agentic Commerce, and Ask Advisor",
-    excerpt:
-      "At Google Marketing Live 2026, Google unveiled how businesses will advertise, optimize, and connect with customers in an AI-first ecosystemfrom AI-generated campaigns to conversational commerce and predictive audiences.",
+    excerpt: "Explore key insights from Google Marketing Live 2026, including AI-powered search, Gemini ads, YouTube innovations, and future digital marketing trends.",
     image: blogImage("Google Marketing Live 2026 .png"),
     date: "November 2025",
     author: "IM Solutions",
-    slug: "top-seo-trends-for-2026",
-    externalUrl: "https://www.imsolutions.co/top-seo-trends-for-2026",
+    slug: "google-marketing-live-2026-insight",
+    externalUrl: "https://www.imsolutions.co/google-marketing-live-2026-insight",
     page: 1,
     readingTime: "6 min read",
     tags: ["SEO", "Google", "Content", "2026"],
@@ -431,7 +176,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 2,
     title: "Modern SEO strategies for AI-powered search",
-    excerpt: "The world of SEO is evolving faster than ever, and AI-powered search engines are at the forefront of this transformation. Learn how to optimize for the future of search.",
+    excerpt: "Discover actionable SEO strategies tailored for AI-driven search engines. Learn how modern techniques can boost visibility, engagement, and rankings for your Bangalore business.",
     image: blogImage("Modern SEO strategies for AI-powered search.png"),
     date: "October 2025",
     author: "IM Solutions",
@@ -466,7 +211,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 3,
     title: "How AI Is Transforming Website Design: Future-Proofing Your Brand",
-    excerpt: "Artificial Intelligence isn't coming to web design. It's already hereredefining how we create, interact, and evolve online. Discover the impact on modern design.",
+    excerpt: "Discover how AI transforms website design with IM Solutions, a top web development company in Bangalore. Build personalized future-proof websites.",
     image: blogImage("How AI Is Transforming Website Design.png"),
     date: "September 2025",
     author: "IM Solutions",
@@ -501,7 +246,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 4,
     title: "WordPress vs Webflow vs Custom Code: What's Right for Startups?",
-    excerpt: "Choosing the right platform to build your website isn't just a technical decisionit's a strategic one. Whether you're a startup or an established business, we break down the pros and cons.",
+    excerpt: "WordPress vs Webflow vs Custom Code: What’s Right for Startups?",
     image: blogImage("WordPress vs Webflow vs Custom Code.png", "/bloggg"),
     date: "August 2025",
     author: "IM Solutions",
@@ -536,7 +281,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 5,
     title: "Top 7 ORM Strategies That Actually Work in 2025 (For Global Brands)",
-    excerpt: "Online reputation is filtered through search engines, AI assistants, reviews, and Reddit threads. What shows upand how it shows upmatters. Here are the strategies that drive real results.",
+    excerpt: "Top 7 ORM Strategies That Actually Work in 2025 (For Global Brands)",
     image: blogImage("Top 7 ORM Strategies That Actually Work in 2025.png", "/bloggg"),
     date: "July 2025",
     author: "IM Solutions",
@@ -571,7 +316,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 6,
     title: "How to Choose the Best Website Designing Agency: A 2025 Guide",
-    excerpt: "In 2025, your website isn't just a digital spaceit's your brand's first handshake. The choice of a website design agency can make or break your digital presence.",
+    excerpt: "How to Choose the Best Website Designing Agency: A 2025 Guide",
     image: blogImage("How to Choose the Best Website Designing Agency A 2025 Guide.png", "/bloggg"),
     date: "June 2025",
     author: "IM Solutions",
@@ -606,7 +351,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 7,
     title: "Online Reputation Management in Bangalore: Why Your Brand Needs It Now",
-    excerpt: "In a world of open platforms and instant feedback, reputation isn't optionalit's your currency. At IM Solutions, we help brands build and protect their digital reputation.",
+    excerpt: "Elevate your brand with expert online reputation management in Bangalore. IM Solutions, a top ORM agency ensures trust & visibility in digital landscape.",
     image: blogImage("Online Reputation Management in Bangalore Why Your Brand Needs It Now.png", "/bloggg"),
     date: "May 2025",
     author: "IM Solutions",
@@ -641,7 +386,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 8,
     title: "Top 10 Website Design Trends Dominating in 2025",
-    excerpt: "Design isn't just about how it looks. It's about how it feelshow seamlessly it guides, informs, and inspires. In 2025, these trends are reshaping digital experiences.",
+    excerpt: "Top 10 Website Design Trends Dominating in 2025",
     image: blogImage("Top 10 Website Design Trends Dominating in 2025.png", "/bloggg"),
     date: "April 2025",
     author: "IM Solutions",
@@ -676,7 +421,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 9,
     title: "How Performance Marketing Can Double Your ROI in 2025",
-    excerpt: "In today's digital-first landscape, businesses can no longer afford to run ads that simply \"look good\"they need campaigns that deliver measurable results and maximize return on investment.",
+    excerpt: "In 2025, businesses don't just need campaigns that look good—they need campaigns that deliver measurable results and maximize return on investment.",
     image: blogImage("How Performance Marketing Can Double Your ROI in 2025.png"),
     date: "March 2025",
     author: "IM Solutions",
@@ -711,7 +456,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 10,
     title: "Video Shoots That Spark Cravings: The Recipe for Restaurant Marketing Success!",
-    excerpt: "In the digital-first world, food is no longer just about taste; it's about visual storytelling that ignites cravings. Learn the secrets of successful restaurant video marketing.",
+    excerpt: "Video Shoots That Spark Cravings: The Recipe for Restaurant Marketing Success!",
     image: blogImage("Video Shoots That Spark Cravings The Recipe for Restaurant Marketing.png", "/bloggg"),
     date: "February 2025",
     author: "IM Solutions",
@@ -746,7 +491,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 11,
     title: "Revolutionizing Content Creation: How AI is Changing the Game",
-    excerpt: "Content creation is entering a new era, and Artificial Intelligence is at the forefront of this transformation. Discover how AI is reshaping creative workflows and marketing strategies.",
+    excerpt: "Revolutionizing Content Creation: How AI is Changing the Game",
     image: blogImage("Revolutionizing Content Creation How AI is Changing the Game.png", "/bloggg"),
     date: "January 2025",
     author: "IM Solutions",
@@ -781,7 +526,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 12,
     title: "The Power of Personalization: How to Create Hyper-Targeted Marketing Campaigns",
-    excerpt: "Imagine a world where every message, every ad, and every touchpoint feels tailor-made just for you. This isn't the futureit's happening now with modern personalization strategies.",
+    excerpt: "The Power of Personalization: How to Create Hyper-Targeted Marketing Campaigns",
     image: blogImage("The Power of Personalization How to Create Hyper-Targeted Marketing Campaigns.png"),
     date: "December 2024",
     author: "IM Solutions",
@@ -816,7 +561,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 13,
     title: "Building Bridges, Not Just Links: The Emotional Blueprint of Digital Success",
-    excerpt: "Digital success isn't just about technical SEO and backlinksit's about building genuine connections that resonate with your audience and create lasting brand relationships.",
+    excerpt: "Explore how emotional connections in digital marketing go beyond just links. Learn strategies to create meaningful engagements that boost your brand’s success.",
     image: blogImage("Building Bridges, Not Just Links The Emotional Blueprint of Digital Success.png", "/bloggg"),
     date: "November 2024",
     author: "IM Solutions",
@@ -851,7 +596,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 14,
     title: "The Heartfelt Journey of Brands in the Digital Sphere",
-    excerpt: "Brands today navigate a complex digital landscape where authenticity and emotional connection drive customer loyalty and business growth.",
+    excerpt: "Explore innovative strategies that build emotional connections, enhance brand identity, and drive success in the digital space with cutting-edge solutions.",
     image: blogImage("The Heartfelt Journey of Brands in the Digital Sphere.png", "/bloggg"),
     date: "October 2024",
     author: "IM Solutions",
@@ -886,7 +631,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 15,
     title: "Revolutionize Your Brand: Unleashing the Power of Digital Marketing Magic",
-    excerpt: "Transform your brand with cutting-edge digital marketing strategies that captivate audiences, drive engagement, and deliver measurable business results.",
+    excerpt: "Discover the immense power of digital marketing and Revolutionize Your Brand. Unleash your potential for success with Top Digital Marketing Agency in Bangalore",
     image: blogImage("Revolutionize Your Brand Unleashing the Power of Digital Marketing Magic.webp", "/bloggg"),
     date: "September 2024",
     author: "IM Solutions",
@@ -921,7 +666,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 16,
     title: "10 Social Media 2023 Trends for a Successful Social Media Strategy",
-    excerpt: "Stay ahead of the curve with these essential social media trends that defined 2023 and continue to influence successful digital marketing strategies.",
+    excerpt: "Social Media 2023 Trends is not just about selfies and recent travel destinations, but a forum for marketers to demonstrate the superiority of their products.",
     image: blogImage("10 Social Media 2023 Trends for a Successful Social Media Strategy.png", "/bloggg"),
     date: "August 2024",
     author: "IM Solutions",
@@ -956,7 +701,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 17,
     title: "Importance of Landing Page for Successful Campaign",
-    excerpt: "Your landing page is the critical bridge between ad clicks and conversions. Learn how to create high-performing landing pages that drive results.",
+    excerpt: "Landing pages are considered the initial point of contact between a website & visitors. Run A/B testing improves the click-through rate, extracting quality leads",
     image: blogImage("landing-page-successful-campaign.webp"),
     date: "July 2024",
     author: "IM Solutions",
@@ -991,7 +736,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 18,
     title: "List of Google Algorithm updates in 2021",
-    excerpt: "Understanding Google's algorithm updates is crucial for maintaining search visibility. Here's a comprehensive list of the major updates that shaped SEO in 2021.",
+    excerpt: "Google updates its search algorithms multiple times last year. Here are the most impactful list of Google Search updates from 2021.",
     image: blogImage("List of Google Algorithm updates in 2021.png", "/bloggg"),
     date: "June 2024",
     author: "IM Solutions",
@@ -1026,7 +771,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 19,
     title: "Do's and don't of creative design in business",
-    excerpt: "Creative design can make or break your brand perception. Learn the essential do's and don'ts that separate effective design from visual noise.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Do's and don't of creative design in business | IM Solutions is on the right track.",
     image: blogImage("Do's and don't of creative design in business.png", "/bloggg"),
     date: "May 2024",
     author: "IM Solutions",
@@ -1061,7 +806,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 20,
     title: "Why Good Creative Design Is Important for your business?",
-    excerpt: "Good creative design isn't just about aestheticsit's a strategic business asset that drives recognition, trust, and ultimately, revenue.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Why Good Creative Design Is Important for your Business is on the right track.",
     image: blogImage("Why Good Creative Design Is Important for your business.png"),
     date: "April 2024",
     author: "IM Solutions",
@@ -1096,7 +841,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 21,
     title: "How to market your brand to residential societies in Bangalore?",
-    excerpt: "Reach thousands of potential customers in Bangalore's residential societies with targeted marketing strategies that drive local engagement and conversions.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Market your brand to residential societies in Bangalore is on the right track.",
     image: blogImage("How to market your brand to residential societies in Bangalore.png"),
     date: "March 2024",
     author: "IM Solutions",
@@ -1131,7 +876,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 22,
     title: "What is RWA Activation and why your business needs it?",
-    excerpt: "Residential Welfare Association (RWA) activation is a powerful marketing strategy that connects your brand directly with targeted residential communities.",
+    excerpt: "Read the importance of creating a visual identity with a list of the What is RWA Activation and why your business needs it is on the right track.",
     image: blogImage("What is RWA Activation and why your business needs it.png"),
     date: "February 2024",
     author: "IM Solutions",
@@ -1166,7 +911,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 23,
     title: "Why should be your Website design and SEO agency same?",
-    excerpt: "You launched a website. You want to make it run without a hitch. To do this, you have put blood and sweat into your website so that your business has the best online identity possible..",
+    excerpt: "Read the importance of creating a visual identity with a list of the Why should be your Website design and SEO agency same ? is on the right track.",
     image: blogImage("Why should be your Website design and SEO agency same.png"),
     date: "",
     author: "IM Solutions",
@@ -1200,7 +945,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 24,
     title: "How advertising in tech parks changes business?",
-    excerpt: "India is a growing economy. Globalization has been a boon for India and has revolutionized the Information Technology sector in India. Due to India's potential of human resources and the improved infrastructure..",
+    excerpt: "Here are important reasons to consider advertising in technology parks. Brand building, publicity to a whole new level. IM Solutions Digital Marketing Services.",
     image: blogImage("How advertising in tech parks changes business.png"),
     date: "",
     author: "IM Solutions",
@@ -1234,7 +979,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 25,
     title: "How advertising in tech parks is changing business?",
-    excerpt: "Technology parks, sometimes also known as science parks or technopoles are open spaces for business incubations and for Startup Company that are affiliated with a business project or a university..",
+    excerpt: "Read the importance of creating a visual identity with a list of the How advertising in tech parks changes business? | IM Solutions is on the right track.",
     image: blogImage("How advertising in tech parks changes business.png"),
     date: "",
     author: "IM Solutions",
@@ -1268,7 +1013,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 26,
     title: "How to estimate the price of website design?",
-    excerpt: "The cost of website or web portal is not fixed. It will depend on various factors that the website development company takes into consideration before finally giving the clients an actual quotation..",
+    excerpt: "Read the importance of creating a visual identity with a list of the How to estimate the price of website design? | IM Solutions is on the right track.",
     image: blogImage("How to estimate the price of website design.png"),
     date: "",
     author: "IM Solutions",
@@ -1302,7 +1047,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 27,
     title: "OLD SCHOOL IS THE NEW COOL for hyper-local marketing!",
-    excerpt: "A beam of light on how RWA is still an effective platform to advertise and reach your target audience.",
+    excerpt: "Read the importance of creating a visual identity with a list of the OLD SCHOOL IS THE NEW COOL for hyper-local marketing is on the right track.",
     image: blogImage("OLD SCHOOL IS THE NEW COOL for hyper-local marketing!.png", "/bloggg"),
     date: "",
     author: "IM Solutions",
@@ -1336,7 +1081,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 28,
     title: "Why Web Pages Got Deindexed from Google",
-    excerpt: "Recently there was news that Google is working hard to fix a technical issue that resulted in de-indexing of web pages from search results. Let us go through..",
+    excerpt: "Read the importance of creating a visual identity with a list of the Why Web Pages Got Deindexed from Google is on the right track. Digital Marketing Services",
     image: blogImage("Why Web Pages Got Deindexed from Google.png"),
     date: "",
     author: "IM Solutions",
@@ -1370,7 +1115,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 29,
     title: "GOOGLE AMP STORIES ITS IMPORTANCE FOR YOUR BUSINESS",
-    excerpt: "What are Google AMP stories and why businesses should pay attention to creating such stories? Let us delve into the details in the following sections.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Google AMP Stories Its Importance for Your Business is on the right track.",
     image: blogImage("GOOGLE AMP STORIES ITS IMPORTANCE FOR YOUR BUSINESS.png"),
     date: "",
     author: "IM Solutions",
@@ -1404,7 +1149,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 30,
     title: "FACEBOOK TOOLS THAT MARKETERS UTILIZES TO IMPROVE ENGAGEMENT",
-    excerpt: "There are many hidden tools in Facebook which we are not aware of and when utilized properly can help improve your marketing efforts and provide your business greater..",
+    excerpt: "Read the importance of creating a visual identity with a list of the Facebook Tools That Marketers Utilizes to Improve Engagement is on the right track.",
     image: blogImage("FACEBOOK TOOLS THAT MARKETERS UTILIZES TO IMPROVE ENGAGEMENT.png", "/bloggg"),
     date: "",
     author: "IM Solutions",
@@ -1438,7 +1183,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 31,
     title: "TOP IMAGE OPTIMIZATION HACKS THAT INCREASES CONVERSIONS ON E-COMMERCE SITE",
-    excerpt: "If you want to make your e-commerce portal successful then first thing you will have to do is optimize the images. On e-commerce sites, images are the main reason behind higher loading time..",
+    excerpt: "Read the importance of creating a visual identity with a list of the Top Image Optimization Hacks | Increases Conversions is on the right track.",
     image: blogImage("TOP IMAGE OPTIMIZATION HACKS THAT INCREASES.webp", "/bloggg"),
     date: "",
     author: "IM Solutions",
@@ -1472,7 +1217,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 32,
     title: "TIPS ON HOW TO PICK THE RIGHT COLOR SCHEME FOR WEBSITE",
-    excerpt: "Research shows that almost eight-five percent of shoppers decide about buying a product based on colors. Colors play a crucial role in building brand identity..",
+    excerpt: "Read the importance of creating a visual identity with a list of the Tips on How to Pick the Right Color Scheme for Website is on the right track.",
     image: blogImage("TIPS ON HOW TO PICK THE RIGHT COLOR SCHEME FOR WEBSITE.png"),
     date: "",
     author: "IM Solutions",
@@ -1506,8 +1251,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 33,
     title: "AN EFFORT TO DEBUNK COMMON WEB DESIGN MYTHS",
-    excerpt:
-      "There are many web design myths that we aim to debunk here so that web design teams can focus on right methodologies and create designs which have the right aesthetic appeal. So, let us delve into the details in the following sections.",
+    excerpt: "Read the importance of creating a visual identity with a list of the An Effort to Debunk Common Web Design Myths is on the right track.",
     image: blogImage("AN EFFORT TO DEBUNK COMMON WEB DESIGN MYTHS.png"),
     date: "",
     author: "IM Solutions",
@@ -1537,8 +1281,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 34,
     title: "WHAT ARE THE EFFECTS OF FLORIDA 2 BROAD CORE UPDATE BY GOOGLE?",
-    excerpt:
-      "What was the Florida 2 update about and what it targeted to achieve? Let us explore answers to all these important questions in the following sections.",
+    excerpt: "Read the importance of creating a visual identity with a list of the The Effects of Florida2 Broad Core Update by Google is on the right track.",
     image: blogImage("WHAT ARE THE EFFECTS OF FLORIDA 2 BROAD CORE UPDATE BY GOOGLE.png"),
     date: "",
     author: "IM Solutions",
@@ -1568,8 +1311,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 35,
     title: "HOW TO GET THAT COVETED PLACE ON GOOGLE CAROUSEL",
-    excerpt:
-      "If someone is searching for best colleges then Google shows a carousel of scrollable photos right below the search box. When a person clicks on any of the images, it shows a search result page similar to what we get when we search directly in Google. If you are wondering how websites appear in this list then the details we will provide here will help you get an insight into the source from which Google fetches this data.",
+    excerpt: "Read the importance of creating a visual identity with a list of the How to get that coveted place on Google Carousel - IM Solutions is on the right track.",
     image: blogImage("HOW TO GET THAT COVETED PLACE ON GOOGLE CAROUSEL.png", "/bloggg"),
     date: "",
     author: "IM Solutions",
@@ -1603,8 +1345,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 36,
     title: "HOW TO RANK IN SEARCH ENGINES WITHOUT GENERATING BACKLINKS?",
-    excerpt:
-      "We all know that for proper search engine optimization (seo) it is necessary for websites to get backlinks. But, it is possible to get a site ranked without generating backlinks by utilizing a concept which is known as content or link pyramid. Let us look at what is this content or link pyramid and how to use it.",
+    excerpt: "Read the importance of creating a visual identity with a list of the How to Rank in Search Engines without Generating Backlinks is on the right track.",
     image: blogImage("HOW TO RANK IN SEARCH ENGINES WITHOUT GENERATING BACKLINKS.png"),
     date: "",
     author: "IM Solutions",
@@ -1638,8 +1379,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 37,
     title: "MISSED OPPORTUNITIES INTO BUSINESS LEADS USING FB ADS PART 2",
-    excerpt:
-      "In first part of this article we saw how Facebook provides you multiple opportunities to advertise and generate leads and exposure for your business. In this article we will continue from where we left and check some other tips on how businesses can enhance performance of their ads.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Opportunities into Business Leads using FB Ads - IM Solutions is on the right track.",
     image: blogImage("facebook-ads-business-leads.webp"),
     date: "",
     author: "IM Solutions",
@@ -1669,8 +1409,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 38,
     title: "TURNING MISSED OPPORTUNITIES INTO BUSINESS LEADS USING FB ADS",
-    excerpt:
-      "Facebook ads give you the opportunity to advertise your business in right manner and reach the right audience base. But, that becomes possible only when you effectively utilize Facebook advertising. Here, we will explore some of the opportunities advertisers miss out on and provide you valuable tips on how you can improve performance of your ads.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Turning missed opportunities into Business Leads using FB ads is on the right track.",
     image: blogImage("TURNING MISSED OPPORTUNITIES INTO BUSINESS LEADS USING FB ADS.png"),
     date: "",
     author: "IM Solutions",
@@ -1700,8 +1439,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 39,
     title: "DIFFERENT SERP FEATURES THAT YOUR WEBSITE MUST UTILIZE PART 2",
-    excerpt:
-      "In first part of this article we checked various features such as answer boxes and featured snippets and how they help in providing better search engine exposure to your site. Here, we will continue this topic and look at few of the other important features that you must implement on your website.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Different SERP Features That Your Website Must Utilize is on the right track.",
     image: blogImage("DIFFERENT SERP FEATURES THAT YOUR WEBSITE MUST UTILIZE PART 2.png"),
     date: "",
     author: "IM Solutions",
@@ -1731,7 +1469,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 40,
     title: "DIFFERENT SERP FEATURES THAT YOUR WEBSITE MUST UTILIZE PART 1",
-    excerpt: "If you want greater visibility for your website in search engine result pages (SERP) then it will be important for",
+    excerpt: "Read the importance of creating a visual identity with a list of the Different SERP Features That Your Website Must Utilize - IMS is on the right track.",
     image: blogImage("DIFFERENT SERP FEATURES THAT YOUR WEBSITE MUST UTILIZE PART 1.png"),
     date: "",
     author: "IM Solutions",
@@ -1761,8 +1499,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 41,
     title: "UTILIZING SEO AND PPC TOGETHER TO ACHIEVE MARKETING SUCCESS",
-    excerpt:
-      "In the realm of digital marketing SEO and PPC are generally considered separate things. SEO is related to organic rankings for a website while on the other hand PPC is about paid campaigns for the website. In addition, most digital marketing agencies have different teams handling SEO and PPC. However, if you are able to strategically combine strategies of SEO and PPC together, results achieved can be very impactful. Let us see how it can be possible.",
+    excerpt: "Read the importance of creating a visual identity with a list of the SEO and PPC Together to Achieve Marketing Success | IM Solutions is on the right track.",
     image: blogImage("UTILIZING SEO AND PPC TOGETHER TO ACHIEVE MARKETING SUCCESS.png"),
     date: "",
     author: "IM Solutions",
@@ -1792,7 +1529,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 42,
     title: "HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR?",
-    excerpt: "Colors play an important role in enhancing visual appearance of a product and it is the same when you are selecting colors for your logo.",
+    excerpt: "Read the importance of creating a visual identity with a list of the How a Brand Color Influences Consumer Buying Behavior? is on the right track.",
     image: blogImage("HOW A BRAND COLOR INFLUENCES CONSUMER BUYING BEHAVIOR.png"),
     date: "",
     author: "IM Solutions",
@@ -1826,8 +1563,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 43,
     title: "HOW BUSINESSES WILL ADVERTISE AFTER BBMP BAN ON BANNERS?",
-    excerpt:
-      "Recently BBMP banned all hoarding, banners, and flex from its 198 wards. Why this step was taken? What are the penalties for non-compliance? What are the alternate advertisement solutions for businesses after this ban? Let us find all the answers.",
+    excerpt: "Read the importance of creating a visual identity with a list of the How Businesses will advertise after BBMP Ban on Banners | Blog is on the right track.",
     image: blogImage("HOW BUSINESSES WILL ADVERTISE AFTER BBMP BAN ON BANNERS.jpg", "/bloggg"),
     date: "",
     author: "IM Solutions",
@@ -1857,8 +1593,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 44,
     title: "3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL",
-    excerpt:
-      "Email marketing is still relevant in this era of social media and when done in right manner, email marketing can certainly help your business deliver the right message to your audience base. As such, our aim here will be to give you an insight into how an effective email campaign can be built.",
+    excerpt: "Read the importance of creating a visual identity with a list of the 3 Steps to Make Email Marketing Campaigns Successful is on the right track.",
     image: blogImage("3 STEPS TO MAKE EMAIL MARKETING CAMPAIGNS SUCCESSFUL.png"),
     date: "",
     author: "IM Solutions",
@@ -1889,7 +1624,7 @@ export const blogPosts: BlogPost[] = [
     id: 45,
     title: "Your Go-To Partner for PPC Services in Bangalore",
     excerpt:
-      "Welcome to IM Solutions, where we specialize in driving your business growth through cutting-edge digital marketing strategies. As the best PPC company in Bangalore, we pride ourselves on delivering exceptional results that help you reach your target audience effectively. Discover how our expert PPC services can transform your business and elevate your online presence.",
+      "Read the importance of creating a visual identity with a list of the 3 Steps to Make Email Marketing Campaigns Successful is on the right track.",
     image: blogImage("Your Go-To Partner for PPC Services in Bangalore.png"),
     date: "",
     author: "IM Solutions",
@@ -1900,8 +1635,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 46,
     title: "TOP 5 WEB DESIGN TRENDS TO WATCH OUT FOR IN 2018",
-    excerpt:
-      "Want to know which design trends are popular this year? Well then, you are at the right place since in the following sections we will be looking at some of the top design trends for 2018.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Top 5 Web Design Trends to Watch Out For in 2018 - IM Solutions is on the right track.",
     image: blogImage("web-design-trends-2018.webp"),
     date: "",
     author: "IM Solutions",
@@ -1931,8 +1665,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 47,
     title: "WHY ONLINE REPUTATION MANAGEMENT IS IMPORTANT FOR BUSINESS?",
-    excerpt:
-      "Does online reputation management (ORM) mean social media monitoring or it has to do something with public relations? In reality, ORM involves a lot many other things than just media monitoring or public relations. Let us explore why ORM is required if your business wants to strengthen its online presence and reputation.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Why Online Reputation Management is Important for Business ? is on the right track.",
     image: blogImage("WHY ONLINE REPUTATION MANAGEMENT IS IMPORTANT FOR BUSINESS.png"),
     date: "",
     author: "IM Solutions",
@@ -1966,8 +1699,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 48,
     title: "GOOGLE REBRANDING OF AD PRODUCTS AND ITS EFFECTS ON BUSINESS",
-    excerpt:
-      "Google has started the process of rebranding its advertising products wherein Adwords and DoubleClick will be getting new names. The main aim of this rebranding is to streamline the offerings so that they better reflect Google’s present capabilities. Let us explore the details in the following sections.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Google Rebranding of Ad Products and its Effects on Business is on the right track.",
     image: blogImage("google-ad-products-rebranding.webp"),
     date: "",
     author: "IM Solutions",
@@ -1997,8 +1729,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 49,
     title: "ONLINE MARKETING TRENDS OF 2016",
-    excerpt:
-      "Digital marketing is a phenomenal revolution. It is a rapidly growing force in the current market scenario. As a medium of communication, digital marketing is versatile, faster, streamlined and..",
+    excerpt: "Read the importance of creating a visual identity with a list of the Online Marketing Trends of 2016 is on the right track.",
     image: blogImage("ONLINE MARKETING TRENDS OF 2016.png"),
     date: "",
     author: "IM Solutions",
@@ -2032,8 +1763,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 50,
     title: "RESHAPING ADVERTISING",
-    excerpt:
-      "In first part of this article we checked various features such as answer boxes and featured snippets and how they help in providing better search engine exposure to your site. Here, we will continue this topic and look at few of the other important features that you must implement on your website.",
+    excerpt: "Read the importance of creating a visual identity with a list of the Reshaping Advertising is on the right track.",
     image: blogImage("RESHAPING ADVERTISING.png"),
     date: "",
     author: "IM Solutions",
@@ -2065,20 +1795,5 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
-
-// Replace each post's image to use the file from `/bloggg` named after the post title.
-// This makes the site load images from `public/bloggg/<Post Title>.png` for all posts.
-for (const p of blogPosts) {
-  // Sanitize title to avoid characters that produce query strings or invalid filenames
-  const sanitized = p.title
-    .replace(/[?/#%&\\:\*<>"'`\u0000-\u001F]/g, "") // remove problematic chars
-    .replace(/\s+/g, " ")
-    .trim();
-
-  if (sanitized.length === 0) continue;
-
-  const titleFilename = `${sanitized}.png`;
-  p.image = blogImage(titleFilename, "/bloggg");
-}
 
 export default blogPosts;

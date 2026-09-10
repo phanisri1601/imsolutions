@@ -254,8 +254,9 @@
     .description {
         font-size: clamp(0.8rem, 1vw, 0.9rem);
         line-height: 1.6;
-        text-align: left;
-        text-justify: auto;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
     }
 
     .description p {

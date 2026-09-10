@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import type { BlogPost } from "../../data/blogPosts";
@@ -39,12 +38,12 @@ function PortfolioCard({ post }: CardProps) {
     <motion.article ref={ref} className={styles.portfolioCard} style={motionStyle}>
       <Link href={`/blog/${post.slug}`} className={styles.portfolioCardLink}>
         <div className={styles.portfolioImage}>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={coverImage}
             alt={post.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
             className={styles.portfolioCardImage}
+            loading="lazy"
           />
         </div>
         <div className={styles.portfolioMeta}>

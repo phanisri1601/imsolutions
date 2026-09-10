@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/data/blogPosts";
 import styles from "./BlogPost.module.css";
@@ -24,13 +23,14 @@ export default function BlogSidebarPostLink({ post, isActive, className }: Props
       aria-current={isActive ? "page" : undefined}
     >
       <div className={styles.sidebarPostThumb}>
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={coverImage}
           alt={post.title}
           width={254}
           height={143}
-          sizes="254px"
           className={styles.sidebarPostThumbImg}
+          loading="lazy"
         />
       </div>
       <span className={styles.sidebarPostDate}>{formatSidebarDate(post.date)}</span>

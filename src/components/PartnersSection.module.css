@@ -98,7 +98,20 @@
 }
 
 @media (max-width: 768px) {
+  .partnersSection {
+    padding: 3.5rem 0;
+  }
+
+  .partnersContainer {
+    padding: 0 1.5rem;
+    gap: 2rem;
+  }
+
   .partnersGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partnerLogo {
+    height: 110px;
   }
 }

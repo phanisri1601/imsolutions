@@ -533,35 +533,160 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    flex-direction: column;
-    padding-top: 6rem;
-    text-align: center;
+    display: block;
   }
-  .heroContent, .heroImageContainer {
+  .heroBannerBg {
+    height: 82vh;
+    min-height: 460px;
+    object-fit: cover;
+    object-position: 60% 82%;
+  }
+  /* Soft light scrim so the heading stays clear of the cube artwork above it */
+  .heroSection::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 52%;
+    background: linear-gradient(
+      to top,
+      rgba(244, 240, 233, 0.95) 0%,
+      rgba(244, 240, 233, 0.7) 42%,
+      rgba(244, 240, 233, 0) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+  .heroContent {
+    position: absolute;
+    top: auto;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    transform: none;
     max-width: 100%;
+    padding: 0 1.5rem;
+    text-align: left;
+    z-index: 2;
+  }
+  .heroTitle {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+    margin-bottom: 1rem;
+  }
+  .heroSubtitle {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
   }
   .heroDivider {
-    margin: 0 auto;
-  }
-  .heroImageContainer {
-    margin-top: 3rem;
+    margin: 0;
   }
   .servicesGrid {
     grid-template-columns: 1fr;
   }
-  .processSteps {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+  .serviceCard {
+    height: auto;
+    min-height: 140px;
+    display: block;
+    padding: 1.5rem;
+  }
+  .serviceCardContent {
+    width: 100%;
+  }
+  .serviceCardTitle {
+    font-size: 1.7rem;
+  }
+  .serviceNum {
+    margin-bottom: 1rem;
+  }
+  .serviceCardImageWrapper {
+    width: 42%;
+    opacity: 0.28;
+    clip-path: polygon(100% 0, 100% 100%, 25% 100%);
+  }
+  /* Process timeline — vertical rail with number, icon and label per row */
+  .processSection {
+    padding: 3.5rem 1.5rem;
+  }
+  .processContainer {
+    display: flex;
+    justify-content: center;
   }
   .processLine {
-    display: none; /* Hide line on mobile to stack */
+    display: none; /* horizontal desktop rail hidden on mobile */
+  }
+  .processSteps {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    max-width: 260px;
+  }
+  .processStep {
+    flex: none;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1.1rem;
+    width: 100%;
+    padding-bottom: 2.6rem;
+  }
+  .processStep:last-child {
+    padding-bottom: 0;
+  }
+  .processStep:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 24px;          /* centre of the 50px number circle */
+    right: auto;
+    top: 50px;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+    background: #8f6c37; /* solid bronze rail */
+  }
+  .stepCircle {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .stepIcon {
+    margin-bottom: 0;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+  .stepText {
+    font-size: 1.02rem;
+    text-align: left;
+  }
+  .introSection {
+    padding: 2.5rem 1.5rem;
+  }
+  .introLayout {
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .introText {
+    flex: none;
+  }
+  .introCollage {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .collageImgWrap {
+    flex: 1 1 calc(50% - 3px);
+  }
+  .collageShort,
+  .collageTall {
+    height: 170px;
   }
   .impactCollage {
     flex-direction: column;
   }
   .impactImg {
     height: 200px;
+  }
+  .impactTitle {
+    font-size: 2rem;
   }
   .industriesSection {
     flex-wrap: wrap;
@@ -572,10 +697,25 @@
   }
   .whyChooseSection {
     flex-direction: column;
-    padding-bottom: 3rem;
+    padding: 3.5rem 5% 3rem;
+  }
+  .whyChooseContent {
+    padding-bottom: 1.25rem;
+  }
+  .whyChooseTitle {
+    font-size: 2.2rem;
+  }
+  .whyChooseUnderline {
+    margin-bottom: 1.5rem;
   }
   .whyChooseList {
     padding-left: 0;
+    padding-bottom: 0;
+  }
+  .whyChooseLogoBackground {
+    font-size: 8rem;
+    top: auto;
+    bottom: 0;
   }
   .whyChooseImageWrapper {
     display: none; /* Hide background stairs on mobile to save space */
@@ -583,7 +723,11 @@
   .footerCtaSection {
     flex-direction: column;
     text-align: center;
-    gap: 3rem;
+    gap: 2rem;
+    padding: 4rem 1.5rem;
+  }
+  .footerCtaTitle {
+    font-size: 2.1rem;
   }
   .footerCtaAction {
     align-items: center;
@@ -945,6 +1089,19 @@
   }
 }
 
+@media (max-width: 768px) {
+  .serviceContentIntro,
+  .serviceBodyBlock p,
+  .serviceWhyText,
+  .wideBriefDescription,
+  .briefDescription,
+  .secondBriefDescription {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
+}
+
 /* =============================================
    Wide Brief Section (Full-width — service breif section.jpeg)
    ============================================= */
@@ -1019,8 +1176,9 @@
   .wideBriefSection {
     aspect-ratio: auto;
     min-height: auto;
-    padding: 4rem 1.5rem;
-    background-position: 70% center;
+    padding: 3rem 1.5rem;
+    background-image: none;
+    background-color: transparent;
   }
   .wideBriefContent {
     max-width: 100%;
@@ -1123,9 +1281,11 @@
   .briefSection {
     width: 100%;
     flex: 0 0 100%;
+    aspect-ratio: auto;
     min-height: auto;
-    padding: 4rem 1.5rem;
-    background-position: 70% center;
+    padding: 3rem 1.5rem;
+    background-image: none;
+    background-color: transparent;
   }
   .briefContent {
     max-width: 100%;
@@ -1213,9 +1373,11 @@
   .secondBriefSection {
     width: 100%;
     flex: 0 0 100%;
+    aspect-ratio: auto;
     min-height: auto;
-    padding: 4rem 1.5rem;
-    background-position: 65% center;
+    padding: 3.5rem 1.5rem;
+    background-image: none;
+    background-color: #12223c;
   }
   .secondBriefContent {
     max-width: 100%;

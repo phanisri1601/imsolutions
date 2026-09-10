@@ -23,10 +23,9 @@ export default function CareerSection() {
 
     return (
         <section className={styles.section}>
-            <picture className={styles.imageWrap}>
-                <source media="(max-width: 768px)" srcSet="/Blog%20home%20banner%20mobile.png" />
+            <div className={styles.imageWrap}>
                 <img src="/career-Home.png" alt="Life at IM Solutions" className={styles.image} />
-            </picture>
+            </div>
 
             <motion.div
                 className={styles.content}

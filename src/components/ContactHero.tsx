@@ -37,6 +37,13 @@ export default function ContactHero() {
 
   return (
     <section className={styles.heroSection}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/contact%20page%20banner%20mobile.png"
+        alt=""
+        aria-hidden="true"
+        className={styles.heroMobileArt}
+      />
       <div className={styles.heroContainer}>
         <div className={styles.heroLeft} ref={ref}>
           {/* Eyebrow */}

@@ -100,6 +100,14 @@ export default function CareersPage() {
     <main className={styles.container}>
       {/* 1. HERO SECTION */}
       <section className={styles.heroSection}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/carrer%20page%20banner%20mobile%20view.png"
+          alt=""
+          aria-hidden="true"
+          className={styles.heroMobileArt}
+        />
+
         <div className={styles.heroContent}>
           <ScrollReveal delay={0.1} direction="up">
             <div className={styles.heroLeftEyebrow}>CAREERS AT IM SOLUTIONS</div>
@@ -113,7 +121,7 @@ export default function CareersPage() {
           </ScrollReveal>
           
           <ScrollReveal delay={0.3} direction="up">
-            <div className={styles.heroVerticalLine}></div>
+            <div className={styles.heroVerticalLine} aria-hidden="true" />
             <p className={styles.heroDescription}>
               At IM Solutions, we don&apos;t just create solutions for our clients &mdash; we build careers that create impact.
             </p>
@@ -137,13 +145,15 @@ export default function CareersPage() {
           <ScrollReveal delay={0.5} direction="left">
             <div className={styles.rightItem}>PEOPLE</div>
           </ScrollReveal>
+          <div className={styles.rightDivider} aria-hidden="true" />
           <ScrollReveal delay={0.6} direction="left">
             <div className={styles.rightItem}>IDEAS</div>
           </ScrollReveal>
+          <div className={styles.rightDivider} aria-hidden="true" />
           <ScrollReveal delay={0.7} direction="left">
             <div className={styles.rightItem}>IMPACT</div>
-            <div className={styles.heroRightVerticalLine}></div>
           </ScrollReveal>
+          <div className={styles.rightDivider} aria-hidden="true" />
         </div>
       </section>
 

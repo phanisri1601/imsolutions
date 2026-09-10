@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
 import type { Metadata } from "next";
 import BlogSidebarPostLink from "../BlogSidebarPostLink";
@@ -78,7 +80,38 @@ function extractArticleHtml(html: string) {
   return articleHtml;
 }
 
+function stripArticleImages(articleHtml: string) {
+  let html = articleHtml;
+  html = html.replace(/<div class="post-thumb">[\s\S]*?<\/div>/gi, "");
+  html = html.replace(/<img[^>]*>/gi, "");
+  return html;
+}
+
+function getExternalUrlSlug(externalUrl: string) {
+  return externalUrl.replace("https://www.imsolutions.co/", "").replace(/\/$/, "");
+}
+
+function loadLocalArticle(post: BlogPost) {
+  if (!post.externalUrl) return null;
+
+  const urlSlug = getExternalUrlSlug(post.externalUrl);
+  const localPath = path.join(process.cwd(), "src/data/blog-content", `${urlSlug}.html`);
+
+  try {
+    if (fs.existsSync(localPath)) {
+      return fs.readFileSync(localPath, "utf8");
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
 async function fetchExternalArticle(post: BlogPost) {
+  const localArticle = loadLocalArticle(post);
+  if (localArticle) return stripArticleImages(localArticle);
+
   if (!post.externalUrl) return null;
 
   try {
@@ -92,7 +125,8 @@ async function fetchExternalArticle(post: BlogPost) {
 
     if (!res.ok) return null;
     const html = await res.text();
-    return extractArticleHtml(html);
+    const articleHtml = extractArticleHtml(html);
+    return articleHtml ? stripArticleImages(articleHtml) : null;
   } catch {
     return null;
   }

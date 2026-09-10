@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Lenis from "lenis";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -89,13 +88,8 @@ function RevealImageBlock({
       variants={revealItem}
     >
       <motion.div className={styles.revealBlockImageWrap} style={{ y: imageY, scale: imageScale }}>
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="(max-width: 1024px) 100vw, 40vw"
-          className={styles.revealBlockImage}
-        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} className={styles.revealBlockImage} loading="lazy" />
       </motion.div>
       <div className={styles.revealBlockContent}>
         <span className={styles.revealBlockEyebrow}>{eyebrow}</span>
@@ -234,13 +228,12 @@ export default function EditorialBlogGallery({ posts, contained = false }: Props
                   whileHover={{ scale: 1.045 }}
                   transition={{ duration: 0.9, ease }}
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={post.image || "/blog_seo.png"}
                     alt={post.title}
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 33vw"
                     className={`${styles.editorialImage} ${index === 1 ? styles.editorialImageRed : ""}`}
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 </motion.div>
 
@@ -273,12 +266,10 @@ export default function EditorialBlogGallery({ posts, contained = false }: Props
               className={styles.expandedImage}
               layoutId={`blog-image-${selectedPost.slug}`}
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={selectedPost.image || "/blog_seo.png"}
                 alt={selectedPost.title}
-                fill
-                priority
-                sizes="(max-width: 900px) 100vw, 62vw"
                 className={`${styles.editorialImage} ${isRedTonePost(selectedPost.slug) ? styles.editorialImageRed : ""}`}
               />
               <div

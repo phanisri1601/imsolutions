@@ -403,6 +403,12 @@
     width: 100%;
   }
 
+  .featuredDesc {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
+
   .storiesGrid {
     grid-template-columns: 1fr;
     gap: 1.25rem;

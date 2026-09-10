@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
     motion,
@@ -17,8 +17,6 @@ const HEADING_WORDS = "Every Brand Follows A Journey. We Design It.".split(" ");
 
 const STATEMENTS = ["A logo is remembered.", "A campaign is noticed.", "A brand is experienced."];
 
-// Word-by-word heading reveal  each word owns a thin slice of the pinned
-// scroll range so they light up left-to-right as the user scrolls.
 function RevealWord({
     word,
     progress,
@@ -40,9 +38,6 @@ function RevealWord({
     );
 }
 
-// A statement line slides up into view, then settles to a dimmed-but-visible
-// state once the next line takes focus  keeps the previous line legible
-// without competing with the new one.
 function StatementLine({
     text,
     progress,
@@ -71,33 +66,46 @@ function StatementLine({
 export default function PhilosophySection() {
     const containerRef = useRef<HTMLDivElement>(null);
     const prefersReducedMotion = useReducedMotion();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+        const update = () => setIsMobile(mediaQuery.matches);
+        update();
+        mediaQuery.addEventListener("change", update);
+        return () => mediaQuery.removeEventListener("change", update);
+    }, []);
 
     const { scrollYProgress: rawProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
     });
 
-    // Smooths the raw scroll position into a slightly lagging, springy motion
-    // value  every transform below rides this instead of the raw progress,
-    // which is what makes the reveal feel fluid rather than mechanically
-    // locked to the scrollbar.
     const scrollYProgress = useSpring(rawProgress, {
         damping: 30,
         stiffness: 180,
         mass: 0.4,
     });
 
-    const eyebrowOpacity = useTransform(scrollYProgress, [0, 0.03], [0, 1]);
-    const eyebrowY = useTransform(scrollYProgress, [0, 0.03], [16, 0]);
+    const eyebrowOpacity = useTransform(scrollYProgress, [0, 0.04], [0, 1]);
+    const eyebrowY = useTransform(scrollYProgress, [0, 0.04], [16, 0]);
 
-    const imageScale = useTransform(scrollYProgress, [0.17, 0.3], [1.08, 1]);
-    const imageOpacity = useTransform(scrollYProgress, [0.17, 0.26], [0, 1]);
+    const introOpacity = useTransform(scrollYProgress, [0.14, 0.22], [1, 0]);
+    const introY = useTransform(scrollYProgress, [0.14, 0.22], [0, -24]);
 
-    const paraOpacity = useTransform(scrollYProgress, [0.52, 0.58], [0, 1]);
-    const paraBlurPx = useTransform(scrollYProgress, [0.52, 0.58], [8, 0]);
+    const imageScale = useTransform(scrollYProgress, [0.08, 0.2], [1.08, 1]);
+    const imageOpacity = useTransform(scrollYProgress, [0.06, 0.14], [0, 1]);
+    const imageFadeOut = useTransform(scrollYProgress, [0.28, 0.36], [1, 0]);
+    const imageShow = useTransform([imageOpacity, imageFadeOut], ([a, b]: number[]) => Math.min(a, b));
+
+    const copyOpacity = useTransform(scrollYProgress, [0.24, 0.32], [0, 1]);
+    const copyY = useTransform(scrollYProgress, [0.24, 0.32], [20, 0]);
+
+    const paraOpacity = useTransform(scrollYProgress, [0.38, 0.44], [0, 1]);
+    const paraBlurPx = useTransform(scrollYProgress, [0.38, 0.44], [8, 0]);
     const paraFilter = useMotionTemplate`blur(${paraBlurPx}px)`;
 
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || isMobile) {
         return (
             <section className={styles.staticSection}>
                 <div className={styles.container}>
@@ -132,60 +140,75 @@ export default function PhilosophySection() {
         <section ref={containerRef} className={styles.pinWrapper}>
             <div className={styles.stickyInner}>
                 <div className={styles.container}>
-                    <motion.span className={styles.eyebrow} style={{ opacity: eyebrowOpacity, y: eyebrowY }}>
-                        Our Philosophy
-                    </motion.span>
+                    <div className={styles.stage}>
+                        <motion.div
+                            className={styles.introLayer}
+                            style={{ opacity: introOpacity, y: introY }}
+                        >
+                            <motion.span className={styles.eyebrow} style={{ opacity: eyebrowOpacity, y: eyebrowY }}>
+                                Our Philosophy
+                            </motion.span>
 
-                    <h2 className={styles.heading}>
-                        {HEADING_WORDS.map((word, i) => {
-                            const start = 0.02 + i * 0.018;
-                            const end = start + 0.05;
-                            return <RevealWord key={i} word={word} progress={scrollYProgress} range={[start, end]} />;
-                        })}
-                    </h2>
-
-                    <motion.div className={styles.imageWrap} style={{ opacity: imageOpacity }}>
-                        <motion.div className={styles.imageScaler} style={{ scale: imageScale }}>
-                            <Image
-                                src="/philosophy-editorial.png"
-                                alt="A designer's desk with brand strategy notebooks and moodboards"
-                                fill
-                                className={styles.image}
-                                sizes="(max-width: 900px) 100vw, 1000px"
-                            />
+                            <h2 className={styles.heading}>
+                                {HEADING_WORDS.map((word, i) => {
+                                    const start = 0.02 + i * 0.018;
+                                    const end = start + 0.05;
+                                    return <RevealWord key={i} word={word} progress={scrollYProgress} range={[start, end]} />;
+                                })}
+                            </h2>
                         </motion.div>
-                    </motion.div>
 
-                    <div className={styles.statements}>
-                        <StatementLine
-                            text={STATEMENTS[0]}
-                            progress={scrollYProgress}
-                            inRange={[0.3, 0.35]}
-                            dimRange={[0.42, 0.46]}
-                            finalOpacity={0.55}
-                        />
-                        <StatementLine
-                            text={STATEMENTS[1]}
-                            progress={scrollYProgress}
-                            inRange={[0.4, 0.45]}
-                            dimRange={[0.5, 0.54]}
-                            finalOpacity={0.55}
-                        />
-                        <StatementLine
-                            text={STATEMENTS[2]}
-                            progress={scrollYProgress}
-                            inRange={[0.48, 0.53]}
-                            dimRange={[0.99, 1]}
-                            finalOpacity={1}
-                        />
+                        <motion.div
+                            className={styles.imageLayer}
+                            style={{ opacity: imageShow }}
+                        >
+                            <motion.div className={styles.imageScaler} style={{ scale: imageScale }}>
+                                <Image
+                                    src="/philosophy-editorial.png"
+                                    alt="A designer's desk with brand strategy notebooks and moodboards"
+                                    fill
+                                    className={styles.image}
+                                    sizes="(max-width: 900px) 100vw, 1000px"
+                                />
+                            </motion.div>
+                        </motion.div>
+
+                        <motion.div
+                            className={styles.copyLayer}
+                            style={{ opacity: copyOpacity, y: copyY }}
+                        >
+                            <div className={styles.statements}>
+                                <StatementLine
+                                    text={STATEMENTS[0]}
+                                    progress={scrollYProgress}
+                                    inRange={[0.3, 0.35]}
+                                    dimRange={[0.42, 0.46]}
+                                    finalOpacity={0.55}
+                                />
+                                <StatementLine
+                                    text={STATEMENTS[1]}
+                                    progress={scrollYProgress}
+                                    inRange={[0.4, 0.45]}
+                                    dimRange={[0.5, 0.54]}
+                                    finalOpacity={0.55}
+                                />
+                                <StatementLine
+                                    text={STATEMENTS[2]}
+                                    progress={scrollYProgress}
+                                    inRange={[0.44, 0.49]}
+                                    dimRange={[0.99, 1]}
+                                    finalOpacity={1}
+                                />
+                            </div>
+
+                            <motion.p className={styles.paragraph} style={{ opacity: paraOpacity, filter: paraFilter }}>
+                                We believe meaningful brands are never accidental. They are shaped through insight,
+                                refined through creativity and strengthened by consistency. Every decision we make
+                                is guided by purpose, because enduring brands are built one thoughtful choice at a
+                                time.
+                            </motion.p>
+                        </motion.div>
                     </div>
-
-                    <motion.p className={styles.paragraph} style={{ opacity: paraOpacity, filter: paraFilter }}>
-                        We believe meaningful brands are never accidental. They are shaped through insight,
-                        refined through creativity and strengthened by consistency. Every decision we make
-                        is guided by purpose, because enduring brands are built one thoughtful choice at a
-                        time.
-                    </motion.p>
                 </div>
             </div>
         </section>

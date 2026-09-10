@@ -158,10 +158,11 @@
     .description,
     .additionalText {
         font-size: clamp(0.85rem, 1.3vw, 0.95rem);
-        line-height: 1.15;
+        line-height: 1.4;
         margin-bottom: 0.6rem;
-        text-align: left;
-        text-justify: auto;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
     }
 
     .imageWrapper,
@@ -214,7 +215,7 @@
     .description,
     .additionalText {
         font-size: clamp(0.8rem, 1.2vw, 0.9rem);
-        line-height: 1.15;
+        line-height: 1.4;
         margin-bottom: 0.5rem;
     }
 

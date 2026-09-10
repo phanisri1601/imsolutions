@@ -1,5 +1,5 @@
 .videoSection {
-    padding: var(--section-padding-y) 0;
+    padding: var(--section-padding-y) 0 0.75rem;
     background: linear-gradient(180deg,
             #ffffff 0%,
             #f5f5f5 50%,
@@ -145,7 +145,7 @@
 
 @media (max-width: 768px) {
     .videoSection {
-        padding: var(--section-padding-y) 1rem;
+        padding: var(--section-padding-y) 1rem 0.5rem;
         min-height: auto;
     }
 
@@ -180,7 +180,7 @@
 
 @media (max-width: 480px) {
     .videoSection {
-        padding: 2rem 0.75rem;
+        padding: 1.5rem 0.75rem 0.35rem;
     }
 
     .videoContainer {

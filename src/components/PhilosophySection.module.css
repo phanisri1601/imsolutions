@@ -1,11 +1,10 @@
 /* ================================================================
-   Sticky editorial reveal  the section pins for ~150vh of scroll
-   while the heading, image and statements build up in stages, then
-   releases naturally over the final 100vh as the user keeps scrolling.
+   Sticky editorial reveal — layers swap in the same viewport slot
+   so hidden phases do not leave empty vertical gaps.
    ================================================================ */
 .pinWrapper {
     position: relative;
-    height: 230vh;
+    height: 130vh;
     background: #F8F4F0;
 }
 
@@ -13,11 +12,12 @@
     position: sticky;
     top: 0;
     height: 100vh;
+    height: 100svh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     overflow: hidden;
-    padding-top: var(--header-height, 80px);
+    padding-top: calc(var(--header-height, 72px) + 0.75rem);
     background:
         radial-gradient(ellipse 60% 50% at 50% 0%, rgba(186, 50, 50, 0.04), transparent 70%),
         #F8F4F0;
@@ -31,6 +31,35 @@
     text-align: center;
 }
 
+.stage {
+    position: relative;
+    width: 100%;
+    min-height: clamp(360px, 58vh, 520px);
+}
+
+.introLayer,
+.imageLayer,
+.copyLayer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 0.25rem;
+}
+
+.imageLayer {
+    justify-content: flex-start;
+    padding-top: 0.25rem;
+}
+
+.copyLayer {
+    justify-content: center;
+    gap: 0.75rem;
+}
+
 .eyebrow {
     display: inline-block;
     font-size: 1rem;
@@ -38,7 +67,7 @@
     color: var(--color-accent-primary);
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.65rem;
 }
 
 .heading {
@@ -47,7 +76,8 @@
     font-weight: 400;
     line-height: 1.22;
     color: var(--color-text-primary);
-    margin-bottom: 0.7rem;
+    margin: 0;
+    max-width: 900px;
 }
 
 .word {
@@ -56,8 +86,9 @@
 }
 
 .imageWrap {
-    margin: 0 auto 0.65rem;
+    margin: 0 auto;
     max-width: 920px;
+    width: 100%;
 }
 
 .imageScaler {
@@ -70,6 +101,11 @@
     will-change: transform;
 }
 
+.imageLayer .imageScaler {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
 .image {
     object-fit: cover;
 }
@@ -77,8 +113,9 @@
 .statements {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
-    margin-bottom: 0.65rem;
+    gap: 0.15rem;
+    margin: 0;
+    width: 100%;
 }
 
 .statement {
@@ -89,6 +126,7 @@
     line-height: 1.35;
     color: var(--color-text-secondary);
     will-change: transform, opacity;
+    margin: 0;
 }
 
 .paragraph {
@@ -99,9 +137,9 @@
     margin: 0 auto;
 }
 
-/* ── Static fallback for prefers-reduced-motion  no pin, no scroll-scrub ── */
+/* ── Static fallback for prefers-reduced-motion ── */
 .staticSection {
-    padding: var(--section-padding-y) 0;
+    padding: clamp(1.75rem, 4vw, 2.5rem) 0 clamp(0.75rem, 2vw, 1.25rem);
     background: #F8F4F0;
 }
 
@@ -109,15 +147,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.staticSection .imageWrap {
-    width: 100%;
-}
-
-.staticSection .imageScaler,
-.staticSection .image {
-    border-radius: 14px;
+    gap: 0.75rem;
 }
 
 .staticSection .imageWrap {
@@ -127,32 +157,61 @@
     border-radius: 14px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    margin-bottom: 1.5rem;
 }
 
-.staticSection .statements {
-    margin-bottom: 1.25rem;
+.staticSection .image {
+    border-radius: 14px;
+}
+
+@media (max-width: 768px) {
+    .staticSection {
+        padding: 1.25rem 0 0.75rem;
+    }
+
+    .staticSection .container {
+        gap: 0.65rem;
+    }
+
+    .staticSection .heading {
+        font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+        line-height: 1.25;
+    }
+
+    .staticSection .imageWrap {
+        aspect-ratio: 16 / 9;
+        margin-top: 0.25rem;
+    }
+
+    .staticSection .statement {
+        font-size: clamp(1rem, 3.6vw, 1.15rem);
+    }
+
+    .staticSection .paragraph {
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-top: 0.15rem;
+    }
 }
 
 @media (max-width: 900px) {
     .pinWrapper {
-        height: 210vh;
+        height: 120vh;
     }
 
     .container {
         padding: 0 var(--spacing-md);
     }
 
+    .stage {
+        min-height: clamp(340px, 56vh, 480px);
+    }
+
     .heading {
         font-size: clamp(1.5rem, 4.6vw, 2rem);
     }
 
-    .imageWrap {
-        max-width: 100%;
-    }
-
     .imageScaler {
-        height: clamp(160px, 30vh, 260px);
+        height: clamp(130px, 20vh, 200px);
     }
 
     .statement {
@@ -164,14 +223,13 @@
     }
 
     .stickyInner {
-        padding-top: 1rem;
-        justify-content: flex-start;
+        padding-top: calc(var(--header-height, 68px) + 0.5rem);
     }
 }
 
 @media (max-width: 640px) {
     .pinWrapper {
-        height: 180vh;
+        height: 112vh;
     }
 
     .container {
@@ -179,26 +237,20 @@
     }
 
     .stickyInner {
-        padding: 1rem 0;
-        justify-content: flex-start;
+        padding-top: calc(var(--header-height, 64px) + 0.35rem);
     }
 
-    .heading {
-        margin-bottom: 0.8rem;
-    }
-
-    .imageWrap {
-        margin-bottom: 0.8rem;
+    .stage {
+        min-height: clamp(300px, 52vh, 420px);
     }
 
     .imageScaler {
-        height: clamp(130px, 24vh, 200px);
+        height: clamp(110px, 18vh, 160px);
         border-radius: 12px;
     }
 
-    .statements {
-        gap: 0.1rem;
-        margin-bottom: 0.7rem;
+    .copyLayer {
+        gap: 0.55rem;
     }
 
     .paragraph {

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import styles from "./WhyIMSolutions.module.css";
 
@@ -34,12 +33,10 @@ export default function WhyIMSolutions() {
                     viewport={viewport}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <Image
+                    <img
                         src="/image%20snew/11.jpeg"
                         alt="IM Solutions team reviewing brand growth strategy"
-                        fill
                         className={styles.image}
-                        sizes="(max-width: 900px) 100vw, 560px"
                     />
                 </motion.div>
 

@@ -181,6 +181,9 @@
 
     .faqAnswer p {
         font-size: 0.95rem;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
     }
 }
 
@@ -218,6 +221,9 @@
     .faqAnswer p {
         font-size: 0.9rem;
         line-height: 1.6;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
     }
 }
 
