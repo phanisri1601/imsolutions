@@ -115,6 +115,7 @@ a {
 }
 
 html {
+  position: relative;
   scroll-behavior: smooth;
   overflow-x: clip;
 }
