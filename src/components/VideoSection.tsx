@@ -67,7 +67,7 @@ const VideoSection = () => {
                     <motion.video
                         ref={videoRef}
                         className={styles.video}
-                        src="/12642073_1920_1080_24fps.mp4"
+                        src="/home/HOme%20Page_IMS.mp4"
                         loop
                         muted
                         playsInline
