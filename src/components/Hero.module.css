@@ -195,102 +195,82 @@
 
 @media (max-width: 1024px) {
   .hero {
-    min-height: 100vh;
-    min-height: 100svh;
-    align-items: flex-start;
-    justify-content: flex-start;
-    background-image: var(--hero-bg-mobile);
-    background-position: center center;
-    background-size: cover;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background-image: none;
   }
 
   .hero::before {
     display: none;
   }
 
+  .hero::after {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: 100%;
+    height: clamp(320px, 100vw, 660px);
+    margin-bottom: 3.5rem;
+    background-image: linear-gradient(to bottom, #F8F4F0, transparent 20%, transparent 85%, #F8F4F0), var(--hero-bg-mobile);
+    background-repeat: no-repeat;
+    background-size: 100% 100%, min(100vw, 768px) auto;
+    background-position: center 72%;
+  }
+
   .heroHotspots {
     display: none;
+  }
+
+  /* Keep mobile copy visible without waiting for entrance animations. */
+  .heroLine,
+  .heroSubtext,
+  .heroCta,
+  .heroTaglineRule,
+  .heroScroll {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .heroLeft {
     position: relative;
     max-width: 100%;
-    padding: calc(var(--header-height, 80px) + 2.5rem) 2rem 2rem 2rem;
+    min-width: 0;
+    padding: 2rem 2rem 1.5rem;
     align-items: flex-start;
     text-align: left;
-    background: transparent;
-    border-radius: 0;
   }
 
   .heroTagline {
-    font-size: clamp(0.75rem, 3.5vw, 0.9rem);
-    letter-spacing: 0.16em;
-    margin-bottom: 0.6rem;
+    max-width: 34rem;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
   }
 
   .heroTaglineRule {
-    margin-left: 0;
-    margin-right: 0;
     width: 65px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .heroHeading {
-    align-items: flex-start;
-    font-size: clamp(2.2rem, 7.5vw, 3.6rem);
-    margin-bottom: 1.4rem;
+    font-size: clamp(2rem, 5.5vw, 3.6rem);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    overflow-wrap: normal;
   }
 
   .heroSubtext {
     font-size: 1rem;
-    max-width: 320px;
-    margin-bottom: 2rem;
+    max-width: 340px;
+    margin-bottom: 1.5rem;
     display: block;
+    overflow: visible;
   }
 
   .heroCta {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    justify-content: flex-start;
-  }
-
-  .heroScroll {
-    display: flex;
-    position: absolute;
-    bottom: 2rem;
-    left: 0;
-    right: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: 100vh;
-    min-height: 100svh;
-  }
-
-  .heroLeft {
-    padding: calc(var(--header-height, 72px) + 1.2rem) 1.5rem 1.5rem 1.5rem;
-  }
-
-  .heroHeading {
-    font-size: clamp(2rem, 8vw, 2.8rem);
-    margin-bottom: 1rem;
-  }
-
-  .heroSubtext {
-    font-size: 0.95rem;
-    max-width: 280px;
-    margin-bottom: 1rem;
-  }
-
-  .heroCta {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin: 0;
   }
 
   .heroScroll {
@@ -298,29 +278,41 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .heroLeft {
-    padding: calc(var(--header-height, 72px) + 1rem) 1.25rem 1rem 1.25rem;
+    padding: 1.75rem 1.5rem 1.25rem;
   }
 
   .heroHeading {
-    font-size: clamp(1.8rem, 8.5vw, 2.4rem);
-    margin-bottom: 0.85rem;
+    font-size: clamp(1.8rem, 7.5vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .heroLeft {
+    padding: 1.5rem 1.25rem 1.25rem;
   }
 
-  .heroSubtext {
-    font-size: 0.9rem;
-    max-width: 260px;
-    margin-bottom: 0.85rem;
+  .heroTagline {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
   }
 
   .heroTaglineRule {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.25rem;
   }
 
-  .heroCta {
-    margin-top: 0.4rem;
-    margin-bottom: 0.85rem;
+  .heroSubtext {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .heroCtaBtn {
+    gap: 0.75rem;
+  }
+
+  .heroCtaLabel {
+    letter-spacing: 0.12em;
   }
 
   .heroScroll {

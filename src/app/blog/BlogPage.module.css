@@ -1916,8 +1916,6 @@
 /* Small Mobile Responsive */
 @media (max-width: 480px) {
   .editorialMasthead {
-    left: 1rem;
-    right: 1rem;
     font-size: 0.72rem;
   }
 

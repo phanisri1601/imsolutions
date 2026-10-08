@@ -155,14 +155,21 @@
         letter-spacing: 1.5px;
     }
 
+    .contentWrapper > * {
+        width: 100%;
+        min-width: 0;
+    }
+
     .description,
     .additionalText {
-        font-size: clamp(0.85rem, 1.3vw, 0.95rem);
-        line-height: 1.4;
+        width: 100%;
+        font-size: 0.95rem;
+        line-height: 1.8;
         margin-bottom: 0.6rem;
         text-align: justify;
         text-justify: inter-word;
-        hyphens: auto;
+        hyphens: manual;
+        overflow-wrap: normal;
     }
 
     .imageWrapper,
@@ -214,8 +221,8 @@
 
     .description,
     .additionalText {
-        font-size: clamp(0.8rem, 1.2vw, 0.9rem);
-        line-height: 1.4;
+        font-size: 0.95rem;
+        line-height: 1.8;
         margin-bottom: 0.5rem;
     }
 

@@ -200,8 +200,12 @@
     }
 
     .text {
-        font-size: 0.84rem;
-        line-height: 1.55;
+        width: 100%;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        text-align: justify;
+        text-justify: inter-word;
+        overflow-wrap: normal;
         margin-bottom: 1.5rem;
         max-width: 100%;
     }
@@ -239,8 +243,8 @@
     }
 
     .text {
-        font-size: 0.78rem;
-        line-height: 1.48;
+        font-size: 0.95rem;
+        line-height: 1.8;
         margin-bottom: 1.25rem;
     }
 

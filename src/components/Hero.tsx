@@ -14,15 +14,7 @@ const fadeUp = (delay = 0) => ({
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as any },
-  },
-});
-
-const fadeIn = (delay = 0) => ({
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.7, delay, ease: 'easeOut' },
+    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
   },
 });
 
@@ -149,7 +141,7 @@ export default function Hero() {
           animate="visible"
           variants={fadeUp(0.55)}
         >
-          Everything your brand needs,working as one.
+          Everything your brand needs, working as one.
         </motion.p>
 
         <motion.div

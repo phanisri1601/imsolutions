@@ -81,23 +81,24 @@
 }
 
 .focusItem {
-    position: relative;
+    display: grid;
+    grid-template-columns: 1rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: 0.75rem;
+    line-height: 1.6;
     font-family: var(--font-primary);
     font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     font-style: italic;
     color: var(--color-text-primary);
-    padding: 0.85rem 0 0.85rem 1.4rem;
+    padding: 0.85rem 0;
     border-top: 1px solid var(--color-border);
 }
 
 .focusItem::before {
     content: "→";
-    position: absolute;
-    left: 0;
-    top: 0.85rem;
     font-style: normal;
     font-size: 1rem;
-    line-height: 1;
+    line-height: inherit;
     color: var(--color-accent-primary);
 }
 
@@ -125,5 +126,16 @@
     .paragraph,
     .focusItem {
         max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .paragraph {
+        width: 100%;
+        max-width: 100%;
+        text-align: justify;
+        text-justify: inter-word;
+        overflow-wrap: normal;
+        line-height: 1.8;
     }
 }
