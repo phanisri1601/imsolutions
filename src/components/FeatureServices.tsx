@@ -22,7 +22,7 @@ export default function FeatureServices() {
     return (
         <GSAPScrollReveal className={styles.services} id="featured-services" style={{ background: 'var(--color-bg-secondary)' }}>
             <div className="container">
-                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                <div className={styles.featuredHeader}>
                     <TextReveal as="h2" animateType="heading" className="section-title">
                         FEATURED SERVICES
                     </TextReveal>
@@ -36,7 +36,7 @@ export default function FeatureServices() {
                         <Link 
                             key={index}
                             href={getServiceUrl(service.name)}
-                            className={styles.serviceImageTile}
+                            className={`${styles.serviceImageTile} ${index === 0 ? styles.serviceImageTileLead : ''}`}
                             style={{ backgroundImage: `url("${service.image}")` }}
                         >
                             <span className={styles.serviceImageLabel}>{service.name.toLowerCase()}</span>

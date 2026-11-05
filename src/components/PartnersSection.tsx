@@ -26,12 +26,40 @@ export default function PartnersSection() {
                     </p>
                 </div>
                 <div className={styles.partnersRight}>
-                    <div className={styles.partnersGrid}>
-                        {PARTNERS.map((partner) => (
-                            <div key={partner.src} className={styles.partnerLogo}>
-                                <Image src={partner.src} alt={partner.alt} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw" className={styles.partnerImg} />
+                    <div
+                        className={styles.partnersMarquee}
+                        role="region"
+                        aria-label="Our client logos"
+                        tabIndex={0}
+                    >
+                        <div className={styles.partnersTrack}>
+                            <div className={styles.partnersSet} role="list">
+                                {PARTNERS.map((partner) => (
+                                    <div key={partner.src} className={styles.partnerLogo} role="listitem">
+                                        <Image
+                                            src={partner.src}
+                                            alt={partner.alt}
+                                            fill
+                                            sizes="(max-width: 768px) 100px, 140px"
+                                            className={styles.partnerImg}
+                                        />
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+                            <div className={styles.partnersSet} aria-hidden="true">
+                                {PARTNERS.map((partner) => (
+                                    <div key={partner.src} className={styles.partnerLogo}>
+                                        <Image
+                                            src={partner.src}
+                                            alt=""
+                                            fill
+                                            sizes="(max-width: 768px) 100px, 140px"
+                                            className={styles.partnerImg}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

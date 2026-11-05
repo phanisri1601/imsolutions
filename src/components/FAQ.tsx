@@ -61,12 +61,12 @@ export default function FAQ({
         <div
             key={index}
             className={`${styles.faqItem} ${openIndex === index ? styles.open : ''}`}
-            aria-expanded={openIndex === index}
         >
             <button
                 className={styles.faqQuestion}
                 onClick={() => toggleFAQ(index)}
                 aria-controls={`${idPrefix}-faq-answer-${index}`}
+                aria-expanded={openIndex === index}
             >
                 <span>{faq.question}</span>
                 <span className={styles.icon}>
