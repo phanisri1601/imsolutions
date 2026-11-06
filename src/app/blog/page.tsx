@@ -7,18 +7,13 @@ import {
 } from "../../data/blogCategories";
 import Link from "next/link";
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import BlogHomeSection from "@/components/BlogHomeSection";
 import PortfolioBlogGrid from "./PortfolioBlogGrid";
 import BlogCategoryFilter from "./BlogCategoryFilter";
 
 const CATEGORY_PAGE_SIZE = 12;
 const DEFAULT_TOTAL_PAGES = 4;
-
-export const metadata = {
-  title: "Blog | IM Solutions",
-  description:
-    "Insights, trends, and strategies from IM Solutions across SEO, branding, creative, and technology.",
-};
 
 // blogPosts are now loaded from src/data/blogPosts.ts
 
@@ -27,6 +22,32 @@ type Props = {
     | Promise<{ page?: string | string[]; category?: string | string[] }>
     | { page?: string | string[]; category?: string | string[] };
 };
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const resolved = await searchParams;
+  const rawPage = Array.isArray(resolved?.page) ? resolved.page[0] : resolved?.page;
+  const rawCategory = Array.isArray(resolved?.category)
+    ? resolved.category[0]
+    : resolved?.category;
+  const category = normalizeBlogCategory(rawCategory ?? "");
+  const parsedPage = Number.parseInt(rawPage ?? "1", 10);
+  const page = Number.isFinite(parsedPage) && parsedPage > 1 ? parsedPage : null;
+  const query = new URLSearchParams();
+
+  if (category) query.set("category", category);
+  if (page) query.set("page", String(page));
+
+  const suffix = query.toString();
+
+  return {
+    title: "Blog | IM Solutions",
+    description:
+      "Insights, trends, and strategies from IM Solutions across SEO, branding, creative, and technology.",
+    alternates: {
+      canonical: suffix ? `/blog?${suffix}` : "/blog",
+    },
+  };
+}
 
 function buildBlogPageHref(page: number, category: string | null) {
   const params = new URLSearchParams();

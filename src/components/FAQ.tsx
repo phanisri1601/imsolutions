@@ -8,6 +8,7 @@ import styles from './FAQ.module.css';
 type FAQItem = {
     question: string;
     answer: string;
+    details?: string[];
 };
 
 type FAQProps = {
@@ -17,6 +18,7 @@ type FAQProps = {
     variant?: 'default' | 'plain';
     /** Skip scroll-reveal stagger (faster on blog posts) */
     animated?: boolean;
+    includeSchema?: boolean;
 };
 
 export default function FAQ({
@@ -24,32 +26,117 @@ export default function FAQ({
     items,
     variant = 'default',
     animated = true,
+    includeSchema = false,
 }: FAQProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
     const idPrefix = useId();
 
     const faqs: FAQItem[] = items ?? [
         {
-            question: 'Which is the best advertising agency in Bangalore?',
-            answer: 'IM Solutions is recognized as one of the best advertising agencies in Bangalore, offering comprehensive 360° marketing solutions, creative design services, and proven lead generation strategies. With 7+ years of experience and 300+ satisfied clients, we deliver exceptional results for brands across all industries.'
+            question: 'What services does IM Solutions offer as a full-service marketing agency in Bangalore?',
+            answer: 'IM Solutions is a full-service marketing and digital advertising agency in Bengaluru, offering brand strategy, performance marketing, SEO, AI advertising, and out-of-home media. Its online and offline capabilities can be brought together to support campaigns from planning through activation, depending on each business’s goals and requirements.',
+            details: [
+                'Performance and paid media: Google and Meta campaigns.',
+                'Search and AI: SEO, AEO/GEO, and structured content.',
+                'Integrated media: branding, events, and out-of-home advertising.',
+            ],
         },
         {
-            question: 'Why an advertising agency is important for business growth?',
-            answer: 'An advertising agency brings specialized expertise, creative talent, and strategic insights that help businesses reach their target audience effectively. We provide access to cutting-edge tools, industry knowledge, and proven strategies that accelerate brand growth, increase market visibility, and drive measurable ROI.'
+            question: 'Why should businesses choose IM Solutions as their marketing agency in Bangalore?',
+            answer: 'Businesses can consider IM Solutions for its experience since 2013, integrated digital advertising and offline activations, and transparent performance marketing approach. The agency brings strategy, creativity, technology, and media capabilities together, then scopes a solution around business objectives, audiences, and campaign requirements.',
+            details: [
+                'Integrated online and offline campaign capabilities.',
+                'Services shaped around the brief and business objectives.',
+                'Performance marketing with an emphasis on clear measurement.',
+            ],
         },
         {
-            question: 'Why should start-ups hire an advertising agency?',
-            answer: 'Start-ups benefit immensely from hiring an advertising agency as it provides cost-effective access to professional marketing expertise without the overhead of building an in-house team. We help startups establish strong brand identity, reach their target market efficiently, and scale their marketing efforts as they grow.'
+            question: 'How many years of experience does IM Solutions have in advertising and marketing?',
+            answer: 'Founded in 2013, IM Solutions has more than a decade of experience in enterprise brand strategy, performance marketing, and advertising in Bengaluru, Karnataka. The company serves businesses across India, including organizations in sectors such as real estate, retail, and B2B, with services shaped to each brief.',
+            details: [
+                'Established in Bengaluru, Karnataka.',
+                'Capabilities span brand strategy, performance marketing, and advertising.',
+            ],
         },
         {
-            question: 'What services does IM Solutions offer?',
-            answer: 'IM Solutions offers a comprehensive range of services including digital marketing, social media management, content creation, SEO optimization, web design and development, graphic design, video production, brand strategy, lead generation, and 360° marketing solutions tailored to meet your business goals and budget.'
+            question: 'What digital marketing services does IM Solutions provide for high-intent lead generation?',
+            answer: 'IM Solutions provides digital marketing services including Google Search Ads, Meta performance marketing, technical SEO, and conversion-focused landing pages. Depending on the campaign scope, these services can support audience reach, lead acquisition, and measurement across digital touchpoints. Contact the team to discuss channels and goals.',
+            details: [
+                'Google Search and Meta advertising.',
+                'Technical SEO and conversion-focused landing pages.',
+                'Campaign scope is tailored to the objectives discussed.',
+            ],
         },
         {
-            question: 'How do you measure the success of a marketing campaign?',
-            answer: 'We measure campaign success through data-driven metrics including ROI, conversion rates, customer acquisition cost, engagement metrics, traffic analytics, and lead generation numbers. We provide detailed reports and regular performance reviews to ensure transparency and continuous optimization of your marketing investments.'
-        }
+            question: 'How does IM Solutions help real estate developers generate qualified leads?',
+            answer: 'IM Solutions helps real estate developers attract qualified buyer enquiries through localized campaign planning and audience targeting. Campaign work may also use negative keyword controls and CRM-connected lead handling where included in the agreed scope. The right approach depends on the property, audience, location, and enquiry process.',
+            details: [
+                'Localized campaign planning and audience selection.',
+                'Negative keyword controls where suitable.',
+                'Lead handling aligned to the agreed campaign scope.',
+            ],
+        },
+        {
+            question: 'Does IM Solutions provide SEO services to improve Google search rankings?',
+            answer: 'Yes. IM Solutions provides SEO services covering technical website improvements, commercial on-page content planning, and relevant authority-building strategies to support stronger organic search visibility. Search performance depends on many factors and outcomes are not guaranteed. A review of the site and business goals can help prioritize practical work.',
+            details: [
+                'Technical website improvements.',
+                'Commercial on-page content planning.',
+                'Relevant authority-building strategies.',
+            ],
+        },
+        {
+            question: 'Does IM Solutions provide AI SEO, AEO, and GEO optimization services?',
+            answer: 'IM Solutions offers AI search optimization services, including Answer Engine Optimization and Generative Engine Optimization. This work focuses on clear content, entity information, and structured data for conversational search experiences. Search platforms decide what is surfaced, so these practices support discoverability but cannot guarantee citations or rankings.',
+            details: [
+                'Answer Engine Optimization and Generative Engine Optimization.',
+                'Clear, well-structured content and entity information.',
+                'Structured data aligned with visible page content.',
+            ],
+        },
+        {
+            question: 'Which industries does IM Solutions specialize in?',
+            answer: 'IM Solutions works with organizations in sectors including real estate, retail and luxury goods, healthcare, education, and B2B enterprise. Services can include digital advertising, search optimization, and brand activation, with the approach adapted to each organization’s audience, goals, sector requirements, and marketing context.',
+            details: [
+                'Real estate, retail, and luxury goods.',
+                'Healthcare and education.',
+                'B2B and enterprise organizations.',
+            ],
+        },
+        {
+            question: 'Does IM Solutions provide both online and offline advertising solutions?',
+            answer: 'Yes. IM Solutions provides online and offline advertising services, combining digital campaigns such as Google and Meta advertising with out-of-home placements, airport branding, transit media, and experiential activations. Available channels and formats depend on location, audience, and the objectives agreed for each engagement.',
+            details: [
+                'Digital campaigns across search and social channels.',
+                'Out-of-home, airport, and transit media.',
+                'Experiential and brand activation options.',
+            ],
+        },
+        {
+            question: 'How can businesses get started with an audit or campaign at IM Solutions?',
+            answer: 'Businesses can get started by contacting IM Solutions through the website enquiry form. Share your business goals, service interests, and campaign context so the team can review your enquiry and discuss suitable next steps. The team can then confirm which services and information are relevant to the request.',
+            details: [
+                'Describe your goals and service interests.',
+                'Include relevant campaign context or constraints.',
+                'Use the contact page to send an enquiry.',
+            ],
+        },
     ];
+    const faqSchema = includeSchema
+        ? {
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              '@id': 'https://www.imsolutions.co/#faq',
+              mainEntity: faqs.map((faq) => ({
+                  '@type': 'Question',
+                  name: faq.question,
+                  acceptedAnswer: {
+                      '@type': 'Answer',
+                      text: [faq.answer, ...(faq.details ?? [])].join(' '),
+                  },
+              })),
+          }
+        : null;
 
     const toggleFAQ = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -81,6 +168,13 @@ export default function FAQ({
             >
                 <div className={styles.faqAnswerInner}>
                     <p>{faq.answer}</p>
+                    {faq.details?.length ? (
+                        <ul>
+                            {faq.details.map((detail) => (
+                                <li key={detail}>{detail}</li>
+                            ))}
+                        </ul>
+                    ) : null}
                 </div>
             </div>
         </div>
@@ -96,6 +190,14 @@ export default function FAQ({
 
     return (
         <section className={sectionClass}>
+            {faqSchema ? (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c'),
+                    }}
+                />
+            ) : null}
             <div className="container">
                 {titleBlock}
 

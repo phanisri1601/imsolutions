@@ -9,6 +9,9 @@ export const metadata = {
   title: "Contact Us | IM Solutions",
   description:
     "Get in touch with IM Solutions for advertising, marketing, and digital growth. Call, mail, or drop a message and we will respond quickly.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {
@@ -55,4 +58,3 @@ export default function ContactPage() {
     </main>
   );
 }
-

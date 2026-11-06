@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './Hero.module.css';
 
-const heroBanner = encodeURI('/Home Page Banner.png');
-const heroMobileBanner = encodeURI('/HOMEBanner mobile.png');
+const heroBanner = encodeURI('/IM Strategy Cube Cluster.png');
+const heroMobileBanner = encodeURI('/Strategic Cube on Marble Surface.png');
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 32 },
@@ -128,12 +128,21 @@ export default function Hero() {
           }}
         >
           <motion.span className={styles.heroLine} variants={fadeUp(0)}>
-            One Partner<span className={styles.heroDot}>.</span>
+            Integrated Marketing,{" "}
           </motion.span>
           <motion.span className={styles.heroLine} variants={fadeUp(0.12)}>
-            Every Possibility<span className={styles.heroDot}>.</span>
+            Advertising &amp; Brand Agency in Bangalore
           </motion.span>
         </motion.h1>
+
+        <motion.h2
+          className={styles.heroBrandLine}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp(0.35)}
+        >
+          One Partner. Every Possibility.
+        </motion.h2>
 
         <motion.p
           className={styles.heroSubtext}

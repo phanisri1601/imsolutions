@@ -5,6 +5,15 @@ import MissionVision from "@/components/MissionVision";
 import FAQ from "@/components/FAQ";
 import { aboutImage } from "@/lib/aboutImages";
 
+export const metadata = {
+  title: "About IM Solutions",
+  description:
+    "IM Solutions is an integrated marketing and advertising agency based in Bangalore, India. Founded in 2013, the company provides digital marketing, SEO, paid advertising, branding, creative strategy, AI advertising, and offline advertising solutions.",
+  alternates: {
+    canonical: "/about",
+  },
+};
+
 const aboutFaqs = [
   {
     question: "What does IM Solutions do?",
@@ -14,7 +23,7 @@ const aboutFaqs = [
   {
     question: "How long has IM Solutions been in the industry?",
     answer:
-      "With over 7 years of experience and 300+ satisfied clients across diverse industries, IM Solutions has established itself as one of the most trusted marketing and advertising agencies in Bangalore.",
+      "IM Solutions was established in 2013 and works with businesses across a range of industries on marketing and advertising.",
   },
   {
     question: "What industries does IM Solutions serve?",
@@ -48,6 +57,7 @@ export default function AboutPage() {
         subtitle="Every extraordinary brand begins with a belief."
         imageSrc={aboutImage("aboutt.jpeg")}
         description={[
+          "Founded in 2013, IM Solutions is an integrated marketing and advertising agency based in Bangalore, India. The company provides digital marketing, SEO, paid advertising, branding, creative strategy, AI advertising, and offline advertising solutions.",
           "A belief that it can inspire, influence, and leave an enduring mark.",
          "At IM Solutions, we bring that belief to life through the perfect harmony of strategy, creativity, technology, and innovation. As a full-service branding, advertising, digital marketing, and technology agency, we help ambitious businesses become brands that people recognise, remember, and trust. Every identity we design, every website we develop, every story we tell, and every campaign we launch is guided by one purposeto create meaningful growth with measurable impact. Markets evolve, technologies change, and consumer expectations shift, which is why we continuously adapt our approach to help brands stay relevant, competitive, and built for long-term success.",
           "But brands built with purpose never lose their relevance.",

@@ -575,6 +575,10 @@
   letter-spacing: -0.015em;
 }
 
+.article .externalContent :where(h2, h3) {
+  font-weight: 500;
+}
+
 .article .externalContent :where(h2) {
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
 }
@@ -592,6 +596,10 @@
   color: #3a3a3a;
   line-height: 1.8;
   font-size: 1rem;
+}
+
+.externalContent :where(hr) {
+  display: none;
 }
 
 .externalContent :where(ul, ol) {

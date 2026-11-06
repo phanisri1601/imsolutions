@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import CountUp from "./CountUp";
 import styles from "./ClientsShowcase.module.css";
@@ -35,7 +36,7 @@ const clientStories = [
 ];
 
 const stats = [
-  { value: 12, suffix: "+", label: "Years Of Experience" },
+  { value: 2013, suffix: "", label: "Year Established" },
   { value: 100, suffix: "+", label: "Projects Delivered" },
   { value: 40, suffix: "+", label: "Satisfied Clients" },
   { value: 8, suffix: "", label: "Industries Served" },
@@ -154,7 +155,14 @@ export default function ClientsShowcase() {
               <div className={styles.ctaLogos}>
                 {partnerLogos.map((logo) => (
                   <div key={logo} className={styles.ctaLogoChip}>
-                    <img src={`/clients/${logo}`} alt="" className={styles.ctaLogo} />
+                    <Image
+                      src={`/clients/${logo}`}
+                      alt={`${logo.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ")} logo`}
+                      width={160}
+                      height={44}
+                      sizes="(max-width: 640px) 28vw, 160px"
+                      className={styles.ctaLogo}
+                    />
                   </div>
                 ))}
               </div>
