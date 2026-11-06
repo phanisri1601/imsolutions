@@ -34,7 +34,7 @@ export default function FAQ({
     const faqs: FAQItem[] = items ?? [
         {
             question: 'What services does IM Solutions offer as a full-service marketing agency in Bangalore?',
-            answer: 'IM Solutions is a full-service marketing and digital advertising agency in Bengaluru, offering brand strategy, performance marketing, SEO, AI advertising, and out-of-home media. Its online and offline capabilities can be brought together to support campaigns from planning through activation, depending on each business’s goals and requirements.',
+            answer: 'IM Solutions is a full-service marketing and advertising agency in Bengaluru. We cover brand strategy, performance marketing, SEO, AI advertising and out-of-home media, and we run them as one plan, from the first strategy session to the last activation.',
             details: [
                 'Performance and paid media: Google and Meta campaigns.',
                 'Search and AI: SEO, AEO/GEO, and structured content.',
@@ -43,7 +43,7 @@ export default function FAQ({
         },
         {
             question: 'Why should businesses choose IM Solutions as their marketing agency in Bangalore?',
-            answer: 'Businesses can consider IM Solutions for its experience since 2013, integrated digital advertising and offline activations, and transparent performance marketing approach. The agency brings strategy, creativity, technology, and media capabilities together, then scopes a solution around business objectives, audiences, and campaign requirements.',
+            answer: 'Because you get one partner instead of five. Since 2013 we have brought strategy, creative, technology and media under one roof, so online campaigns and offline activations pull in the same direction. Every engagement starts from your business objective and is measured against it.',
             details: [
                 'Integrated online and offline campaign capabilities.',
                 'Services shaped around the brief and business objectives.',
@@ -52,7 +52,7 @@ export default function FAQ({
         },
         {
             question: 'How many years of experience does IM Solutions have in advertising and marketing?',
-            answer: 'Founded in 2013, IM Solutions has more than a decade of experience in enterprise brand strategy, performance marketing, and advertising in Bengaluru, Karnataka. The company serves businesses across India, including organizations in sectors such as real estate, retail, and B2B, with services shaped to each brief.',
+            answer: 'We were founded in Bengaluru in 2013, so we bring more than a decade of hands-on experience in brand strategy, performance marketing and advertising. Our clients span real estate, retail, B2B and more, across India.',
             details: [
                 'Established in Bengaluru, Karnataka.',
                 'Capabilities span brand strategy, performance marketing, and advertising.',
@@ -114,11 +114,11 @@ export default function FAQ({
         },
         {
             question: 'How can businesses get started with an audit or campaign at IM Solutions?',
-            answer: 'Businesses can get started by contacting IM Solutions through the website enquiry form. Share your business goals, service interests, and campaign context so the team can review your enquiry and discuss suitable next steps. The team can then confirm which services and information are relevant to the request.',
+            answer: 'Book a strategy call through the contact page, or message us on WhatsApp. Tell us your goals and where you are today, and we will come back with a clear view of the first moves and the services that fit.',
             details: [
                 'Describe your goals and service interests.',
                 'Include relevant campaign context or constraints.',
-                'Use the contact page to send an enquiry.',
+                'Book a call via the contact page or WhatsApp.',
             ],
         },
     ];

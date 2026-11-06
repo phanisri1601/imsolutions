@@ -2042,3 +2042,23 @@
     height: 220px;
   }
 }
+
+/* Card tag + date/read-time on homepage and blog editorial cards */
+.editorialTag {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+}
+
+.editorialContent .editorialMeta {
+  margin: 0.75rem 0 0;
+}

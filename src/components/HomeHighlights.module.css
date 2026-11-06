@@ -1,0 +1,230 @@
+/* ── Metrics strip ── */
+.metrics {
+  background: #F8F4F0;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 3.5rem);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.metricsGrid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.metric:first-child {
+  border-left: none;
+}
+
+.metricLabel {
+  order: 2;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.metricValue {
+  order: 1;
+  margin: 0 0 0.35rem;
+  font-family: var(--font-primary), Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #BA3232;
+}
+
+.metricNote {
+  order: 3;
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.75rem;
+  }
+
+  .metric:nth-child(3) {
+    border-left: none;
+  }
+}
+
+/* ── AI spotlight ── */
+.ai {
+  background: #111;
+  color: #f5f1ec;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 4vw, 3.5rem);
+}
+
+.aiInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e4a6a6;
+  margin-bottom: 1rem;
+}
+
+.aiHeading {
+  font-family: var(--font-primary), Georgia, serif;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  color: #fff;
+}
+
+.aiText {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(245, 241, 236, 0.75);
+  margin: 0 0 1.5rem;
+  max-width: 42ch;
+}
+
+.textLink {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.textLink:hover,
+.textLink:focus-visible {
+  border-color: #fff;
+}
+
+.aiGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.aiCard {
+  padding: 1.5rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.aiCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.aiIndex {
+  display: block;
+  font-size: 0.75rem;
+  color: #e4a6a6;
+  margin-bottom: 1.25rem;
+}
+
+.aiCard h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.aiCard p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  color: rgba(245, 241, 236, 0.7);
+}
+
+@media (max-width: 960px) {
+  .aiInner,
+  .aiGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Strategy call band ── */
+.cta {
+  background: #F8F4F0;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 3.5rem);
+}
+
+.ctaInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ctaHeading {
+  font-family: var(--font-primary), Georgia, serif;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 400;
+  margin: 0 0 0.4rem;
+  color: #111;
+}
+
+.ctaText {
+  margin: 0;
+  color: #555;
+}
+
+.ctaButton {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 999px;
+  background: #BA3232;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ctaButton:hover,
+.ctaButton:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(186, 50, 50, 0.3);
+}
+
+@media (max-width: 768px) {
+  .ctaInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

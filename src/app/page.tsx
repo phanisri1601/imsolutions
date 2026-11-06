@@ -6,6 +6,7 @@ import WhyIMSolutions from "@/components/WhyIMSolutions";
 import EditorialBlogGallery from "./blog/EditorialBlogGallery";
 import CareerSection from "@/components/CareerSection";
 import PartnersSection from "@/components/PartnersSection";
+import { MetricsStrip, AISpotlight, StrategyCallBand } from "@/components/HomeHighlights";
 
 import Clients from "@/components/Clients";
 import FAQ from "@/components/FAQ";
@@ -38,6 +39,49 @@ const organizationSchema = {
   foundingDate: "2013",
   description:
     "IM Solutions is an integrated marketing and advertising agency based in Bangalore, India. Established in 2013, the company provides digital marketing, SEO, paid advertising, branding, creative strategy, AI advertising, and offline advertising solutions.",
+  email: "info@imsolutions.mobi",
+  telephone: "+91-888-056-4488",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    telephone: "+91-888-056-4488",
+    email: "info@imsolutions.mobi",
+    areaServed: "IN",
+  },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.imsolutions.co/#localbusiness",
+  name: "IM Solutions",
+  url: "https://www.imsolutions.co/",
+  image: "https://www.imsolutions.co/weblogo.png",
+  logo: "https://www.imsolutions.co/weblogo.png",
+  email: "info@imsolutions.mobi",
+  telephone: "+91-888-056-4488",
+  foundingDate: "2013",
+  parentOrganization: { "@id": "https://www.imsolutions.co/#organization" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "921, Laxmi Tower, 4th Floor, 5th Main Rd, Sector 7, HSR Layout",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    postalCode: "560102",
+    addressCountry: "IN",
+  },
+  areaServed: [
+    { "@type": "City", name: "Bengaluru" },
+    { "@type": "Country", name: "India" },
+  ],
+  knowsAbout: [
+    "Integrated marketing",
+    "Brand strategy",
+    "Digital marketing",
+    "Search engine optimization",
+    "AI advertising",
+    "Out-of-home advertising",
+  ],
 };
 
 export default function Home() {
@@ -49,15 +93,24 @@ export default function Home() {
           __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       <Hero />
+      <MetricsStrip />
       <VideoSection />
+      <PartnersSection />
+      <StrategyCallBand />
+      <FeatureServices />
+      <AISpotlight />
       <PhilosophySection />
       <IMSystemSection />
       <WhyIMSolutions />
-      <FeatureServices />
       <EditorialBlogGallery posts={featuredPosts} contained />
       <CareerSection />
-      <PartnersSection />
       <FAQ variant="plain" includeSchema />
     </main>
   );

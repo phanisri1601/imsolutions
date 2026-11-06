@@ -810,3 +810,54 @@
         font-size: 0.75rem;
     }
 }
+/* Poetic label + plain subtitle so first-time visitors know where each link goes */
+.navLabel {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.15;
+}
+
+.navSub {
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 2px;
+}
+
+/* Persistent conversion CTA in the sticky header */
+.headerCta {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    background: var(--color-accent-primary);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.headerCta:hover,
+.headerCta:focus-visible {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 1280px) and (min-width: 969px) {
+    .nav {
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headerCta {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+    }
+}

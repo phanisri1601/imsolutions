@@ -135,13 +135,13 @@ export const serviceData: Record<string, ServiceRecord> = {
     category: 'online'
   },
   'seo': {
-    title: 'Best SEO Service in Bangalore',
-    description: 'IM Solutions is positioned as one of the Leading SEO Company in Bangalore, offering practical and transparent SEO strategies that fit your market and search intent.',
+    title: 'SEO Services in Bangalore',
+    description: 'IM Solutions is an SEO company in Bangalore offering practical and transparent SEO strategies that fit your market and search intent.',
     longDescription: `
       <h2>Best SEO Company in Bangalore  IM Solutions</h2>
       <p>Search engines have changed how people discover businesses. If your brand isn’t visible on Google, potential customers will land on a competitor instead.</p>
       <h3>Why settle for average when you can aim for the top?</h3>
-      <p>IM Solutions is positioned as one of the Leading SEO Company in Bangalore, offering practical and transparent SEO strategies that fit your market and search intent. Our team stays aligned with the latest updates, supported by insights like those covered in our guide on modern SEO and AI-powered search.</p>
+      <p>IM Solutions is an SEO company in Bangalore offering practical and transparent SEO strategies that fit your market and search intent. Our team stays aligned with the latest updates, supported by insights like those covered in our guide on modern SEO and AI-powered search.</p>
       <h3>10+ Years of SEO Expertise Backed by Real Growth</h3>
       <p>For more than 10 years, IM Solutions has worked with brands across different industries as a trusted SEO agency in Bangalore. We study your ideal customers, how they search, and what influences their decisions. From there, we build a clear plan that positions your business at the right moment in their search path.</p>
       <p>Search visibility only works when users enjoy the experience on your site. That’s why we combine SEO with smart Search Engine Marketing to improve conversions and lead quality. Every project begins with a detailed auditcovering keywords, content structure, metadata, page performance, URL flows, schema setup, and other key on-site elements.</p>

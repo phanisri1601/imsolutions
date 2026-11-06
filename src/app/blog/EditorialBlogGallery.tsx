@@ -103,6 +103,13 @@ function RevealImageBlock({
   );
 }
 
+/** Card-friendly title: drop the subtitle after a colon and cap the length. */
+function shortTitle(title: string, max = 64) {
+  const main = title.split(/:\s|\s[–—-]\s/)[0].trim();
+  if (main.length <= max) return main;
+  return `${main.slice(0, main.lastIndexOf(" ", max)).trim()}…`;
+}
+
 export default function EditorialBlogGallery({ posts, contained = false }: Props) {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [scrollContainerEl, setScrollContainerEl] = useState<HTMLDivElement | null>(null);
@@ -242,7 +249,11 @@ export default function EditorialBlogGallery({ posts, contained = false }: Props
                 />
                 <div className={styles.editorialIndex}>{String(index + 1).padStart(2, "0")}</div>
                 <div className={styles.editorialContent}>
-                  <h2>{post.title}</h2>
+                  {post.tags?.[0] ? <span className={styles.editorialTag}>{post.tags[0]}</span> : null}
+                  <h2>{shortTitle(post.title)}</h2>
+                  <p className={styles.editorialMeta}>
+                    {[post.date, post.readingTime].filter(Boolean).join(" · ")}
+                  </p>
                 </div>
               </button>
             </motion.article>

@@ -8,21 +8,31 @@ import { serviceUrlMap } from '../data/services';
 import { serviceData } from '../data/servicesData';
 
 export default function FeatureServices() {
+    // Highest-value capabilities first: strategy, digital, AI, then offline reach.
     const featuredServices = [
         {
             name: 'Branding Re-Branding',
+            label: 'Brand Strategy & Identity',
             image: '/offline images/Branding Re-Branding.png',
-            description: serviceData['branding-rebranding'].description
+            description: 'Positioning, identity and messaging that give every channel one clear voice.'
         },
         {
-            name: 'Event Management',
-            image: '/offline images/Event Management.png',
-            description: serviceData['event-management'].description
+            name: 'Digital Marketing Service',
+            label: 'Digital & Performance Marketing',
+            image: '/new-online-services/Digital Marketing Service.png',
+            description: 'Search, social and paid media planned around qualified leads, not vanity metrics.'
+        },
+        {
+            name: 'AI Advertising Agency',
+            label: 'AI Advertising',
+            image: '/new-online-services/Display Advertisement.png',
+            description: 'AI-assisted targeting, creative testing and AI-search visibility.'
         },
         {
             name: 'Hoarding Services',
+            label: 'Offline & Out-of-Home',
             image: '/offline images/Hoarding Services.png',
-            description: serviceData['hoarding-services'].description
+            description: 'Hoardings, airports, transit and activations that put the brand in the real world.'
         }
     ];
 
@@ -38,7 +48,7 @@ export default function FeatureServices() {
                         FEATURED SERVICES
                     </TextReveal>
                     <TextReveal as="p" animateType="paragraph" className={styles.subtitle}>
-                        Specialized offline and experiential marketing solutions
+                        Strategy, digital, AI and offline: the capabilities clients bring us in for most
                     </TextReveal>
                 </div>
 
@@ -48,13 +58,13 @@ export default function FeatureServices() {
                             key={service.name}
                             href={getServiceUrl(service.name)}
                             className={`${styles.serviceImageTile} ${index === 0 ? styles.serviceImageTileLead : ''}`}
-                            style={{ backgroundImage: `url("${service.image}")` }}
+                            style={{ backgroundImage: `url("${encodeURI(service.image)}")` }}
                         >
                             <span className={styles.serviceImageIndex} aria-hidden="true">
                                 0{index + 1}
                             </span>
                             <span className={styles.serviceImageContent}>
-                                <span className={styles.serviceImageLabel}>{service.name}</span>
+                                <span className={styles.serviceImageLabel}>{service.label}</span>
                                 <span className={styles.serviceImageDescription}>{service.description}</span>
                                 <span className={styles.serviceImageAction} aria-hidden="true">
                                     Explore service <span>↗</span>

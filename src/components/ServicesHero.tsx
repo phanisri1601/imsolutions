@@ -444,7 +444,7 @@ function ServicesHeroContent({
                     className={styles.hotspotPath}
                     role="button"
                     tabIndex={0}
-                    aria-label={isActive ? `${cube.label} video playing  press Enter to close` : `Play ${cube.label} video`}
+                    aria-label={isActive ? `${cube.label} video playing — press Enter to close` : `Play ${cube.label} video`}
                     onClick={() => toggleCube(cube)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {

@@ -34,7 +34,7 @@ const STAGES: Panel[] = [
         label: "Discover",
         heading: ["Every Great Brand Begins", "With Understanding."],
         content: [
-            "We study markets before we shape messages  market research, consumer behaviour and brand discovery workshops uncover the opportunities others overlook.",
+            "We study markets before we shape messages — market research, consumer behaviour and brand discovery workshops uncover the opportunities others overlook.",
         ],
         quote: "The strongest ideas rarely come first.",
         accent: "#B5895B",
@@ -46,7 +46,7 @@ const STAGES: Panel[] = [
         label: "Strategize",
         heading: ["Clarity Creates Direction."],
         content: [
-            "Brand positioning, communication strategy and go-to-market planning  every decision engineered to move your business towards measurable growth.",
+            "Brand positioning, communication strategy and go-to-market planning — every decision engineered to move your business towards measurable growth.",
         ],
         quote: "Without strategy, creativity becomes decoration.",
         accent: "#28425E",
@@ -58,7 +58,7 @@ const STAGES: Panel[] = [
         label: "Create",
         heading: ["Ideas Deserve", "Extraordinary Execution."],
         content: [
-            "Brand identities, campaigns, websites and digital experiences  work that's visually compelling and commercially effective.",
+            "Brand identities, campaigns, websites and digital experiences — work that's visually compelling and commercially effective.",
         ],
         quote: "Beautiful design earns attention. Meaningful design earns loyalty.",
         accent: "#5B3A6B",
@@ -70,7 +70,7 @@ const STAGES: Panel[] = [
         label: "Amplify",
         heading: ["Visibility Without Strategy", "Is Noise."],
         content: [
-            "Performance advertising, SEO, SEM and social  reaching the right audience with the right message at the right moment.",
+            "Performance advertising, SEO, SEM and social — reaching the right audience with the right message at the right moment.",
         ],
         accent: "#1E6E63",
         image: "Amplify.png",
@@ -81,7 +81,7 @@ const STAGES: Panel[] = [
         label: "Scale",
         heading: ["Growth Is Never", "An Accident."],
         content: [
-            "Performance analytics, optimisation and automation  growing your business with confidence and consistency.",
+            "Performance analytics, optimisation and automation — growing your business with confidence and consistency.",
         ],
         quote: "Brands that thrive don't advertise more. They improve continuously.",
         accent: "#1F5C3C",

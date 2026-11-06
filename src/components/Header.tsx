@@ -38,6 +38,15 @@ function ChevronDownIcon(props: React.SVGProps<SVGSVGElement>) {
 import { serviceUrlMap } from '../data/services';
 import styles from './Header.module.css';
 
+function NavLabel({ label, sub }: { label: string; sub: string }) {
+  return (
+    <span className={styles.navLabel}>
+      <span>{label}</span>
+      <small className={styles.navSub}>{sub}</small>
+    </span>
+  );
+}
+
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
@@ -525,8 +534,8 @@ export default function Header() {
         </Link>
 
           <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
-            <Link href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>The Beginning</Link>
-            <Link href="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>The IM Perspective</Link>
+            <Link href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}><NavLabel label="The Beginning" sub="Home" /></Link>
+            <Link href="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}><NavLabel label="The IM Perspective" sub="About" /></Link>
 
             <div
               className={styles.dropdown}
@@ -548,7 +557,7 @@ export default function Header() {
                   }
                 }}
               >
-                Services <ChevronDownIcon className={`${styles.chevron} ${isServicesOpen || isMobileServicesOpen ? styles.chevronRotated : ''}`} />
+                <NavLabel label="Services" sub="Online & Offline" /> <ChevronDownIcon className={`${styles.chevron} ${isServicesOpen || isMobileServicesOpen ? styles.chevronRotated : ''}`} />
               </button>
               {isMobile ? (
                 isMobileServicesOpen && (
@@ -587,13 +596,16 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/clients" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>The Showcase</Link>
-            <Link href="/careers" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>The Collective</Link>
-            <Link href="/blog" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>The Inspiration</Link>
-            <Link href="/contact" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Let's Connect</Link>
+            <Link href="/clients" className={styles.navLink} onClick={() => setIsMenuOpen(false)}><NavLabel label="The Showcase" sub="Clients" /></Link>
+            <Link href="/careers" className={styles.navLink} onClick={() => setIsMenuOpen(false)}><NavLabel label="The Collective" sub="Careers" /></Link>
+            <Link href="/blog" className={styles.navLink} onClick={() => setIsMenuOpen(false)}><NavLabel label="The Inspiration" sub="Blog" /></Link>
+            <Link href="/contact" className={styles.navLink} onClick={() => setIsMenuOpen(false)}><NavLabel label="Let's Connect" sub="Contact" /></Link>
           </nav>
 
           <div className={styles.headerActions}>
+            <Link href="/contact" className={styles.headerCta} onClick={() => setIsMenuOpen(false)}>
+              Book a Strategy Call
+            </Link>
             {/* Voice chat functionality hidden */}
             
             {/* Add hamburger menu button */}

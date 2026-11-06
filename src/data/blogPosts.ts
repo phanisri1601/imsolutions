@@ -293,7 +293,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [
       {
         q: "Is ORM different for startups vs global brands?",
-        a: "The foundation is the samevisibility, credibility, and consistencybut the approach is tailored for scale and complexity.",
+        a: "The foundation is the same (visibility, credibility, and consistency), but the approach is tailored for scale and complexity.",
       },
       {
         q: "How does ORM affect generative AI search results?",

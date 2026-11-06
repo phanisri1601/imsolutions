@@ -86,7 +86,7 @@ export default function Clients() {
                                             {isLogo ? (
                                                 <img
                                                     src={client}
-                                                    alt={`Client logo ${index + 1}`}
+                                                    alt={`${clientName} logo`}
                                                     className={styles.logoImage}
                                                 />
                                             ) : (

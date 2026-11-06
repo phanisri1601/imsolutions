@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import styles from "./VideoSection.module.css";
 
@@ -8,6 +8,17 @@ const VideoSection = () => {
     const containerRef = useRef<HTMLElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const isInView = useInView(containerRef, { amount: 0.3 });
+    // Only load the (large) video on desktop-class connections; phones, data-saver
+    // and reduced-motion users get the poster image instead.
+    const [allowVideo, setAllowVideo] = useState(false);
+
+    useEffect(() => {
+        const nav = navigator as Navigator & { connection?: { saveData?: boolean } };
+        const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const saveData = Boolean(nav.connection?.saveData);
+        setAllowVideo(!isSmallScreen && !reducedMotion && !saveData);
+    }, []);
 
     // Scroll Progress Logic
     const { scrollYProgress } = useScroll({
@@ -46,12 +57,13 @@ const VideoSection = () => {
 
     // Autoplay Logic
     useEffect(() => {
+        if (!allowVideo) return;
         if (isInView && videoRef.current) {
             videoRef.current.play().catch(() => { });
         } else if (!isInView && videoRef.current) {
             videoRef.current.pause();
         }
-    }, [isInView]);
+    }, [isInView, allowVideo]);
 
     return (
         <section ref={containerRef} className={styles.videoSection}>
@@ -67,11 +79,12 @@ const VideoSection = () => {
                     <motion.video
                         ref={videoRef}
                         className={styles.video}
-                        src="/HOme%20Page_IMS.mp4"
-                        poster="/Home Page Banner.png"
+                        src={allowVideo ? "/home-showreel.mp4" : undefined}
+                        poster="/home-showreel-poster.jpg"
                         preload="none"
                         loop
                         muted
+                        autoPlay={allowVideo}
                         playsInline
                         aria-hidden="true"
                         style={{

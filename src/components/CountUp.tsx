@@ -49,7 +49,7 @@ export default function CountUp({ end, duration = 2, suffix = "" }: CountUpProps
 
   return (
     <div ref={containerRef}>
-      <span ref={countRef}>0{suffix}</span>
+      <span ref={countRef}>{end}{suffix}</span>
     </div>
   );
 }
