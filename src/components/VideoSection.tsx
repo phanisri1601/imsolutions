@@ -68,9 +68,12 @@ const VideoSection = () => {
                         ref={videoRef}
                         className={styles.video}
                         src="/HOme%20Page_IMS.mp4"
+                        poster="/Home Page Banner.png"
+                        preload="none"
                         loop
                         muted
                         playsInline
+                        aria-hidden="true"
                         style={{
                             y: videoY,
                             scale: 1.1 // Slightly larger to prevent edges showing during parallax

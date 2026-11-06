@@ -90,6 +90,17 @@
     margin: 0;
 }
 
+.faqAnswer ul {
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
+    color: var(--color-text-secondary);
+}
+
+.faqAnswer li {
+    margin: 0.25rem 0;
+    line-height: 1.6;
+}
+
 /* Blog / inline: no grey section background */
 .faqPlain {
     padding: 0;

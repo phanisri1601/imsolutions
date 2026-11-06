@@ -548,7 +548,7 @@ export default function Header() {
                   }
                 }}
               >
-                Creative Solutions <ChevronDownIcon className={`${styles.chevron} ${isServicesOpen || isMobileServicesOpen ? styles.chevronRotated : ''}`} />
+                Services <ChevronDownIcon className={`${styles.chevron} ${isServicesOpen || isMobileServicesOpen ? styles.chevronRotated : ''}`} />
               </button>
               {isMobile ? (
                 isMobileServicesOpen && (

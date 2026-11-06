@@ -15,9 +15,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "IM Solutions - Best Advertising Agency in Bangalore",
-  description: "Leading advertising agency in Bangalore offering creative design, 360° digital marketing, and lead generation services. 7+ years of experience with 300+ satisfied clients.",
-  keywords: "advertising agency bangalore, digital marketing, creative design, lead generation, brand activation, SEO services",
+  metadataBase: new URL("https://www.imsolutions.co"),
+  title: "IM Solutions",
+  description:
+    "IM Solutions is an integrated marketing and advertising agency in Bangalore, offering SEO, digital marketing, branding, AI advertising and creative solutions.",
+  keywords:
+    "integrated marketing agency in Bangalore, digital marketing agency in Bangalore, advertising agency in Bangalore",
 };
 
 export const viewport = {

@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | IM Solutions Blog`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
   };
 }
 
@@ -291,9 +294,36 @@ export default async function PostPage({ params }: Props) {
   const metaParts = [post.date, post.readingTime, post.author].filter(Boolean);
 
   const bannerImage = post.image || "/blog_seo.png";
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `https://www.imsolutions.co/blog/${post.slug}#article`,
+    mainEntityOfPage: `https://www.imsolutions.co/blog/${post.slug}`,
+    headline: post.title,
+    description: post.excerpt,
+    image: new URL(bannerImage, "https://www.imsolutions.co").toString(),
+    articleSection: primaryCategory,
+    author: {
+      "@type": "Organization",
+      name: post.author || "IM Solutions",
+      "@id": "https://www.imsolutions.co/#organization",
+    },
+    publisher: {
+      "@id": "https://www.imsolutions.co/#organization",
+    },
+    ...(post.date && /^\d{4}-\d{2}-\d{2}$/.test(post.date)
+      ? { datePublished: post.date }
+      : {}),
+  };
 
   return (
     <main className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       <header className={styles.hero}>
         <div className={styles.heroInner}>
           <span className={styles.categoryBadge}>{primaryCategory}</span>

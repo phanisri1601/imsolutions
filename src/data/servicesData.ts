@@ -1,19 +1,19 @@
-export const serviceData: {
-  [key: string]: {
-    title: string;
-    description: string;
-    longDescription: string;
-    features: string[];
-    benefits: string[];
-    category: 'online' | 'offline';
-    heroImage?: string;
-    heroDecor?: string;
-    collageMain?: string;
-    collageTop?: string;
-    collageBottom?: string;
-    faqs?: { q: string; a: string }[];
-  };
-} = {
+export type ServiceRecord = {
+  title: string;
+  description: string;
+  longDescription: string;
+  features: string[];
+  benefits: string[];
+  category: 'online' | 'offline';
+  heroImage?: string;
+  heroDecor?: string;
+  collageMain?: string;
+  collageTop?: string;
+  collageBottom?: string;
+  faqs?: { q: string; a: string }[];
+};
+
+export const serviceData: Record<string, ServiceRecord> = {
 
 
 
