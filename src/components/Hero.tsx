@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './Hero.module.css';
 
-const heroBanner = encodeURI('/Home Page Banner.png');
-const heroMobileBanner = encodeURI('/HOMEBanner mobile.png');
+const heroBanner = encodeURI('/IM Strategy Cube Cluster.png');
+const heroMobileBanner = encodeURI('/Strategic Cube on Marble Surface.png');
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 32 },
